@@ -1,0 +1,15 @@
+.li-item{
+    padding: 12px 0 0 0;
+    clear: both;
+    vertical-align: middle;
+    border-top: 1px dashed #ff6600;
+}
+.div-item{
+    width: 10%;float: left;font-size: 13px;
+}
+.col-blue{
+    color: #005aa0;cursor:pointer;
+}
+.div-count{
+    width: 100%;float: left;text-align: left;color:#aaa;font-size: 13px;padding: 0 0 20px 30px;
+}

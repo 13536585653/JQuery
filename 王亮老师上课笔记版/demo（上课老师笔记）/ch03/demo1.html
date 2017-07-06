@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../js/jquery-1.7.2.js"></script>
+    <script>
+        $(function(){
+            //在选中元素的内部末尾追加元素节点
+            //$("#d1").append("<p>hello world</p>");
+            //在选中元素的内部之前追加元素节点
+            $("#d1").prepend("<p>hello world</p>");
+            alert($("body").html());
+        });
+    </script>
+</head>
+<body>
+  <div id="d1">
+      <div>hello jquery</div>
+  </div>
+</body>
+</html>

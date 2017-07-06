@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../js/jquery-1.7.2.js"></script>
+    <script>
+        $(function(){
+            //将包装集中行数为1的tr设置背景色
+            //eq是等于，gt是大于，lt是小于
+            $("tr:lt(1)").css("background-color","red");
+        });
+    </script>
+</head>
+<body>
+<table>
+    <tr><td>Header 1</td></tr>
+    <tr><td>Value 1</td></tr>
+    <tr><td>Value 2</td></tr>
+</table>
+</body>
+</html>

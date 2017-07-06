@@ -1,0 +1,45 @@
+1471177666023	Rename type 'UserBean'
+1471178146632	Copy package
+1471178162109	Copy package
+1471178210937	Copy package
+1471178220954	Delete element
+1471178225272	Copy package
+1471178229523	Delete element
+1471178233716	Copy package
+1471178762814	Delete element
+1471178767267	Delete element
+1471178769916	Delete element
+1471223306021	Encapsulate field 'queue2'
+1471226299937	Rename type 'LoginServlet'
+1471226327548	Copy compilation unit
+1471226672289	Copy compilation unit
+1471229457926	Copy compilation unit
+1471229517328	Rename type 'LoginServlet'
+1471229545693	Rename type 'ReceiveServlet'
+1471229563822	Rename type 'SendServlet'
+1471229603860	Rename type 'LoginReceiveServlet'
+1471229624554	Copy compilation unit
+1471231968199	Delete element
+1471243336222	Delete element
+1471243338297	Delete element
+1471243485664	Delete element
+1471244887205	Delete element
+1471244985878	Delete element
+1471244987650	Delete element
+1471273145256	Rename package 'org.demo.filter'
+1471308156117	Move 'chat.html' to 'html'
+1471308159497	Move 'login.html' to 'html'
+1471308195963	Move 'gson-2.2.2.jar' to 'lib'
+1471310603419	Delete element
+1471310606782	Delete element
+1471312026665	Delete element
+1471312279939	Delete element
+1471312505311	Rename package 'org.demo'
+1471312512366	Delete element
+1471331210474	Copy compilation unit
+1471331215596	Delete element
+1471331225638	Delete element
+1471404316418	Delete element
+1471404335266	Delete element
+1471568988068	Delete element
+1471568992452	Delete element

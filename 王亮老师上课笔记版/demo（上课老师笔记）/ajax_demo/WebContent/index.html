@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Title</title>
+<script src="js/ReqUtil.js"></script>
+<script>
+        //通过ajax发起一个异步的get请求
+        function doGet(){
+            //创建一个异步请求对象
+            var req = createRequest();
+            //获取文本框的数据
+            var userName = document.getElementById("uname").value;
+            //将数据发送到后台处理,使用req的open方法打开一个请求连接
+            req.open("get","test?userName="+userName);
+            //最后调用send方法发送异步请求
+            req.send();
+            //接受后台响应回来的数据
+            req.onreadystatechange = function(){
+            	if (req.readyState == 4 && req.status == 200){
+            			//通过异步请求对象的responseText属性中获取响应内容
+            			var result = req.responseText;
+            			//将响应的数据绑定到div中
+            			document.getElementById("d").innerHTML = result;
+            	}
+            }
+        }
+        
+        //发起post请求
+        function doPost(){
+        	//创建一个异步请求对象
+            var req = createRequest();
+            //获取文本框的数据
+            var userName = document.getElementById("uname").value;
+          	//通过post请求来发送数据
+          	req.open("post","test");
+            //Post请求必须设置请求头部的Content-Type
+          	req.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
+            //发送请求，post方式是通过send方法将数据发送到服务端
+            req.send("userName="+userName);
+            //接受后台响应回来的数据
+            req.onreadystatechange = function(){
+            	if (req.readyState == 4 && req.status == 200){
+            			//通过异步请求对象的responseText属性中获取响应内容
+            			var result = req.responseText;
+            			//将响应的数据绑定到div中
+            			document.getElementById("d").innerHTML = result;
+            	}
+            }
+        }
+    </script>
+</head>
+<body>
+	UserName:
+	<input type="text" id="uname"/>
+	<input type="button" value="提交" onclick="doPost()" />
+	<br/>
+	<div id="d"></div>
+</body>
+</html>

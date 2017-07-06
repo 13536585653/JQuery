@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<link href="cs/bootstrap.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="js/bootstrap.js"></script>
+<script type="text/javascript" src="js/jquery-1.7.2.min.js"></script>
+<script type="text/javascript" src="js/bootstrap-dropdown.js"></script>
+<title>按钮_带下拉菜单的按钮</title>
+</head>
+<body>
+		<div class="container">
+			<h1 class="page-header">按钮<small>带下拉菜单的按钮</small></h1>
+			<div class="btn-toolbar">
+			<!--twitter.github.com/bootstrap/javascript.html#dropdowns  -->
+			<div class="btn-group">
+			<!-- 样式  .caret 显示按钮中的三角形符号-->
+				<a class="btn dropdown-toggle" data-toggle="dropdown" href="#">字体<span class="caret"></span></a>
+				<ul class="dropdown-menu">
+				    <li><a href="#">黑体</a></li>
+				    <li><a href="#">宋体</a></li>
+				    <li><a href="#">仿宋</a></li>
+				</ul>
+			</div>
+			
+			<!--下面这个按钮是三角形和按钮文字分开来，这样一来我当我们点击文字的时候会显示按钮文字所相关的内容，点击三角形符号会显示下拉菜单  -->
+			<div class="btn-group">
+				<a class="btn btn-success" href="#">字体</a>
+				<!--.dropdown-toggle为按钮添加合适的样式  
+					为按钮添加一个data-toggle的属性 ，值为"dropdown"，dropdown插件会根据属性来切换显示下拉菜单，点击显示，再点击隐藏
+				-->
+				<a class="btn dropdown-toggle" data-toggle="dropdown" href="#"><span class="caret"></span></a>
+				<ul class="dropdown-menu">
+				    <li><a href="#">黑体</a></li>
+				    <li><a href="#">宋体</a></li>
+				    <li><a href="#">仿宋</a></li>
+				</ul>
+			</div>
+			</div>
+		</div>
+</body>
+</html>

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../JS/jquery-1.7.2.js"></script>
+    <script>
+        function check() {
+         if($(":checkbox:checked").size()!=0){
+         alert("确认选择？");
+         }else{
+         alert("你没有选择！");
+         }
+         }
+        //全选与全不选
+          $(function () {
+              $("#bto").on("click",function () {
+                  var cd=$(":checked");
+                  var cb=$(":checkbox");
+                  if(cd.size()==""||cb.length!=cd.length){
+                      cb.attr("checked",true);
+                  }else{
+                      cb.attr("checked",false);
+                  }
+              });
+          });
+
+        //反选
+        $(function () {
+            $("#bto2").on("click",function () {
+               var boxs=$(":checkbox");
+                $.each(boxs,function (index,e) {
+                    if(e.checked==false){
+                        e.checked=true;
+                    }else{
+                        e.checked=false;
+                    }
+                });
+            });
+        });
+    </script>
+</head>
+<body>
+    <form>
+        <input id="bto" type="button" value="全选">
+        <input id="bto2" type="button" value="反选">
+        <input type="submit" name="submit" value="提交" onclick="return check()"><br>
+    <input type="checkbox" class="cb" name="cb" value="num1">num1
+    <input type="checkbox" class="cb" name="cb" value="num1">num2
+    <input type="checkbox" class="cb" name="cb" value="num1">num3
+    <input type="checkbox" class="cb" name="cb" value="num1">num4
+    <input type="checkbox" class="cb" name="cb" value="num1">num5
+    </form>
+</body>
+</html>

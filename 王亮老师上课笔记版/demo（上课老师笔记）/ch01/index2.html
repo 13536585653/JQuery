@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        //number,string,boolean,null,undefined
+        var a = 3.14;
+        var b  = "hello";
+        //使用typeof得到当前变量的类型
+        alert(typeof(a)+"   "+typeof(b));
+
+
+        var obj = new Object();
+        //动态添加属性
+        obj.age = 33;
+        obj.name = "wangl";
+        //动态添加方法
+        obj.say = function(){
+            alert("hello world");
+        }
+        //输出属性的值
+        alert(obj.name+" : "+obj.age);
+        //调用say方法
+        obj.say();
+    </script>
+</head>
+<body>
+
+</body>
+</html>

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../js/jquery-1.7.2.js"></script>
+    <script>
+        $(function(){
+            //给button绑定一个单击事件
+            $(":button").click(function(event){
+                //通过事件对象的target属性就可以得知事件源是谁
+                //使用append追加内容
+                //$("body").append("<p>hello world</p>");
+                //使用after追加内容
+                $(":button").after("<p>hello world</p>");
+                alert($("body").html());
+            });
+        });
+    </script>
+</head>
+<body>
+    <input type="button" value="button"/>
+</body>
+</html>

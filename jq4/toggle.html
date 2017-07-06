@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../JS/jquery-1.7.2.js"></script>
+    <script>
+       /* 用于绑定两个或多个事件处理器函数，以响应被选元素的轮流的 click 事件。
+        如果元素是可见的，切换为隐藏的；如果元素是隐藏的，切换为可见的。*/
+        $(function () {
+            $("div").toggle(function () {
+                $(this).css("background-color","red");
+            },
+                function () {
+                        $(this).css("background-color","green");
+                    },function () {
+                            $(this).css("background-color","blue");
+                    }
+            );
+        });
+    </script>
+</head>
+<body>
+    <div style="border: 1px solid red; width:100px; height: 100px"></div>
+</body>
+</html>

@@ -1,0 +1,33 @@
+package org.demo.controller;
+
+import java.io.IOException;
+import java.util.List;
+
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import org.demo.entity.UserBean;
+@WebServlet("/loginServlet")
+public class LoginServlet extends HttpServlet{
+	private static final long serialVersionUID = 1L;
+	public void service(HttpServletRequest request,HttpServletResponse response)throws IOException,ServletException{	
+				//接收用户名
+				String userName = request.getParameter("username");
+				UserBean user = new UserBean();
+				user.setUserName(userName);
+				System.out.println(user.getUserName());
+				//将用户保存到会话当中
+				request.getSession().setAttribute("user", user);
+				//同时将用户添加到用户列表
+				//先从上下文中获取用户列表
+				@SuppressWarnings("unchecked")
+				List<UserBean> userList = (List<UserBean>)request.getServletContext().getAttribute("userList");
+				userList.add(user);
+				//重定向到聊天页面
+				response.sendRedirect("HTML/serviceChat.jsp");
+				}
+
+			}

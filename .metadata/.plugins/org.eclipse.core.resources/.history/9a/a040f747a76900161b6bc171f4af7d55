@@ -1,0 +1,18 @@
+package org.demo.dao;
+
+import java.util.Scanner;
+
+public class Test{
+	
+	 public static void main(String args[])
+	   	{
+		   boolean boo=true;
+		   if(boo == false){
+		      System.out.println("a");
+		   }else{
+		      System.out.println("b");
+		   }
+
+		    }
+
+	}

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>jq4</title>
+    <script src="../JS/jquery-1.7.2.js"></script>
+    <script>
+       /* var jq=jQuery(document);
+        var init=function () {
+            alert("reday");
+        }
+        jq.reday(init());*/
+
+        //jQuery初始化工作
+        /*reday方法和onload方法的区别：
+        1.在document对象加载之后，不需要等待资源加载完成，
+        如：图片，视屏、音频等资源
+        而onload方法是需要等待资源全部加载完成之后再调用
+
+        2.onload方法只会执行一次（覆盖），而ready方法是不会覆盖的
+        它是按照顺序来执行*/
+
+        /*jQuery(document).ready(function () {
+            alert("hello jquery");
+        }).ready(function () {
+            alert("hello jquery2");
+        }).ready(function () {
+            alert("hello jquery3");
+                }
+        )*/
+        //也可以用$符号俩代替jQuery
+        $(document).ready(
+                function () {
+                    alert(1);
+                }
+        )
+        //简化写法
+        $(function () {
+            alert(1);
+        })
+    </script>
+</head>
+<body>
+
+</body>
+</html>

@@ -1,0 +1,31 @@
+package org.demo.dao;
+
+import java.util.Scanner;
+
+public class Test{
+	static int i;
+	/**
+	 * @param args
+	 */
+	/**
+	 * @param args
+	 */
+	/**
+	 * @param args
+	 */
+	/**
+	 * @param args
+	 */
+	/**
+	 * @param args
+	 */
+	public static void main(String[]  args)
+	{		
+		int a=4;
+		int b=a++;
+		for(;a<33;a++){
+			System.out.print(b);
+		}
+
+	}
+	}

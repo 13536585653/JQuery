@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<link href="cs/bootstrap.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="js/bootstrap.js"></script>
+<script type="text/javascript" src="js/jquery.js"></script>
+<script type="text/javascript" src="js/bootstrap-tab.js"></script>
+<script type="text/javascript" src="js/bootstrap-dropdown.js"></script>
+
+<title>选项卡</title>
+</head>
+<body>
+		<div class="container">
+			<h1 class="page-header">选项卡内容</h1>
+			<!--tabs-left:选项卡在左边显示  -->
+			<div class="tabbable">
+			<!--nav-pills，nav-tabs，nav-stacked :改变选项卡的样式-->
+			<ul class="nav nav-tabs">
+				<li class="active"><a href="#tab1" data-toggle="tab">Java</a></li>
+				<li><a href="#tab2" data-toggle="tab">C++</a></li>
+				<li><a href="#tab3" data-toggle="tab">.Net</a></li>
+			</ul>
+			<!-- 选项卡相对应的内容 -->
+			<div class="tab-content">
+				<div class="tab-pane active" id="tab1"><p>Java</p></div>
+				<div class="tab-pane" id="tab2"><p>C++</p></div>
+				<div class="tab-pane" id="tab3"><p>.Net</p></div>
+			</div>
+		</div>
+		</div>
+</body>
+</html>

@@ -1,0 +1,17 @@
+package org.demo.dao;
+
+import java.util.Scanner;
+
+public class Test {
+    Integer a = new Integer(10);
+    Integer b = new Integer(10);
+    public static void main (String[ ] args){
+        Test testA = new Test();
+        if (testA.a==testA.b){
+            System.out.print("บÜ");
+        }
+        if (testA.a.equals(testA.b)){
+            System.out.print("บร");
+        }
+    }
+}

@@ -1,0 +1,45 @@
+
+
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<link href="cs/bootstrap.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="js/bootstrap.js"></script>
+<script type="text/javascript" src="js/jquery-1.7.2.min.js"></script>
+<title>表单</title>
+</head>
+<body>
+		<div class="container">
+			<h1 class="page-header">表单</h1>
+			<!-- 将表单元素放在字段集里面，字段集元素：fieldset -->
+			<form class="form-horizontal"> 
+			<fieldset>
+			<!-- 为字段集添加描述文字 -->
+			<legend>用户登陆</legend>
+			<!-- 设置排版，让标签文字和表单元素显示在同一行，为label添加样式为 control-label的值，
+			用一个div包住表单元素，添加样式（control-group）使表单元素之间上下又间隔-->
+			<div class="control-group">
+			<label class="control-label" for="uName">用户名  ：</label>
+			<div class="control">
+			<input type="text" id="uName" placeholder="输入您的用户名">
+			<p class="help-inline">设置注册的用户名</p>
+			</div>
+			</div>
+			<div class="control-group">
+			<div class="control">
+			<label class="control-label" for="password">密&nbsp;&nbsp;&nbsp;&nbsp;码  ：</label>
+			<input type="password" id="password" placeholder="输入密码">
+			<p class="help-inline">设置登陆密码</p>
+			</div></div>
+			<br>
+			</fieldset>
+			
+			<div class="form-actions">
+			<button type="submit" class="btn btn-primary">登陆</button>
+			</div>
+			</form>
+		</div>
+</body>
+</html>

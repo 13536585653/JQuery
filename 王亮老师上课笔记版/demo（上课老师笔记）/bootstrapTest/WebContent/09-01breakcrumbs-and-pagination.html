@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link href="/bootstrapTest/cs/bootstrap.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="/bootstrapTest/js/jquery-1.8.3.js"></script>
+<script type="text/javascript" src="/bootstrapTest/js/bootstrap.js"></script>
+
+<!--这个标签的作用是修正大部分移动设备在网页上的显示-->
+<meta name="vievport" content="width=device-width,initial-scale=1.0">
+<!--[if lt IE 9]>
+	<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+<![endif]-->
+</head>
+<body>
+	<div class="container">
+		<h1 class="page-header">导航路径与分页器</h1>
+		<ul class="breadcrumb">
+			<li><a href="#">首页</a><span class="divider">/</span></li>
+			<li class="active">产品列表</li>
+		</ul>
+		<div class="pagination">
+		<!-- dvi-pagination 分页标签样式  
+			class-active  标示选中当前页
+		-->
+		<ul>
+			<li><a href="#">1</a></li>
+			<li class="active"><a href="#">2</a></li>
+			<li><a href="#">3</a></li>
+			<li><a href="#">4</a></li>
+			<li><a href="#">5</a></li>
+		</ul>
+		</div>
+		<!-- 
+			 pager  简单分页样式
+			 previous  最左边
+			 next      最右边
+		-->
+		<ul class="pager">
+			<li class="previous"><a href="#">上一页</a></li>
+			<li class="next"><a href="#">下一页</a></li>
+		</ul>
+	</div>
+</body>
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Chat</title>
+<script src="../js/jquery-1.7.2.js"></script>
+<script type="text/javascript">
+	$(function(){
+		//先给按钮绑定事件
+		$(":button").click(function(){
+			var message = $("#msg").val();
+			//清空输入框
+			$("#msg").val("");
+			//将消息异步发送到服务器端
+			$.post("../send",{"msg":message});
+		});
+		//去服务器获取消息
+		receive();
+	});
+	
+	//接受消息的方法
+	//发起ajax请求，去服务端找到自己的消息队列，看看有没有消息
+    //如果没有，当前的请求线程会阻塞在服务器端，知道队列有消息，
+	//会自动响应回来，然后将消息显示在div中。
+	//接着又发起请求去服务器端获取，以此不断循环。
+	function receive(){
+		$.get("../receive",function(message){
+			$("#msg").append(message+"<br/>");
+			//递归调用接收方法
+			receive();
+		})
+	}
+</script>
+</head>
+<body>
+<!--  <div id="content"></div>
+ <input id="msg" type="text" name="message"/>
+ <input type="button" value="send"/>
+ <div> -->
+ <div>
+ 欢迎,<font color="red">${user.getUserName() }</font>
+</div>
+	<center><span style="font:24px;color:red">后台聊天室</span></center>
+    <br><br>
+<div id="message" style="width:100%;height:490px;border:solid 1px red;overflow:auto"></div><br>
+    <input type="button" value="发送" style="float:right;margin-right:10px">
+    <input id="msg" type="text" style="float:right">
+</body>
+</html>

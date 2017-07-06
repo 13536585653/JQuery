@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../js/jquery-1.7.2.js"></script>
+    <script>
+        function del(){
+            //依据type类型选择checkbox，然后将选中的复选框放入包装集
+            if($(":checkbox:checked").size()==0){
+                alert("请选择");
+            }else{
+                alert("提交操作");
+            }
+        }
+    </script>
+</head>
+<body>
+<table border="1px" width="200px">
+    <tr>
+        <td><input type="button" value="删除" onclick="del()"/></td>
+        <td>姓名</td>
+        <td>年龄</td></tr>
+    <tr>
+        <td><input type="checkbox"/></td>
+        <td>user1</td>
+        <td>20</td></tr>
+    <tr>
+        <td><input type="checkbox"/></td>
+        <td>user2</td>
+        <td>20</td></tr>
+    <tr>
+        <td><input type="checkbox"/></td>
+        <td>user3</td>
+        <td>20</td></tr>
+</table>
+</body>
+</html>

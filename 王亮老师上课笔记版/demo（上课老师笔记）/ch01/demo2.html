@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../js/jquery-1.7.2.js"></script>
+    <script>
+        $(function(){
+            //包装集，jquery对象和js对象
+            //选择器，就是通过jquery来选中指定的html元素
+
+            //元素选择器($("元素名称"))
+            //$em就是一个jquery对象，也是包装集对象
+            var $em = $("input");
+            //可以输出包装集的大小
+            //alert($em.size());
+            //从包装集中取出一个元素，那么取出来的元素又是一个js对象
+            //可以通过get()方法,也可以通过数组下标的方式获取
+            //alert($em.get(0));
+
+            //ID选择器（id是唯一的，通过id属性名称进行选择，选出来的包装集中应该只有一个元素）
+            var $uname = $("#uname");
+            //alert($uname.size());
+
+            //样式选择器（通过class属性指定的名称进行选择）
+            var $ems = $(".class1");
+            alert($ems.size());
+        });
+    </script>
+</head>
+<body>
+    <input id="uname" class="class1" type="text" name="userName" value="hello"/><br/>
+    <input id="pwd" class="class1" type="password" name="passwd" value="123"/><br/>
+</body>
+</html>

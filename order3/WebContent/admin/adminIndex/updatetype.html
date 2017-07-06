@@ -1,0 +1,28 @@
+﻿<meta charset="UTF-8">
+<link rel="stylesheet" type="text/css" href="css/common.css"/>
+    <link rel="stylesheet" type="text/css" href="css/main.css"/>
+<script src="js/libs/jquery-1.7.2.js"></script>
+<script>
+$(function(){
+			$(":submit").click(function(){
+				var reg=/^(?:[\u4e00-\u9fa5|a-zA-Z])+?$/;
+				var type = $("#type").val();
+				if(type=="" || !reg.test(type)){
+						alert("类型不能为空,只能是中文或者英文");
+						return false;
+					}
+				});
+		
+		});
+</script>
+<div class="crumb-wrap">
+            <div class="crumb-list"><i class="icon-font"></i><a href="index.html">首页</a><span class="crumb-step">&gt;</span><span class="crumb-name">菜谱分类管理</span></div>
+        </div>
+<div class="result-wrap">
+<a href="selecttype.html">返回</a><br/>
+<p><h3>修改菜谱类型</h3></p>
+<form  method="post"><br/>
+	<p>类型 : <input type="text" id="type"/></p><br/>
+	<p><input type="submit" value="修改" style="width:100px;background-color:#ccc;border:1px;"></p>
+  </form>
+</div>

@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../JS/jquery-1.7.2.js"></script>
+    <script>
+        $(function () {
+            /*$("div").click(function () {
+                $(this).css("background-color","red");
+            });*/
+            $("div").on("click",function () {
+                $(this).css("background-color","red");
+            });
+        });
+    </script>
+</head>
+<body>
+    <div style="border: 1px solid red; width: 100px; height: 100px"></div>
+</body>
+</html>

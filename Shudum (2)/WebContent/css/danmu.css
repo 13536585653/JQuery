@@ -1,0 +1,133 @@
+.barrage .screen {
+				width: 100%;
+				height: 100%;
+				position: absolute;
+				top: 0px;
+				right: 0px;
+			}
+			
+			body {
+				background-image: url(/Shudum/img/Bbg.jpg);
+			}
+			
+			.barrage .screen .s_close {
+				z-index: 2;
+				top: 20px;
+				right: 20px;
+				position: absolute;
+				text-decoration: none;
+				width: 40px;
+				height: 40px;
+				border-radius: 20px;
+				text-align: center;
+				color: #fff;
+				background: -webkit-gradient(linear, left top, left bottom, from(#00adee), to(#0078a5));
+				line-height: 40px;
+				display: none;
+			}
+			
+			.barrage .screen .mask {
+				position: relative;
+				width: 100%;
+				height: 100%;
+				background: white;
+				opacity: 0.5;
+				filter: alpha(opacity: 1);
+				z-index: 1;
+			}
+			
+			.barrage {
+				display: block;
+				width: 100%;
+				height: 100%;
+			}
+			
+			.barrage .screen .mask div {
+				position: absolute;
+				font-size: 20px;
+				font-weight: bold;
+				white-space: nowrap;
+				line-height: 40px;
+				z-index: 40;
+			}
+			
+			.barrage .send {
+				z-index: 1;
+				width: 100%;
+				height: 55px;
+				background: -webkit-gradient(linear, left top, left bottom, from(#00adee), to(#0078a5));
+				position: absolute;
+				bottom: 0px;
+				text-align: center;
+			}
+			
+			.barrage .send .s_text {
+				width: 600px;
+				height: 40px;
+				line-height: 10px;
+				font-size: 20px;
+				font-family: "Î¢ÈíÑÅºÚ";
+			}
+			.barrage .send .s_text1 {
+				width: 600px;
+				height: 40px;
+				line-height: 10px;
+				font-size: 20px;
+				font-family: "Î¢ÈíÑÅºÚ";
+			}
+			
+			.blue {
+				color: #d9eef7;
+				border: solid 1px #0076a3;
+				background: -webkit-gradient(linear, left top, left bottom, from(#00adee), to(#0078a5));
+			}
+			
+			.blue:hover {
+				background: #0078a5;
+			}
+			
+			.button {
+				display: inline-block;
+				zoom: 1;
+				vertical-align: baseline;
+				margin: 0 2px;
+				outline: none;
+				cursor: pointer;
+				text-align: center;
+				text-decoration: none;
+				font: 14px/100% Arial, Helvetica, sans-serif;
+				padding: .5em 2em .55em;
+				text-shadow: 0 1px 1px rgba(0, 0, 0, .3);
+				border-radius: .5em;
+				box-shadow: 0 1px 2px rgba(0, 0, 0, .2);
+			}
+			
+			.button1 {
+				z-index: 2;
+				top: 20px;
+				position: absolute;
+				width: 40px;
+				height: 40px;
+				border-radius: 20px;
+				text-align: center;
+				color: #fff;
+				background: -webkit-gradient(linear, left top, left bottom, from(#00adee), to(#0078a5));
+				line-height: 40px;
+			}
+/* »­²¼Í¼Ïñ */
+.tuxiang{
+	width:550px;
+	height:550px;
+	border:1px solid red;
+	margin-left:380px;
+	margin-top:20px;
+}
+
+/* .mainCanvas{
+	display:none;
+}
+.copyCanvas{
+	display:none;
+} */
+
+			

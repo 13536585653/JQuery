@@ -1,0 +1,9 @@
+package org.demo.dao;
+
+public class UserDao {
+	/**
+	 * 添加用户的方法
+	 * 
+	 */
+	
+}

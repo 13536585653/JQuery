@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../js/jquery-1.7.2.js"></script>
+    <script src="../js/myjs.js"></script>
+    <script>
+        $(function(){
+            //给添加按钮绑定事件，执行添加操作
+            $("#add").click(function(){
+                //先验证表单是否填写相应信息
+                if(check()){
+                    //获取表单数据
+                    var bean = getBean();
+                    //将数据添加到表格
+                    appendtr(bean);
+                    //清空文本框
+                    cleanText();
+                    //表格隔行变色
+                    changeColor();
+                }
+            });
+            //给删除按钮绑定事件，执行删除操作
+            $("#del").click(function(){
+                    //删除选中行
+                    removeData();
+            });
+        });
+    </script>
+</head>
+<body>
+  姓名:<input id="uname" type="text"/>
+  年龄:<input id="age" type="text"/>
+  住址:<input id="addr" type="text"/>
+  <input id="add" type="button" value="添加"/>
+  <table border="1">
+      <tr>
+          <td><input id="del" type="button" value="删除"/></td>
+          <td>姓名</td>
+          <td>年龄</td>
+          <td>住址</td>
+      </tr>
+  </table>
+</body>
+</html>

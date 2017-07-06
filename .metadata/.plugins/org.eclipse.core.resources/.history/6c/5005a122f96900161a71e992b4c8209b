@@ -1,0 +1,5 @@
+package org.demo.dao;
+abstract class  Test implements Test3{
+	
+}
+

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../JS/jquery-1.7.2.js"></script>
+    <style>
+        table{
+            border-collapse:collapse;
+        }
+        th{
+            color: white;
+            background-color: #666699;
+            border:solid 1px #ccccff;
+            height:22px;
+        }
+        td{
+            border:solid 1px #ccccff;
+            height:22px;
+        }
+        .trcolor{
+            background-color: #CCCCCC;
+        }
+    </style>
+    <script>
+        $(function () {
+            $("tr").hover(function () {
+                $(this).addClass("trcolor");
+                //$(this).css("background-color","green");
+            },
+        function () {
+                $(this).removeClass("trcolor");
+                //$(this).css("background-color","red");
+        }
+            );
+        });
+    </script>
+</head>
+<body>
+    <center>
+    <table>
+        <tr>
+            <th>姓名</th>
+            <th>年龄</th>
+            <th>住址</th>
+        </tr>
+        <tr>
+            <td>user1</td>
+            <td>21</td>
+            <td>zhuhai</td>
+        </tr>
+        <tr>
+            <td>user1</td>
+            <td>21</td>
+            <td>zhuhai</td>
+        </tr>
+        <tr>
+            <td>user1</td>
+            <td>21</td>
+            <td>zhuhai</td>
+        </tr>
+        <tr>
+            <td>user1</td>
+            <td>21</td>
+            <td>zhuhai</td>
+        </tr>
+        <tr>
+            <td>user1</td>
+            <td>21</td>
+            <td>zhuhai</td>
+        </tr>
+        <tr>
+            <td>user1</td>
+            <td>21</td>
+            <td>zhuhai</td>
+        </tr>
+    </table>
+    </center>
+</body>
+</html>

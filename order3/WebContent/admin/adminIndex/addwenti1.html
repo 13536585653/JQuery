@@ -1,0 +1,54 @@
+﻿<meta charset="UTF-8">
+<link rel="stylesheet" type="text/css" href="css/common.css"/>
+    <link rel="stylesheet" type="text/css" href="css/main.css"/>
+    <script src="js/libs/jquery-1.7.2.js"></script>
+<script>
+	$(function(){
+		$(":submit").click(function(){
+			if($("#content").val()==""){
+				alert("答案内容不能为空");
+				return false;
+				}
+			});
+		//查询问题种类
+		$.get("dddd",function(result){
+    			/* alert(result); */
+    		//alert("asf");
+ 			addType(result);
+    		});
+		
+		//添加问题
+		$("#add").click(function(){
+			var params=$("#f1").serialize();
+			$.post("addwenti",params,function(result){
+				alert(result);
+				
+				});
+			});
+		});
+	
+	function addType(result){
+		$("#select").empty();
+		$.each(result,function(index,obj){
+			$("#select").append("<option value='"+obj.h_id+"'>"+obj.h_type);
+		});
+	}
+</script>
+<div class="crumb-wrap">
+            <div class="crumb-list"><i class="icon-font"></i><a href="index.html">首页</a><span class="crumb-step">&gt;</span><span class="crumb-name">添加答案</span></div>
+        </div>
+<div class="result-wrap">
+<br/>
+<form method="post" id="f1">
+	<p><h3>答案类型:</h3>
+			<select name="select" id="select">
+					<option>全部</option>
+			</select></p><br/>
+			
+	<p>问题：<input type="text" name="wenti">
+	<p><h3>答案内容:</h3><textarea name="daan" class="common-textarea" id="content" cols="30" style="width: 98%;" rows="10"></textarea></p><br/>
+	<input type="submit" value="添加" id="add" style="width:100px;background-color:#ccc;border:1px;"/>
+	<input type="button" value="返回" onclick="history.go(-1);" />
+</form>
+
+</div>

@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+
+	 <link rel="stylesheet" href="css/bootstrap.min.css">
+    <script src="js/jquery-1.9.1.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+<script>
+$(function(){
+	//查询所有数据
+	$.get("find",function(result){
+		addtable(result);
+		del();
+	});
+
+});
+function addtable(result){
+	//先清空数据
+	$("#tab tr:not(:first)").empty();
+	$.each(result,function(index, obj){
+		$("table").append(
+	"<tr>"+
+	"<td><input type='checkbox' name='lid' value='"+obj.lid+"'></td>"+
+		"<td>"+(index+1)+"</td>"+
+		"<td>"+obj.lname+"</td>"+
+		"<td>"+obj.lsex+"</td>"+
+		"<td>"+obj.ltime +"</td>"+  
+		"<td>"+obj.lmoney +"</td>"+
+		"<td><input  alt='"+obj.lid+"' type='button'  value='编辑'></td>"+
+	"</tr>");
+	});
+	buttonClick();
+}
+function buttonClick(){
+	$("#tab :button").on("click",function(){
+		$("#updateview").modal("show");
+		var lid=$(this).prop("alt");
+	
+		$.post("findById",{"lid":lid},function(result){
+			$("#lid").val(result.lid);
+			$("#lname").val(result.lname);
+			if(result.lsex=="男"){
+				$("#lsexnan").prop("checked","checked");
+			}else{
+				$("#lsexnv").prop("checked","checked");
+			}
+			$("#ltime").val(result.ltime);
+			$("#lmoney").val(result.lmoney);
+		});
+		update();
+	})
+}
+function update(){
+	$("#update").off("click").on("click",function(){
+		//序列化表单
+		var params=$("#f2").serialize();
+		alert(params);
+		//提交到后台更新
+		$.post("updateLoveServlet",params,function(result){
+			//更新列表数据
+			addtable(result);
+		})
+	});
+}
+
+function del(){
+	$("#del").on("click",function(){
+		if($("#tab :checkbox:checked").size()==0){
+			alert("请选择删除项");}
+			else{
+				//执行删除操作
+				var params=$("#tableForm").serialize();
+				var i=$("#tab :checkbox:checked").size()
+				//使用ajax提交到后台
+				$.post("deleteLoveServlet",params,function(result){
+					
+					addtable(result);
+				
+					
+				})
+				alert(i);
+			}
+	});
+}
+</script>
+</head>
+<body>
+<input id="del" type="button" class="btn btn-danger btn-sm" value="删除">
+	<form id="tableForm">
+<table id="tab"  border=1>
+		<tr>
+			<td colspan="2" style="float:right;">--中华爱心捐款查询系统 <a href="add.html">添加新捐款</a></td>
+		</tr>
+		<tr>
+			<td>编号</td>
+			<td>姓名</td>
+			<td>性别</td>
+			<td>捐款金额</td>
+			<td>日期</td>
+			<td>操作</td>
+		</tr>
+		</table>
+		</form>
+		<!-- 书籍修改对话框 -->
+	<div class="modal fade" id="updateview">
+	
+		<!-- 模式对话框的主体，包括一些遮罩层样式 -->
+		<div class="modal-dialog">
+		
+			
+			<!-- 这个div将涵盖对话框的内容，内容分为三部分，内容头部、内容主体、内容尾部 -->
+			<div class="modal-content">
+				<!-- 内容头部 -->
+				<div class="modal-header">
+					<!-- 关闭按钮 -->
+					<button  class="close" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+					<!-- 标题 -->
+					<h3 class="model-title">修改个人信息</h3>
+				</div>
+				
+				<!-- 内容主体 -->
+				<div class="modal-body">
+				<!-- 隐藏域 -->
+				
+					<form id="f2">
+					<input type="hidden" name="lid" id="lid">
+							<!-- 姓名-->
+							<div class="form-group">
+								<label class="control-label">姓名：</label>
+								<input id="lname" type="text" class="form-control" name="lname">
+							</div>
+							<!-- 性别-->
+							<div class="form-group">
+								<label class="control-label">性别：</label>
+								<input id="lsexnan" type="radio" name="lsex" value="男">男
+								<input id="lsexnv" type="radio" name="lsex" value="女">女
+							</div>
+							<!-- 日期 -->
+							<div class="form-group">
+								<label class="control-label">出版日期</label>
+								<input id="ltime" type="date" class="form-control" name="ltime">
+							</div>
+							<!-- 捐款金额 -->
+							<div class="form-group">
+								<label class="control-label">捐款金额 </label>
+								<input id="lmoney" type="text" class="form-control" name="lmoney">
+							</div>
+					</form>
+				</div>
+				
+				<!-- 内容尾部 -->
+				<div class="modal-footer">
+					<input type="button" class="btn btn-default" value="关闭" data-dismiss="modal"/>
+					<input id="update" type="button" class="btn btn-primary" value="保存" data-dismiss="modal"/>
+				</div>
+			</div>
+		</div>
+	</div>
+		
+</body>
+</html>

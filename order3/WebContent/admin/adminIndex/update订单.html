@@ -1,0 +1,85 @@
+﻿<meta charset="UTF-8">
+<link rel="stylesheet" type="text/css" href="css/common.css"/>
+    <link rel="stylesheet" type="text/css" href="css/main.css"/>
+       <script src="js/libs/jquery-1.7.2.js"></script>
+<script>
+	$(function(){
+		$(":submit").click(function(){
+			var adress = /(?=[\u4e00-\u9fa5])^(?:[\u4e00-\u9fa5|\d])+?$/; //以中文开头之后可以为纯中文、数字或由二者所结合
+			var reg = /^[0-9]{1}([0-9]|[.])*$/;//只能输数字和小数点 ，小数点不能第一位
+			var num = /^\d{8,10}$/;//只是输入数字最少8到10位
+			var time= /\d{4}-\d{2}-\d{2}\s+\d{2}:\d{2}/ ;
+			if($("#c1").val() =="" || !reg.test($("#c1").val())){
+				alert("实际金额不能为空、只能是数字和小数点,格式：1.0");
+				return false;
+				}
+			if($("#c2").val()=="" || !num.test($("#c2").val())){
+				alert("订单号不能为空、只能输入数字少则8位多则10位");
+				return false;
+				}
+			if( $("#c3").val()=="" || !adress.test($("#c3").val()) ){
+				alert("地址不能为空、只能输中文和数字以中文开头");
+				return false;
+				}
+			if( $("#c4").val()=="" || !time.test($("#c4").val())){
+				alert("日期不能为空,格式：2010-09-11 10:40");
+				return false;
+				}
+			});
+		});
+</script>     
+     
+  <div class="crumb-wrap">
+            <div class="crumb-list"><i class="icon-font"></i><a href="index.html" color="#white">首页</a><span class="crumb-step">&gt;</span><span class="crumb-name">订单查询</span></div>
+        </div>
+<div class="result-content">
+                <form   mothend="">
+                    <table class="insert-tab" width="100%">
+                        <tbody><tr>
+                            <th width="120"><i class="require-red">*</i>支付方式:</th>
+                            <td>
+                                <select name="" class="required">
+                                    <option value="">请选择</option>
+                                    <option value="">支付宝</option>
+                                </select>
+                            </td>
+                        </tr>
+                            <tr>
+                                <th><i class="require-red">*</i>实际金额:</th>
+                                <td>
+                                    <input id="c1" class="common-text required" name="" size="5"  type="text">
+                                </td>
+                            </tr>
+                            <tr>
+                                <th><i class="require-red">*</i>订单号:</th>
+                                <td><input id="c2" class="common-text required" name="" size="30"  type="text"></td>
+                            </tr>
+				<th><i class="require-red">*</i>订单地址:</th>
+				<td>
+                                <input id="c3" class="common-text required" name="" size="30"  type="text">
+				</td>
+                          <tr>
+			</tr>
+                            <tr>
+                                <th><i class="require-red">*</i>订单时间:</th>
+                                <td><input id="c4" class="common-text required" name="" size="25"  type="text"></td>
+                            </tr>
+			<tr>
+                                <th><i class="require-red">*</i>是否已发货:</th>
+                                <td>
+					 <select name="" class="required">
+                                    <option value="">是</option>
+                                    <option value="">否</option>
+                                </select>
+				</td>
+                            </tr>
+                            <tr>
+                                <th></th>
+                                <td>
+                                    <input class="btn btn-primary btn6 mr10" value="修改" type="submit">
+                                    <input class="btn btn6" onclick="history.go(-1)" value="返回" type="button">
+                                </td>
+                            </tr>
+                        </tbody></table>
+                </form>
+  </div>

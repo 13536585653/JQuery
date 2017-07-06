@@ -1,0 +1,272 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>index</title>
+<link rel="stylesheet" href="CSS/bootstrap.min.css">
+<script src="JS/jquery-1.9.1.min.js"></script>
+<script src="JS/bootstrap.min.js"></script>
+<script>
+	$(function(){
+
+
+		$.get("findbooks",function(result){
+			//将result数据添加到表格中
+			addTable(result);
+		});
+
+
+
+        //给添加按钮和删除按钮绑定事件
+        $("#add").on("click",function () {
+        	//先清除初始化表单控件
+        	$("#f1 :input").val("");
+            //弹出对话框之前将类型信息查询出来，绑定到下拉列表中
+            $.get("findBookTypes",function(result){
+
+                //将result绑定到对话框的下拉列表，绑定之前先将原有的数据清除
+                $("#bType").empty();
+                $.each(result,function (index,obj) {
+                    $("#bType").append("<option value='"+obj.tid+"'>"+obj.tname+"</option>");
+                });
+            });
+
+
+
+
+            //显示模式对话框
+            $("#addView").modal("show");
+            //给保存按钮绑定添加事件
+            $("#save").off("click").on("click",function () {
+                //先序列化表单，获取整个表单的数据
+                var params=$("#f1").serialize();
+                //通过ajax提交到后台
+                $.post("addBook",params,function (result) {
+                    addTable(result);
+                    //关闭对话框
+                    $("#addView").modal("hide");
+                });
+            });
+        });
+
+
+
+
+        $("#del").on("click",function () {
+        	//先校验是否有选中的选项
+        	if($("#tab :checkbox:checked").size()==0){
+        		$("#alert").modal().alert();
+        	}else{
+                var params=$("#tableForm").serialize();
+                
+                $.post("removeBooks",params,function (result) {
+                    //result肯定是删除后的最新数据列表
+                    //调用addTable方法重新绚烂表格
+                    addTable(result);
+                });
+            }
+        });
+	});
+
+
+
+	
+	//将数据渲染表格
+	function addTable(result){
+        //防止重复数据追加到表格中，那么在循环遍历之前,清除表格数据
+        //清空表格中的所有的行，排除标头的行
+        $("#tab tr:not(:first)").empty();
+		$.each(result,function(index,obj){
+			//选中表格，在表格内部的末尾追加数据
+			var type=obj.typename==undefined?"":obj.typename;
+			$("#tab").append("<tr>"+
+			        "<td><input type='checkbox' name='bid' value='"+obj.bid+"'></td>"+
+			        "<td>"+obj.bookname+"</td>"+
+			        "<td>"+obj.createtime+"</td>"+
+			        "<td>"+type+"</td>"+
+			        "<td><input type='button' alt='"+obj.bid+"' class='btn btn-danger btn-sm' value='编辑'></td>"+
+			    "</tr>");
+		});
+
+
+
+
+        $("#tab :button").on("click",function(){
+            //prop方法用于获取当前元素属性的值，取代旧版的attr方法,prop方法获取的是属性值（alt）
+            var id = $(this).prop("alt");
+            $.get("findBookById",{"bid":id},function(result){
+                //将数据填充到修改层当中
+                $("#bid").val(result.bid);
+                $("#bookName").val(result.bookName);
+                $("#createTime").val(result.createTime);
+                $("#typeName").empty();
+                $.each(result.list,function(index,obj){
+			//如果map的key（typeName）值==实体对象book的tname那么就选中
+                	 if(result.typeName==obj.tname){
+                		$("#typeName").append("<option selected='selected' value='"+obj.tid+"'>"+obj.tname+"</option>");
+                	}else{
+                    	$("#typeName").append("<option value='"+obj.tid+"'>"+obj.tname+"</option>");
+                		} 
+                	});
+
+
+
+
+
+                $("#updateView").modal("show");
+                //给更新保存按钮绑定事件
+                $("#update").off("click").on("click",function(){
+                	//序列化整个表单
+                	var params=$("#f2").serialize();
+                	//提交到后台更新
+                	$.post("updateBook",params,function(result){
+                		//更新列表数据
+                		addTable(result);
+                		$("#updateView").modal("hide");
+                	});
+                });
+            });
+        });
+    }
+
+
+</script>
+</head>
+<body>
+<!--构建一个布局容器-->
+<div class="container" style="width: 50%;">
+    <h2 class="page-header">书籍管理</h2>
+    <input type="button" id="del" class="btn btn-primary" value="删除">
+    <input type="button" id="add" class="btn btn-primary" value="新增">
+    <form id="tableForm">
+    <table id="tab" class="table table-bordered table-hover">
+        <tr id="header">
+            <th>选择</th>
+            <th>书籍名称</th>
+            <th>出版日期</th>
+            <th>类型</th>
+            <th>操作</th>
+        </tr>
+    </table>
+    </form>
+</div>
+
+<!--书籍添加对话框(默认是隐藏的)-->
+<div class="modal fade" id="addView">
+    <!--模式对话框的主题，包括一些遮罩层样式-->
+    <div class="modal-dialog">
+        <!--这个div将涵盖对话框的内容，内容分为三部分，内容头、内容主题、内容尾部-->
+        <div class="modal-content">
+            <!--头部-->
+            <div class="modal-header">
+                <button class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <!--标题-->
+                <h4 class="modal-title">添加书籍</h4>
+            </div>
+            <!--内容主体-->
+            <div class="modal-body">
+                <form id="f1">
+                    <!--书籍名称-->
+                    <div class="form-group">
+                        <label class="control-label">书籍名称</label>
+                        <input type="text" class="form-control" name="bookName">
+                    </div>
+                    <!--出版日期-->
+                    <div class="form-group">
+                        <label class="control-label">出版日期</label>
+                        <input type="date" class="form-control" name="createTime">
+                    </div>
+                    <!--书籍类型-->
+                    <div class="form-group">
+                        <label class="control-label">所属类型</label>
+                        <select id="bType" class="form-control" name="tid">
+                            <option>编程</option>
+                            <option>娱乐</option>
+                            <option>教育</option>
+                            <option>游戏</option>
+                        </select>
+                    </div>
+                </form>
+            </div>
+            <!--内容尾部-->
+            <div class="modal-footer">
+                <input type="button" class="btn btn-default" value="关闭" data-dismiss="modal">
+                <input type="button" id="save" class="btn btn-primary" value="保存">
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- Update -->
+<div class="modal fade" id="updateView">
+    <!--模式对话框的主题，包括一些遮罩层样式-->
+    <div class="modal-dialog">
+        <!--这个div将涵盖对话框的内容，内容分为三部分，内容头、内容主题、内容尾部-->
+        <div class="modal-content">
+            <!--头部-->
+            <div class="modal-header">
+                <button class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <!--标题-->
+                <h4 class="modal-title">添加书籍</h4>
+            </div>
+            <!--内容主体-->
+            <div class="modal-body">
+                <form id="f2">
+                <input type="hidden" id="bid" name="bid">
+                    <!--书籍名称-->
+                    <div class="form-group">
+                        <label class="control-label">书籍名称</label>
+                        <input type="text" id="bookName" class="form-control" name="bookName">
+                    </div>
+                    <!--出版日期-->
+                    <div class="form-group">
+                        <label class="control-label">出版日期</label>
+                        <input type="date" id="createTime" class="form-control" name="createTime">
+                    </div>
+                    <!--书籍类型-->
+                    <div class="form-group">
+                        <label class="control-label">所属类型</label>
+                        <select id="typeName" class="form-control" name="tid">
+                        </select>
+                    </div>
+                </form>
+            </div>
+            <!--内容尾部-->
+            <div class="modal-footer">
+                <input type="button" class="btn btn-default" value="关闭" data-dismiss="modal">
+                <input type="button" id="update" class="btn btn-primary" value="保存">
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- 弹出警告框 -->
+<div class="modal fade" id="alert">
+    <!--模式对话框的主题，包括一些遮罩层样式-->
+    <div class="modal-dialog">
+        <!--这个div将涵盖对话框的内容，内容分为三部分，内容头、内容主题、内容尾部-->
+        <div class="modal-content">
+            <!--头部-->
+            <div class="modal-header">
+                <button class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <!--标题-->
+                <h4 class="modal-title">请选择删除项！</h4>
+            </div>
+            <!--内容主体-->
+            <div></div>
+            <!--内容尾部-->
+            <div class="modal-footer">
+                <input type="button" class="btn btn-default" value="关闭" data-dismiss="modal">
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

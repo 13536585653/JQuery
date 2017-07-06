@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../JS/jquery-1.7.2.js"></script>
+    <script>
+        $(function () {
+            //把前1行的背景变成红色
+            /*$("tr:first").css("background-color","red");
+            $("td:first").css("background-color","red");*/
+            $("tr:lt(1)").css("background-color","red");
+        });
+    </script>
+</head>
+<body>
+<table>
+    <tr><td>Header 1</td></tr>
+    <tr><td>Value 1</td></tr>
+    <tr><td>Value 2</td></tr>
+</table>
+</body>
+</html>

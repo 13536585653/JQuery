@@ -1,0 +1,22 @@
+package org.demo.dao;
+
+import java.util.Scanner;
+
+public class Test{
+	public static void main(String[]args){
+		int i;
+		for(i=1;i!=0;i++)
+		{
+   			if(i<=5)
+			   {
+				      System.out.print(i/2);
+   			}
+   			else
+   			{
+				      break;
+			   }
+		}
+
+		}
+
+	}

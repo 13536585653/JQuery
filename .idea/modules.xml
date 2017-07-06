@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/JS/JS.iml" filepath="$PROJECT_DIR$/JS/JS.iml" />
+      <module fileurl="file://$PROJECT_DIR$/LoveSystem/LoveSystem.iml" filepath="$PROJECT_DIR$/LoveSystem/LoveSystem.iml" />
+      <module fileurl="file://$PROJECT_DIR$/LoveSystem2/LoveSystem2.iml" filepath="$PROJECT_DIR$/LoveSystem2/LoveSystem2.iml" />
+      <module fileurl="file://$PROJECT_DIR$/RemoteSystemsTempFiles/RemoteSystemsTempFiles.iml" filepath="$PROJECT_DIR$/RemoteSystemsTempFiles/RemoteSystemsTempFiles.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Servers/Servers.iml" filepath="$PROJECT_DIR$/Servers/Servers.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Shudum (2)/Shudum.iml" filepath="$PROJECT_DIR$/Shudum (2)/Shudum.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ajax-register-login/ajax-register-login.iml" filepath="$PROJECT_DIR$/ajax-register-login/ajax-register-login.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ajax_adduser/ajax_adduser.iml" filepath="$PROJECT_DIR$/ajax_adduser/ajax_adduser.iml" />
+      <module fileurl="file://$PROJECT_DIR$/王亮老师上课笔记版/demo（上课老师笔记）/ajax_demo/ajax_demo.iml" filepath="$PROJECT_DIR$/王亮老师上课笔记版/demo（上课老师笔记）/ajax_demo/ajax_demo.iml" />
+      <module fileurl="file://$PROJECT_DIR$/王亮老师上课笔记版/demo（上课老师笔记）/ajax_demo/ajax_demo1.iml" filepath="$PROJECT_DIR$/王亮老师上课笔记版/demo（上课老师笔记）/ajax_demo/ajax_demo1.iml" />
+      <module fileurl="file://$PROJECT_DIR$/bookSystem/bookSystem.iml" filepath="$PROJECT_DIR$/bookSystem/bookSystem.iml" />
+      <module fileurl="file://$PROJECT_DIR$/王亮老师上课笔记版/demo（上课老师笔记）/bootstrapTest/bootstrapTest.iml" filepath="$PROJECT_DIR$/王亮老师上课笔记版/demo（上课老师笔记）/bootstrapTest/bootstrapTest.iml" />
+      <module fileurl="file://$PROJECT_DIR$/chat/chat.iml" filepath="$PROJECT_DIR$/chat/chat.iml" />
+      <module fileurl="file://$PROJECT_DIR$/王亮老师上课笔记版/demo（上课老师笔记）/codes/codes.iml" filepath="$PROJECT_DIR$/王亮老师上课笔记版/demo（上课老师笔记）/codes/codes.iml" />
+      <module fileurl="file://$PROJECT_DIR$/王亮老师上课笔记版/demo（上课老师笔记）/codes/codes1.iml" filepath="$PROJECT_DIR$/王亮老师上课笔记版/demo（上课老师笔记）/codes/codes1.iml" />
+      <module fileurl="file://$PROJECT_DIR$/dormitorySys/dormitorySys.iml" filepath="$PROJECT_DIR$/dormitorySys/dormitorySys.iml" />
+      <module fileurl="file://$PROJECT_DIR$/house-movingSystem/house-movingSystem.iml" filepath="$PROJECT_DIR$/house-movingSystem/house-movingSystem.iml" />
+      <module fileurl="file://$PROJECT_DIR$/jq1/jq1.iml" filepath="$PROJECT_DIR$/jq1/jq1.iml" />
+      <module fileurl="file://$PROJECT_DIR$/jq2/jq2.iml" filepath="$PROJECT_DIR$/jq2/jq2.iml" />
+      <module fileurl="file://$PROJECT_DIR$/jq3/jq3.iml" filepath="$PROJECT_DIR$/jq3/jq3.iml" />
+      <module fileurl="file://$PROJECT_DIR$/jq4/jq4.iml" filepath="$PROJECT_DIR$/jq4/jq4.iml" />
+      <module fileurl="file://$PROJECT_DIR$/jq5/jq5.iml" filepath="$PROJECT_DIR$/jq5/jq5.iml" />
+      <module fileurl="file://$PROJECT_DIR$/jq6/jq6.iml" filepath="$PROJECT_DIR$/jq6/jq6.iml" />
+      <module fileurl="file://$PROJECT_DIR$/实时通讯/ws/msspace/msspace.iml" filepath="$PROJECT_DIR$/实时通讯/ws/msspace/msspace.iml" />
+      <module fileurl="file://$PROJECT_DIR$/实时通讯/ws/msspace/msspace1.iml" filepath="$PROJECT_DIR$/实时通讯/ws/msspace/msspace1.iml" />
+      <module fileurl="file://$PROJECT_DIR$/order-index/order-index.iml" filepath="$PROJECT_DIR$/order-index/order-index.iml" />
+      <module fileurl="file://$PROJECT_DIR$/order3/order3.iml" filepath="$PROJECT_DIR$/order3/order3.iml" />
+      <module fileurl="file://$PROJECT_DIR$/pagedemo/pagedemo.iml" filepath="$PROJECT_DIR$/pagedemo/pagedemo.iml" />
+      <module fileurl="file://$PROJECT_DIR$/shopSystem/shopSystem.iml" filepath="$PROJECT_DIR$/shopSystem/shopSystem.iml" />
+      <module fileurl="file://$PROJECT_DIR$/take_outSystem/take_outSystem.iml" filepath="$PROJECT_DIR$/take_outSystem/take_outSystem.iml" />
+      <module fileurl="file://$PROJECT_DIR$/take_outSystem（原版）/take_outSystem（原版）.iml" filepath="$PROJECT_DIR$/take_outSystem（原版）/take_outSystem（原版）.iml" />
+      <module fileurl="file://$PROJECT_DIR$/upload/upload.iml" filepath="$PROJECT_DIR$/upload/upload.iml" />
+      <module fileurl="file://$PROJECT_DIR$/王亮老师上课笔记版/demo（上课老师笔记）/upload（文件上传）/upload（文件上传）.iml" filepath="$PROJECT_DIR$/王亮老师上课笔记版/demo（上课老师笔记）/upload（文件上传）/upload（文件上传）.iml" />
+      <module fileurl="file://$PROJECT_DIR$/实时通讯/websocket-chat/websocket-chat.iml" filepath="$PROJECT_DIR$/实时通讯/websocket-chat/websocket-chat.iml" />
+      <module fileurl="file://$PROJECT_DIR$/实时通讯/websocket1/websocket1.iml" filepath="$PROJECT_DIR$/实时通讯/websocket1/websocket1.iml" />
+      <module fileurl="file://$PROJECT_DIR$/实时通讯/websocket2/websocket2.iml" filepath="$PROJECT_DIR$/实时通讯/websocket2/websocket2.iml" />
+      <module fileurl="file://$PROJECT_DIR$/实时通讯/websocket3/websocket3.iml" filepath="$PROJECT_DIR$/实时通讯/websocket3/websocket3.iml" />
+      <module fileurl="file://$PROJECT_DIR$/全选与反选/全选与反选.iml" filepath="$PROJECT_DIR$/全选与反选/全选与反选.iml" />
+    </modules>
+  </component>
+</project>

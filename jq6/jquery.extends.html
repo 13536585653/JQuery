@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../JS/jquery-1.7.2.js"></script>
+    <script>
+        $(function () {
+            var i=10;
+            var s=" wang    ";
+            var arr=[1,2,3,4];
+            var arr1=["珠海","江西"];
+            var fn=function () {};
+            //返回当前数据的类型
+            //alert($.type(arr1));
+            //去两头空格
+            //alert($.trim(s));
+            //判断当前的对象是否是一个数组
+            //alert($.isArray(arr));
+            //判断当前对象是否是一个方法
+           // alert($.isFunction(fn));
+
+
+            //扩展对象的行为和属性
+            //options会将settings覆盖掉,但保留settings原有的东西。
+            /*var settings={validate:false,limit:5,name:"wang"};
+            var options={validate:true,limit:23,name:"yuan",age:23};
+            var obj=$.extend(settings,options);
+            alert(obj.validate+" : "+obj.limit+" : "+obj.name+" : "+obj.age);*/
+            var yuan={age:22,sex:"男",name:"yw"};
+            var wang={age:22,sex:"女"};
+            var yw=$.extend(yuan,wang);
+            alert(yw.age+" : "+yw.sex+" : "+yw.name);
+        });
+    </script>
+</head>
+<body>
+
+</body>
+</html>

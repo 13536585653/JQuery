@@ -1,0 +1,12 @@
+package org.demo.dao;
+
+import java.util.Scanner;
+
+public class Test{
+	  public static void main(String[]args){
+	     /*完成时间：2008-11-11
+	     执行人：郭德光*/
+	     System.out.println("HELLO!");
+	     System.out.println("World!");
+	  }
+	}

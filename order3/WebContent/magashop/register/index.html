@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<!--[if IE 8 ]> <html lang="en" class="ie8"> <![endif]-->
+<!--[if IE 9 ]> <html lang="en" class="ie9"> <![endif]-->
+<!--[if (gt IE 9)|!(IE)]><!--> <html lang="en"> <!--<![endif]-->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<title></title>
+
+
+<!--[if lt IE 9]>
+<script src="js/html5shiv.js"></script>
+<![endif]-->
+<link href="css/jquery.idealforms.min.css" rel="stylesheet" media="screen"/>
+
+<style type="text/css">
+body{font:normal 15px/1.5 Arial, Helvetica, Free Sans, sans-serif;color: #222;background:url(pattern.jpg);overflow-y:scroll;padding:60px 0 0 0;}
+#my-form{-webkit-border-radius:10px;width:655px;margin:0 auto;border:1px solid #ccc;padding:3em;border-radius:3px;box-shadow:0 0 2px rgba(0,0,0,.2);}
+#comments{width:350px;height:100px;}
+</style>
+<script src="../js/jquery-1.9.1.min.js"></script>
+<script>	
+	$(function(){
+		$("#brnr").on("click",function () {
+            var params=$("#my-form").serialize();
+            $.post("register",params,function (result) {
+            	if($.trim(result) == "注册成功"){
+            		alert(result);
+            		location.href="../index.html";
+            		//$("#mymoda2").modal("hide");
+				}
+            });
+        });
+	})
+</script>
+</head>
+<body >
+
+<div class="row">
+
+  <div class="eightcol last" style="-webkit-border-radius:10px;">
+
+    <!-- Begin Form -->
+
+    <form id="my-form">
+
+        <section name="用户注册">
+
+          <div><label>用户名:</label><input id="username" name="uname" type="text"/></div>
+          <div><label>密码:</label><input id="pass" name="upwd" type="password"/></div>
+            <div><label>手机号码:</label><input id="tel" name="utel" type="text"/></div>
+          <div><label>邮箱:</label><input id="email" name="uemail" data-ideal="required email" type="email"/></div>
+           <div><label>配送地址:</label><input name="uaddr"  type="text"/></div>
+          <div><label>性别:</label><select name="usex"><option>男</option><option>女</option></select></div>
+        </section>
+
+      <div><hr/></div>
+
+      <div>
+        <button type="submit" id="brnr">提交</button>
+        <button id="reset" type="button">重置</button>
+      </div>
+
+    </form>
+    <!-- End Form -->
+  </div>
+</div>
+<script type="text/javascript" src="js/jquery-1.8.2.min.js"></script>
+<script type="text/javascript" src="js/jquery.idealforms.js"></script>
+<script type="text/javascript">
+var options = {
+
+	onFail: function(){
+		alert( $myform.getInvalid().length +' invalid fields.' )
+	},
+	inputs: {
+		'password': {
+			filters: 'required pass',
+		},
+		'username': {
+			filters: 'required username',
+			data: {
+			//ajax: { url:'validate.php' }
+			}
+		},
+        'adress': {
+            filters: 'required adress',
+            data: {
+                //ajax: { url:'validate.php' }
+            }
+        },
+        'tel': {
+            filters: 'required tel',
+            data: {
+                //ajax: { url:'validate.php' }
+            },
+        }
+
+	}
+
+};
+
+var $myform = $('#my-form').idealforms(options).data('idealforms');
+
+$('#reset').click(function(){
+	$myform.reset().fresh().focusFirst()
+});
+
+$myform.focusFirst();
+</script>
+
+</body>
+</html>

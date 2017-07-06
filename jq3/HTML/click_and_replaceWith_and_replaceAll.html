@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../../JS/jquery-1.7.2.js"></script>
+    <script>
+        $(function () {
+        $(":button").click(function () {
+            //在单击事件中执行替换
+            //将选中的p标记替换成b标记
+            //$("p").replaceWith("<b>Paragragh.</b><br>");
+
+            //吧所有的p标记替换成b标记
+            $("<b>Paragraph.</b><br>").replaceAll("p");
+            alert($("body").html());
+            });
+        })
+    </script>
+</head>
+<body>
+    <p>Hello</p>
+    <p>cruel</p>
+    <p>World</p>
+    <input type="button" value="click"/>
+</body>
+</html>

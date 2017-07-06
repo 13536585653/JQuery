@@ -1,0 +1,79 @@
+
+#in{
+    width:1000px;
+    height: 663px;
+    border:solid 1px #ffffff;
+    border-bottom-color: darkgrey;
+    background: #ffffff;
+    margin-top: 24px;
+}
+.msg{
+    width:998px;
+    height: 30px;
+    text-align: left;
+    font-size: 16px;
+    margin-bottom: 15px;
+}
+#btn-update{
+    padding:3px 0 3px 0;font-size: 7px;width: 100px;height: 20px;margin-top: -5px;border: none;background-color: #ff6600;color: floralwhite
+}
+.msg2{
+    width:998px;
+    height: 30px;
+    margin-left: -10px;
+    text-align: left;
+    padding-top: 5px;
+    font-size: 16px;
+    border-bottom: solid 1px #ff6600;
+}
+#dp{
+    width:998px;
+    height:30px;
+    text-align: center;
+    border-bottom: solid 4px #b2d1f1;
+    color:grey;
+}
+.photo{
+    margin-right: 10px;
+    line-height: 22px;
+}
+.left{
+    float: left;
+}
+.bb-right{
+    float: right;
+}
+.photo1{
+    float: left;
+}
+.font{
+    font-size: 12px;
+    color: grey;
+}
+.message{
+    width: 350px;
+    border:solid 1px darkgrey;
+    margin-top: 10px;
+    float: left;
+}
+.ts{
+    color: #ff6600;
+}
+#sub{
+    float: right;
+    margin-top: 30px;
+    width: 575px;
+    height: 140px;
+}
+#payment{
+    color: #ff6600;
+    font-size: 33px;
+}
+#submit{
+
+}
+#bottom{
+    width:960px;
+    height:30px;
+    margin-top: 10px;
+}

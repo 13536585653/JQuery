@@ -1,0 +1,16 @@
+package org.demo.dao;
+
+import java.util.Scanner;
+
+public class Test{
+	static int i;
+	public static void main(String[]  args)
+	{		
+		int a=4;
+		int b=a++;
+		for(;a<7;a++){
+			System.out.print(b);
+		}
+
+	}
+	}

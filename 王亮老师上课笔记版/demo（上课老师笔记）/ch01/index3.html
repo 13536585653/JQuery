@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        //构建一个Function对象
+        //var fn = new Function("alert(1)");
+        //fn();
+
+        /*var fn1 = function(){
+            alert("hello function");
+        }*/
+
+        function test(fn){
+            //callback,回调fn方法
+            fn();
+        }
+
+        test(function(){
+            alert("hello function");
+        });
+    </script>
+</head>
+<body>
+
+</body>
+</html>

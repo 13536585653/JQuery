@@ -1,0 +1,68 @@
+﻿<meta charset="UTF-8">
+     <link rel="stylesheet" type="text/css" href="css/common.css"/>
+    <link rel="stylesheet" type="text/css" href="css/main.css"/>
+    <script type="text/javascript" src="js/libs/modernizr.min.js"></script>
+<script src="js/libs/jquery-1.7.2.js"></script>
+	<script>
+		function add(mydiv){
+		var mydiv = document.getElementById(mydiv);
+		mydiv.style.display="block";
+		}
+		function del(myd){
+		var mydiv = document.getElementById(myd);
+		mydiv.style.display="none";
+		}
+		$(function(){
+			$(":submit").click(function(){
+				var type = $("#type").val();
+				if(type==""){
+						alert("类型不能为空");
+						return false;
+					}
+				});
+		
+		});
+	</script>
+<div class="crumb-wrap">
+            <div class="crumb-list"><i class="icon-font"></i><a href="index.html">首页</a><span class="crumb-step">&gt;</span><span class="crumb-name">菜谱分类管理</span></div>
+        </div>
+<div class="result-wrap">
+                <div class="result-title">
+                    <div class="result-list">
+                        <a onclick="add('mydiv2')" style="cursor:pointer;"><i class="icon-font"></i>新增菜谱类型</a>
+			<a id="updateOrd" href="javascript:void(0)"><i class="icon-font"></i>更新排序</a>
+                        <a id="batchDel" href="javascript:void(0)"><i class="icon-font"></i>批量删除</a>
+                    </div>
+                </div>
+                <div class="result-content">
+<div id="mydiv2">
+<span id="d1" style="float:right;cursor:pointer;" onclick="del('mydiv2')">Ｘ&nbsp;</span>
+<br/>
+<p><h3>新增菜谱类型</h3></p>
+<form  method="post"><br/>
+	<p>类型 : <input type="text" id="type"/></p><br/>
+	<p><input type="submit" value="提交" style="width:100px;background-color:#ccc;border:1px;"></p>
+  </form>
+</div>
+
+                    <table class="result-tab" width="100%">
+                        <tr>
+                            <th class="tc" width="5%"></th>
+                            <th>编号</th>
+                            <th>菜谱类型</th>
+                            <th>操作</th>
+                        </tr>
+                        <tr>
+                            <td class="tc"><input name="id[]" value="" type="checkbox"></td>
+                            <td>01</td> 
+                            <td>菜谱类型</a></td>
+                            <td>
+                                <a class="link-update" href="updatetype.html" target="frame">修改</a>
+				
+                            </td>
+                        </tr>
+                    </table>
+                    <div class="list-page"> 
+                    2 条 1/1 页
+                    </div>
+  </div> 

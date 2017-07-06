@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../JS/jquery-1.7.2.js"></script>
+    <script>
+        //创建对象，方式一
+        var obj=new Object();
+        //动态添加属性和赋值
+        obj.name="yw";
+        obj.age=2;
+        //动态添加行为
+        obj.say=function () {
+            alert("hello!");
+        };
+        //操作对象的属性
+        //alert(obj.name);
+        //调用对象的方法
+        //obj.say();
+
+        //创建对象，方式二
+        //将方法当做一个类，在类中定义属性和方法
+        function People(name) {
+            this.name=name;
+            this.setName=function (uname) {
+                name=uname;
+            }
+            this.getName=function () {
+                return name;
+            }
+        }
+        //创建类的的实例
+        /*var p=new People("uname");
+        alert(p.name);
+        p.setName("yw");
+        var uname=p.getName();
+        alert(uname);*/
+
+        //创建对象，方式三
+        var obj={
+            name:"yw",
+            age:22,
+            say:function () {
+                alert("hello!");
+            }
+        };
+        alert(obj.name+" : "+obj.age+" : ");
+        obj.say();
+    </script>
+</head>
+<body>
+
+</body>
+</html>

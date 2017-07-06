@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../js/jquery-1.7.2.js"></script>
+    <script>
+        $(function(){
+            $("div").toggle(
+                    function(){
+                        $(this).css("background-color","red");
+                    },
+                    function(){
+                        $(this).css("background-color","yellow");
+                    }
+            );
+        });
+    </script>
+</head>
+<body>
+  <div style="border: 1px solid red; width:100px; height: 100px"></div>
+</body>
+</html>

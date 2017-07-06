@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../js/jquery-1.7.2.js"></script>
+    <script>
+        $(function(){
+            //选择当前元素的后代元素（包括孙元素）
+            //alert($("#d1 div").size());
+            //选择当前元素的子元素（不包括孙元素）
+            alert($("#d1>div").size());
+        });
+    </script>
+</head>
+<body>
+   <div id="d1">
+       <div>
+           <div>
+               <div>hello</div>
+           </div>
+       </div>
+       <div>hello</div>
+   </div>
+</body>
+</html>

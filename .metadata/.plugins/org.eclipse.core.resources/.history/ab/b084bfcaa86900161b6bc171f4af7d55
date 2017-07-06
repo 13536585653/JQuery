@@ -1,0 +1,20 @@
+package org.demo.dao;
+
+import java.util.Scanner;
+
+public class Test{
+	int a[]={0};  
+	int a1[]=new int[]{0,0,0,0};
+	int a2[]=new int[]{1,2,3,4,5,6,7,8,9,10};  
+	int[] a3=new int[]{1,2,3,4,5,6,7,8,9,10};
+
+	 public static void main(String args[])
+	   	{
+		 String s1=new String("Hollow");
+		 String s2=new String("there");
+		 String s3=new String();
+		 System.out.println(s3);
+		 s3=s1+s2 ; 
+ }
+
+	}

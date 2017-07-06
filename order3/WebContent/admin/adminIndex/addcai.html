@@ -1,0 +1,109 @@
+﻿<meta charset="UTF-8">
+<link rel="stylesheet" type="text/css" href="css/common.css" />
+<link rel="stylesheet" type="text/css" href="css/main.css" />
+<script src="js/libs/jquery-1.7.2.js"></script>
+<script type="text/javascript" src="js/scxz/swfobject.js"></script>
+<script type="text/javascript" src="js/scxz/jquery.uploadify.v2.1.4.js"></script>
+<script type="text/javascript" src="js/myyz.js"></script>
+<script>
+	$(function() {
+		$.get("FindDishe", function(result) {
+			addDishes(result);
+		});
+
+		$("#mybutton").on("click", function() {		
+			var d=yz();
+			if(d!=false){
+				var params = $("#myform").serialize();			
+				$.post("addmenu", params, function(result) {
+					if (result == 0) {
+						alert("已存在该菜");
+						return false;
+					} else {
+						alert("添加成功");
+						location.href = "select.html";
+					}
+				});
+			}
+			
+		
+		});
+
+	});
+
+	function addDishes(result) {
+		$.each(result,
+				function(index, obj) {
+					$(".required").append("<option value='"+obj.d_id+"'>" + obj.d_type);
+				});
+	}
+	
+	//上传
+	$(function() {
+		$("#uploadify").uploadify({
+			'uploader' : 'js/scxz/uploadify.swf', //是组件自带的flash，用于打开选取本地文件的按钮 
+			'script' : 'uploadfile',//处理上传请求的url，对应servlet的url-pattern 
+			'cancelImg' : 'images/cancel.png',//取消上传文件的按钮图片
+			'fileDataName' : 'myfile',//和input的name属性值保持一致
+			'queueID' : 'fileQueue',
+			'queueSizeLimit' : 5, //限制在一次队列中的次数（可选定几个文件）。默认值= 999
+			'simUploadLimit' : 1,//多文件上传时，同时上传文件数目限制(一次可传几个文件)。默认值1
+			'auto' : true,//是否选取文件后自动上传
+			'multi' : false,//是否支持多文件上传       
+			'sizeLimit' : 10485760,//限制上传文件的大小
+			'buttonText' : 'SELECT FILE',//按钮上的文字
+			'displayData' : 'speed',//有speed和percentage两种，一个显示速度，一个显示完成百分比 
+			'fileDesc' : '支持格式:jpg/gif/jpeg/png/bmp.', //如果配置了以下的'fileExt'属性，那么这个属性是必须配置的 
+			'fileExt' : '*.jpg;*.gif;*.jpeg;*.png;*.bmp'//允许的格式	
+		});
+	});
+
+</script>
+
+
+
+<div class="crumb-wrap">
+	<div class="crumb-list">
+		<i class="icon-font"></i><a href="index.html">首页</a><span
+			class="crumb-step">&gt;</span><span class="crumb-name">添加菜谱</span>
+	</div>
+</div>
+<div class="result-content">
+	<form enctype="multipart/form-data" id="myform">
+		<table class="insert-tab" width="100%">
+			<tbody>
+				<tr>
+					<th width="120"><i class="require-red">*</i>类型:</th>
+					<td><select name="value" class="required">
+					</select></td>
+				</tr>
+				<tr>
+					<th><i class="require-red">*</i>菜名:</th>
+					<td><input id="c1" class="common-text required" name="name"
+						size="20" type="text"></td>
+				</tr>
+				<tr>
+					<th><i class="require-red">*</i>图片:</th>
+					<td> <input type="file" name="myfile" id="uploadify"/>
+						<div id="fileQueue"></div></td>
+				</tr>
+				<th><i class="require-red">*</i>价格:</th>
+				<td><input id="c3" class="common-text required" name="price" size="5" type="text"></td>
+				<tr>
+				</tr>
+				<tr>
+					<th><i class="require-red">*</i>描述:</th>
+					<td><textarea id="c4" name="description"
+							class="common-textarea" cols="30" style="width: 98%;" rows="10"></textarea></td>
+				</tr>
+
+				<tr>
+					<th></th>
+					<td><input class="btn btn-primary btn6 mr10" value="添加"
+						type="button" id="mybutton"> <input class="btn btn6"
+						onclick="history.go(-1)" value="返回" type="button"></td>
+				</tr>
+			</tbody>
+		</table>
+	</form>
+</div>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link href="css/uploadify.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="js/jquery-1.7.2.js"></script>
+<script type="text/javascript" src="js/swfobject.js"></script>
+<script type="text/javascript" src="js/jquery.uploadify.v2.1.4.js"></script>
+<script type="text/javascript">
+	$(function() {
+		$("#uploadify").uploadify({
+			'uploader' : 'js/uploadify.swf', //是组件自带的flash，用于打开选取本地文件的按钮 
+			'script' : 'uploadfile',//处理上传请求的url，对应servlet的url-pattern 
+			'cancelImg' : 'images/cancel.png',//取消上传文件的按钮图片
+			'fileDataName' : 'myfile',//和input的name属性值保持一致
+			'queueID' : 'fileQueue',
+			'queueSizeLimit' : 5, //限制在一次队列中的次数（可选定几个文件）。默认值= 999
+			'simUploadLimit' : 1,//多文件上传时，同时上传文件数目限制(一次可传几个文件)。默认值1
+			'auto' : true,//是否选取文件后自动上传
+			'multi' : true,//是否支持多文件上传       
+			'sizeLimit' : 10485760,//限制上传文件的大小
+			'buttonText' : 'BROWSE',//按钮上的文字
+			'displayData' : 'speed',//有speed和percentage两种，一个显示速度，一个显示完成百分比 
+			'fileDesc' : '支持格式:jpg/gif/jpeg/png/bmp.', //如果配置了以下的'fileExt'属性，那么这个属性是必须配置的 
+			'fileExt' : '*.jpg;*.gif;*.jpeg;*.png;*.bmp'//允许的格式	
+		});
+	});
+</script>
+</head>
+<body>
+    <!-- 定义一个div用于显示上传的队列 -->
+	<div id="fileQueue"></div>
+	<input type="file" name="myfile" id="uploadify"/>	
+	
+	<!-- 如果使用uploadify上传控件，表单不需要设置enctype -->
+	<form action="add" method="post">
+		name:<input type="text" name="userName" /><br/> 
+		password:<input type="password" name="passwd" /><br/> 		
+		<input type="submit" value="submit" />
+	</form>
+	
+</body>
+</html>

@@ -1,0 +1,12 @@
+package org.demo.dao;
+
+import java.util.Scanner;
+
+public class Test {
+	public static void main(String[] args) {
+		 Scanner input = new Scanner(System.in);
+		    int score = ((Scanner) input).nextInt();
+		    System.out.println(score);
+
+	}
+}

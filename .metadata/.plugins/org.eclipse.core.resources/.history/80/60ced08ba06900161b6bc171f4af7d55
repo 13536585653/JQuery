@@ -1,0 +1,25 @@
+package org.demo.dao;
+
+import java.util.Scanner;
+
+public class Test {
+	    public static void main(String[]args)
+	    {
+	    	int x;
+			Scanner input = new Scanner(System.in) ;
+			x = input.nextInt();
+			if (x>5)
+			{ 
+				   //System.out.print(x++);  
+			}
+			else
+			{	  
+	   			System.out.print(x--);  
+			}
+
+	    	}
+	    
+	    
+
+
+}

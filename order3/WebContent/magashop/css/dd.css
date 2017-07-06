@@ -1,0 +1,6 @@
+#leftsead{position:fixed;top:470px;right:10px;}
+*html #leftsead{position:absolute}
+#leftsead li img{float:right;}
+#leftsead li a{height:49px;float:right;display:block;min-width:47px;max-width:131px;}
+#leftsead li a .shows{display:block;}
+#leftsead li a .hides{margin-right:-143px;cursor:pointer;cursor:hand;}

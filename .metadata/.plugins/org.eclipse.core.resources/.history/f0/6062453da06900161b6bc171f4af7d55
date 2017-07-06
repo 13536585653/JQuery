@@ -1,0 +1,19 @@
+package org.demo.dao;
+
+import java.util.Scanner;
+
+public class Test {
+	    public static void main(String[]args)
+	    {
+	    	    int x=10,y=20;
+	        	System.out.print(TEST(x,y));
+	    	}
+	    
+	    static int TEST(int a,int b)
+	    {    	
+	    	    return a*b;
+	    }
+	
+
+
+}

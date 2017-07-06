@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="js/jquery-1.7.2.js"></script>
+<script type="text/javascript">  
+  $(function(){
+	 //get方法的第一个参数是请求的url
+	 //第二个参数是要提交的参数（参数以json格式提交） 
+	 //第三个参数是一个回掉方法，当后台相应回来时jquery会调用此方法
+	 //可以从这个回调方法中获取响应回来的数据
+	 /* $.get("findlist",{"userName":"user1","age":21},function(result){
+		 $.each(result,function(key, obj){
+					$("table").append("<tr><td>"+obj.id+"</td><td>"+obj.userName+"</td><td>"+obj.age+"</td><td>"+obj.addr+"</td></tr>");
+		 }); 
+	 }); */
+	 
+	 //使用post请求
+	 $.post("findlist",{"userName":"user1","age":21},function(result){
+		 $.each(result,function(key, obj){
+				$("table").append("<tr><td>"+obj.id+"</td><td>"+obj.userName+"</td><td>"+obj.age+"</td><td>"+obj.addr+"</td></tr>");
+	     });
+	 });
+  });
+</script>
+</head>
+<body>
+  <table border="1px">
+  	<tr>
+  		<th>ID</th>
+  		<th>name</th>
+  		<th>age</th>
+  		<th>address</th>
+  	</tr> 	
+  </table>
+</body>
+</html>

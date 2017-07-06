@@ -1,0 +1,12 @@
+<component name="libraryTable">
+  <library name="lib">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/bookSystem/WebContent/WEB-INF/lib/sqljdbc4R2.jar!/" />
+      <root url="jar://$PROJECT_DIR$/bookSystem/WebContent/WEB-INF/lib/gson-2.2.2.jar!/" />
+      <root url="jar://$PROJECT_DIR$/bookSystem/WebContent/WEB-INF/lib/jstl.jar!/" />
+      <root url="jar://$PROJECT_DIR$/bookSystem/WebContent/WEB-INF/lib/standard.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

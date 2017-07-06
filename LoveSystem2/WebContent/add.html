@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="js/jquery-1.9.1.min.js"></script>
+<script>
+$(function(){
+	$(":button").click(function(){
+		if($("#f1 :input").val()==""){
+			alert("添加项不能为空");
+			location.href = 'add.html';
+		}//序列化表单
+		var params=$("#f1").serialize();
+		//发送ajax请求
+		$.post("add",params,function(result){
+			
+			if($.trim(result)=="捐款成功,谢谢支持,祝你幸福安康"){
+				 alert(result);
+				 location.href = 'index.html';
+				 }else{
+					 alert(result);
+					 $("#f1 :input").val("");
+				location.href = 'add.html'; 
+					 
+				 }
+		});
+		
+	});
+	
+});
+
+</script>
+</head>
+<body>
+<form id="f1">
+			<table  border="1">
+				<tr>
+					<td colspan="2" style="float:right;">--捐出一点爱心，托起一片天空</td>
+				</tr>
+				<tr>
+					<td>姓名</td>
+					<td><input type="text" name="lname" /></td>
+				</tr>
+				<tr>
+			<td>性别</td>
+			<td>
+				<input type="radio" name="lsex" value="男"/>男
+				<input type="radio" name="lsex" value="女"/>女
+			</td>
+		</tr>
+		<tr>
+			<td>捐款日期</td>
+			<td><input type="text" name="ltime" />（yyyy年MM月dd日）</td>
+		</tr>
+		<tr>
+			<td>捐款金额</td>
+			<td><input type="text" name="lmoney" />（元）</td>
+		</tr>
+		<tr>
+			<td colspan="2"><center><input type="button" value="提交"/><input type="reset" value="重置"/></center></td>
+		</tr>
+			</table>
+		</form>
+</body>
+</html>

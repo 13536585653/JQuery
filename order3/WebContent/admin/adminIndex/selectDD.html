@@ -1,0 +1,123 @@
+﻿<meta charset="UTF-8">
+<link rel="stylesheet" type="text/css" href="css/common.css" />
+<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css"/>
+<link rel="stylesheet" type="text/css" href="css/main.css" />
+     <link rel="stylesheet" type="text/css" href="css/pagination.css">
+<script src="js/libs/jquery-1.9.1.min.js"></script>
+<script src="js/libs/jquery.pagination.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/myjs.js"></script>
+<script type="text/javascript">
+
+	$(function(){
+		
+		table("selectorder");
+	/* 	$.get("selectorder",function(result){
+			addTable(result);
+		}); */
+		//批量删除
+		deleteurl("deleteOrder","selectorder");
+		
+	});
+	
+	function findPageList(pageNum){
+		$.get("selectorder",{"pageNum":++pageNum},function(result){
+			addTable(result);
+		});
+	}
+
+	
+	
+	function addTable(result){
+		$(".result-tab tr:not(:first)").empty();
+		
+		$.each(result.list, function(key, obj) {
+			var state;
+			var caozuo;
+			var way;
+			if(obj.o_state==0){
+				state="待付款";
+				caozuo="取消";
+				way ="";
+			}
+			else if(obj.o_state==1){
+				state="已付款";
+				caozuo="发货";
+				way=obj.o_way;
+			}
+			else if(obj.o_state==2){
+				state="已发货";
+				caozuo="";
+				way=obj.o_way;
+			}
+			else if(obj.o_state==3){
+				state="订单已取消";
+				way ="";
+				caozuo="";
+			}
+			else{
+				state="订单异常";
+				way="";
+				caozuo="";
+			}
+			$(".result-tab").append("<tr>"+"<td><input type='checkbox' name='o_id' value='" + obj.o_id +"'></td>"+"<td>"+obj.o_number+"</d>"+
+					"<td>"+obj.u_name+"</td>"+"<td>"+obj.m_name+"</td>"+"<td>"+obj.o_num+"</td>"+"<td>"+obj.o_sum+"</td>"+
+					"<td>"+obj.u_addr+"</td>"+"<td>"+obj.o_time+"</td>"+"<td>"+state+"</td>"+"<td>"+way+"</td>"+
+					"<td><a href='javascript:void(0)' class='delivery' value='"+obj.o_id+"'>"+caozuo+"</a></td>"+"</tr>");
+		});
+		
+		
+		$(".delivery").on("click",function(){
+			var date=$(this).attr("value");
+			var val=$(this).html();			
+			if(val=='取消'){
+				$.post("qux",{"id":date},function(result){
+					alert(result)
+					table("selectorder");
+				})
+			}else{
+				alert("发货成功！");
+				$.post("updateOrder",{"id":date}, function(){
+		    		table("selectorder");
+		    	});
+			}
+			
+		});
+	}
+</script>
+
+
+
+<div class="crumb-wrap">
+	<div class="crumb-list">
+		<i class="icon-font"></i><a href="index.html" color="#white">首页</a><span
+			class="crumb-step">&gt;</span><span class="crumb-name">订单查询</span>
+	</div>
+</div>
+<div class="result-wrap">
+	<form name="myform" id="myform" method="post">
+		<div class="result-title">
+			<div class="result-list">
+				<a id="batchDel" href="javascript:void(0)"><i class="icon-font"></i>批量删除</a>
+			</div>
+		</div>
+		<div class="result-content">
+			<table class="result-tab" width="100%">
+				<tr>
+					<th class="tc" width="5%"></th>
+					<th>订单号</th>
+					<th>用户</th>
+					<th>菜单</th>
+					<th style="width: 70px;">数量(/份)</th>
+					<th>实际金额</th>
+					<th>订单地址</th>
+					<th style="width: 170px;">订单时间</th>
+					<th>订单状态</th>
+					<th>支付方式</th>
+					<th>操作</th>
+			</table>
+			
+		</div>
+		<div id="page" align="right"></div>
+	</form>
+</div>

@@ -1,0 +1,18 @@
+package org.demo.dao;
+
+public class Test{
+	
+			char i='d';
+		    public static void main(String args[ ] ) {
+		        Test m =new Test();
+		        m.go();
+		    }
+		    public void Mystery() {
+		        
+		    }
+		    private void go(){
+		        System.out.println(i);
+		    }
+		
+
+	}

@@ -1,0 +1,11 @@
+package org.demo.dao;
+
+public class Test{
+	
+	public static void main(String[]  args)
+	{		
+     		a=--a;
+		     System.out.print(a);
+
+	}
+	}

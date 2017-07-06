@@ -1,0 +1,18 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>chat</title>
+<script src="../JS/jquery-1.7.2.js"></script>
+<script  type="text/javascript" src="../JS/chat.js"></script>
+</head>
+<body>
+<h2>登录后台聊天室</h2>
+<form action="../1serviceloginServlet" method="post">
+<p>用户名:<input type="text" name="username">
+<p><input type="submit" value="提交">
+</form>
+</body>
+</html>

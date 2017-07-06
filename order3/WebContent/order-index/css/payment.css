@@ -1,0 +1,155 @@
+.pay_main {
+    margin: 18px auto 0;
+    border: 0;
+}
+.pay_main {
+    width: 67.5%;
+    text-align: left;
+    color: #585858;
+}
+.w-order-nav {
+    width:100%;
+    margin: 0 auto;
+}
+.pay_main *, div.baidulbspay--box * {
+    font-family: Tohoma,"Microsoft Yahei";
+}
+.w-order-nav .logo {
+    float: left;
+    width: 284px;
+    height: 90px;
+    background: url(../img/zhifufangshi.gif) no-repeat;
+}
+.w-order-nav .nav-wrap {
+    margin-left: 348px;
+}
+.w-order-nav .nav-wrap {
+    height: 90px;
+    font-family: Tohoma,"Microsoft Yahei";
+}
+.pay_main .order_infor_module {
+    background-color: #F7F7F7;
+}
+.pay_main .order_infor_module {
+    color: #585858;
+    overflow: hidden;
+}
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+.fl_left {
+    float: left;
+    display: inline;
+}
+.order-list {
+    padding: 10px 0;
+}
+.pay_main .order_infor_module .order-list-no {
+    display: inline-block;
+    width: 58px;
+    font-size: 14px;
+    font-weight: 500;
+}
+.pay_main .order_infor_module .order-list-name, .pay_main .order_infor_module .order-list-number {
+    font-size: 14px;
+    font-weight: 500;
+}
+.pay_main .order_infor_module .order-list-number {
+    font-size: 14px;
+    font-weight: 500;
+}
+.pay_main .order_infor_module dt {
+    width: 80px;
+    padding-right: 0;
+}
+.money {
+    color: #ff6600;
+}
+.title{
+
+    margin-left: 20px;
+    font-size: 20px;
+    font-weight: 700;
+    margin-left: 8px;
+    margin-top: 16px;
+    height: 27px;
+    border: 0;
+}
+.view-switcher{
+    display: block;
+    color: #333;
+    text-decoration: none;
+    position: relative;
+    height: 28px;
+    background-color: #f6f6f6;
+    border-top: 1px solid #e7e7e7;
+    border-bottom: 1px solid #e7e7e7;
+    padding: -2px;
+    cursor: pointer;
+}
+.line {
+    display: block;
+    height: 38px;
+}
+.pay {
+    display: inline-block;
+    float: left;
+    width: 190px;
+    margin-top: 1px;
+}
+.radio {
+    float: left;
+    margin-top: 8px;
+}
+.img {
+    border: 1px solid #ddd;
+    width: 110px;
+    height: 27px;
+    display: inline-block;
+    margin-left: 8px;
+    cursor: pointer;
+    overflow: hidden;
+}
+.logo {
+    background-image: url(../img/banklist_9db61e8.jpg);
+    width: 110px;
+    height: 27px;
+}
+.kuaijie {
+    display: none;
+    background-image: url(../img/img_d388b46.jpg);
+    width: 16px;
+    height: 30px;
+    margin-top: -1px;
+}
+.payment_btn {
+    width: 918px;
+    margin: 0 auto;
+    border-top: 2px #cecece solid;
+}
+.clearfix {
+    zoom: 1;
+}
+
+#submitPay {
+    width: 180px;
+    height: 44px;
+    line-height: 42px;
+    font-size: 25px;
+    float: right;
+    border: 0;
+    margin-top: 10px;
+    margin-left: 382px;
+    cursor: pointer;
+    border-radius: 5px;
+    color: #fff;
+    font-size: 25px;
+    font-family: Tohoma,"Microsoft Yahei";
+    padding: 0 20px;
+}
+
+.bg_btn {
+    background-color: #fe8a4b;
+}

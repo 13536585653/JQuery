@@ -1,0 +1,264 @@
+﻿
+<meta charset="UTF-8">
+<link rel="stylesheet" type="text/css" href="css/common.css" />
+<link rel="stylesheet" type="text/css" href="css/main.css" />
+<link rel="stylesheet" href="css/bootstrap.min.css">
+<link rel="stylesheet" href="css/pagination.css">
+<script src="js/libs/jquery-1.9.1.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/myjs.js"></script>
+<script type="text/javascript" src="js/scxz/swfobject.js"></script>
+<script type="text/javascript" src="js/scxz/jquery.uploadify.v2.1.4.js"></script>
+<script type="text/javascript" src="js/myyz.js"></script>
+<script src="js/libs/jquery.pagination.js"></script>
+<style type="text/css"> 
+
+a:link { 
+text-decoration: none; 
+} 
+a:visited { 
+text-decoration: none; 
+} 
+a:hover { 
+text-decoration: none; 
+} 
+a:active { 
+text-decoration: none; 
+} 
+
+</style> 
+<script>
+//分页查询方法，分页控件在调用这个方法时会传入一个当前页的下标进来
+//但是这个下标是从0开始的
+function findPageList(pageNum){
+	$.get("selectmenu",{"pageNum":++pageNum},function(result){
+		addTable(result);
+	});
+}
+
+	$(function(){
+		table("selectmenu");
+		
+		//批量删除
+		deleteurl("deletemenu","selectmenu");
+		
+		/* $.get("selectdishes",function(result){
+			addDishes(result);
+		}); */
+
+		
+		//搜索
+		$("#select").on("click",function(){
+			//序列化整个表单
+			var params = $("#menu").serialize();
+			$.get("selectByName",params,function(result){
+
+			})	
+		});
+		
+	});
+
+
+	function addTable(result){
+		var i=0;
+		$(".result-tab tr:not(:first)").empty();
+		$.each(result.list, function(key, obj) {
+			i++;
+			var type=obj.d_type == undefined ? "没有归类" : obj.d_type;
+			var jx=obj.jx==0 ? "精选" : "";
+			$(".result-tab").append(
+					"<tr><td>" + '<input type="checkbox" name="m_id" value='+ obj.m_id + ' />'
+							+ "</td><td>" + i + "</td><td>" + obj.m_name
+							+ "</td><td><img src='../../order-index/cai/"+obj.m_image+"' style='width:50px;height:50px'></img></td><td>"
+							+ obj.m_price + "</td><td>" + type
+							+ "</td><td>" +'<a href="javascript:void(0)" class="mydeltet" name='+ obj.m_id + '> 删除</a>'+
+							' <a href="javascript:void(0)" class="myupdate" name='+ obj.m_id + '>编辑</a> <a href="javascript:void(0)" class="jx" name='+ obj.m_id + '>'+jx+'</a> '+ "</td></tr>")
+		});
+
+		//单个删除
+		deleteurl2("deletemenu","selectmenu");	
+		//编辑
+		$(".myupdate").on("click",function(){
+			var id=$(this).attr("name");
+		//	alert(id);
+			//$(".myupdate").empty();
+			$.post("selectMT",{"id":id},function(result){
+				$("#ID").val(result.m_id)
+				$("#c1").val(result.m_name);
+				$("#c3").val(result.m_price);
+				$("#c4").val(result.description);
+				/* 分类 */
+				$("#d_id").empty();
+				$.each(result.list,function(index,obj){
+               	 if(result.d_type==obj.d_type){
+               		$("#d_id").append("<option selected='selected' value='"+obj.d_id+"'>"+obj.d_type+"</option>");
+               	}else{
+                   	$("#d_id").append("<option value='"+obj.d_id+"'>"+obj.d_type+"</option>");
+               		} 
+               	});
+			});
+			$("#add").modal("show");
+		});
+		
+		
+		//编辑，保存
+		$(".blue").on("click",function(){
+			//序列化整个表单
+			var d=yz();
+			if(d!=false){
+        	var params=$("#ffAdd").serialize();
+			$.post("updatemenu",params,function(result){
+				$("#add").modal("hide");
+				table("selectmenu");
+				/* addTable(result); */
+			});
+		}
+		});
+		
+		
+		//添加到精选
+		$(".jx").on("click",function(){
+			if(window.confirm('你确定要添加到精选菜单吗？')){
+				var id = $(this).attr("name");
+				 $.post("addjx",{"id":id},function(){
+					 table("selectmenu");
+				}); 
+                return true;
+             }else{
+                //alert("取消");
+                return false;
+            }
+		});
+	}
+	
+	
+	
+	//上传
+	$(function() {
+		$("#uploadify").uploadify({
+			'uploader' : 'js/scxz/uploadify.swf', //是组件自带的flash，用于打开选取本地文件的按钮 
+			'script' : 'uploadfile',//处理上传请求的url，对应servlet的url-pattern 
+			'cancelImg' : 'images/cancel.png',//取消上传文件的按钮图片
+			'fileDataName' : 'myfile',//和input的name属性值保持一致
+			'queueID' : 'fileQueue',
+			'queueSizeLimit' : 5, //限制在一次队列中的次数（可选定几个文件）。默认值= 999
+			'simUploadLimit' : 1,//多文件上传时，同时上传文件数目限制(一次可传几个文件)。默认值1
+			'auto' : true,//是否选取文件后自动上传
+			'multi' : false,//是否支持多文件上传       
+			'sizeLimit' : 10485760,//限制上传文件的大小
+			'buttonText' : 'SELECT FILE',//按钮上的文字
+			'displayData' : 'speed',//有speed和percentage两种，一个显示速度，一个显示完成百分比 
+			'fileDesc' : '支持格式:jpg/gif/jpeg/png/bmp.', //如果配置了以下的'fileExt'属性，那么这个属性是必须配置的 
+			'fileExt' : '*.jpg;*.gif;*.jpeg;*.png;*.bmp'//允许的格式	
+		});
+	});
+	
+
+</script>
+
+<div class="crumb-wrap">
+	<div class="crumb-list">
+		<i class="icon-font"></i><a href="index.html">首页</a><span
+			class="crumb-step">&gt;</span><span class="crumb-name">所有菜管理</span>
+	</div>
+</div>
+<div class="result-wrap">
+	<form name="myform" id="myform" method="post">
+		<div class="result-title">
+			<div class="result-list">
+				<a id="addcai" target="frame" href="addcai.html"><i class="icon-font"></i>添加菜谱</a>
+				<a id="batchDel" href="javascript:void(0)"><i class="icon-font"></i>批量删除</a>
+
+
+			</div>
+		</div>
+		<div class="result-content">
+			<table class="result-tab" width="100%">
+				<tr>
+					<th class="tc" width="5%"></th>
+					<th>编号</th>
+					<th>菜名</th>
+					<th>图谱</th>
+					<th>价格（元）</th>
+					<th>类型</th>
+					<th>操作</th>
+				</tr>
+			</table>
+			<!-- 分页控件 -->
+		<div id="page" align="center"></div>
+			<!-- <div class="list-page">2 条 1/1 页</div> -->
+		</div>
+	</form>
+</div>
+
+
+
+<!-- 弹框修改信息 -->
+<div id="add" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header bg-primary">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+                <h4 class="modal-title">
+                    <i class="icon-pencil"></i>
+                    <span id="lblAddTitle" style="font-weight:bold">修改信息</span>
+                </h4>
+            </div>
+            <form class="form-horizontal form-bordered form-row-strippe" id="ffAdd"  data-toggle="validator" enctype="multipart/form-data">
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label class="control-label col-md-2">菜名</label>
+                                <div class="col-md-10">
+                                    <input id="c1" name="Name" type="text" class="form-control" placeholder="菜名..." />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label class="control-label col-md-2">价格</label>
+                                <div class="col-md-10">
+                                    <input id="c3" name="price" type="text"  placeholder="价格" />
+                                </div>
+                            </div>
+                        </div>
+                         <div class="col-md-12">
+                            <div class="form-group">
+                                <label class="control-label col-md-2">图片</label>
+                                <div class="col-md-10">
+                                    <td><input type="file" name="myfile" id="uploadify"/></td>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label class="control-label col-md-2">描述</label>
+                                <div class="col-md-10">
+                                    <textarea id="c4" name="Note" class="form-control" placeholder="备注..."></textarea>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label class="control-label col-md-2">类型</label>
+                                <div class="col-md-10">
+                                    <select id="d_id" name="d_id"  >
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="modal-footer bg-info">
+                    <input type="hidden" id="ID" name="ID" />
+                    <button type="button" class="btn blue">确定</button>
+                    <button type="button" class="btn green" data-dismiss="modal">取消</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

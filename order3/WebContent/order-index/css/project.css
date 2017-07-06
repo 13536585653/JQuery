@@ -1,0 +1,29 @@
+#outer {
+	margin-top: 20px;
+	width: 1019px;
+	border: 1px dotted #ccc;
+
+}
+/* Custom Styles */
+ul.nav-tabs{
+	width: 230px;
+	border-left: solid 1px #ccc;
+	border-right: solid 1px #ccc;
+	background-color: #f8f9f9;
+}
+ul.nav-tabs li{
+	margin: 0;
+}
+ul.nav-tabs li:first-child{
+	border-top: none;
+}
+ul.nav-tabs li a{
+	margin: 0;
+	padding: 8px 16px;
+	border-radius: 0;
+	color: #666;
+}
+
+ul.nav-tabs.affix{
+	top: 0px; /* Set the top position of pinned element */
+}

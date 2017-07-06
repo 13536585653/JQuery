@@ -1,0 +1,205 @@
+<!DOCTYPE >
+<html xmlns="http://www.w3.org/1999/xhtml"><head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link rel="stylesheet" href="css/bootstrap.min.css"/>
+<link rel="stylesheet" type="text/css" href="css/commom.css" />
+<link rel="stylesheet" type="text/css" href="css/shangjiaAdmin.css" />
+
+<script src="js/libs/jquery-1.9.1.min.js"></script>
+<script type="text/javascript" src="js/scxz/jquery.uploadify.v2.1.4.js"></script>
+<script type="text/javascript" src="js/scxz/swfobject.js"></script>
+
+<link rel="stylesheet" href="css/blue.css" />
+<script type="text/javascript">
+			$(function(){
+				$.get("selectStore",function(result){
+					$("#shopname").val(result.s_name);
+					$("#phone").val(result.s_tel);
+					$("#address").val(result.s_addr);
+					$("#email").val(result.s_email);
+					$("#time").val(result.s_business);
+					$("#goodattrdefault").val(result.s_unit);
+					$("#imgshow").attr("src","../../order-index/img/"+result.s_img);
+					if(result.s_wux==1){
+						$("#is_onlinepay").attr("checked",true);
+					}else if(result.s_wux==0){
+						$("#is_onlinepay1").attr("checked",true);
+					}
+					if(result.s_way==1){
+						$("#is_daopay").attr("checked",true);
+					}else if(result.s_way=0){
+						$("#is_daopay1").attr("checked",true);
+					}
+					if(result.s_state==1){
+						$("#is_open").attr("checked",true);
+					}else if(result.s_state==0){
+						$("#is_open1").attr("checked",true);
+					}
+				});
+				
+				
+				$(".hc_login_btn_div").on("click",function(){
+					var date=$("#loginForm").serialize();
+					$.post("updateStore",date,function(){
+						
+					})
+				});
+				$(".settijiao").click(function(){
+					alert("修改成功！");
+				});
+			});
+			
+			
+			//上传
+			$(function() {
+				$("#uploadify").uploadify({
+					'uploader' : 'js/scxz/uploadify.swf', //是组件自带的flash，用于打开选取本地文件的按钮 
+					'script' : 'uploadfile2',//处理上传请求的url，对应servlet的url-pattern 
+					'cancelImg' : 'images/cancel.png',//取消上传文件的按钮图片
+					'fileDataName' : 'myfile',//和input的name属性值保持一致
+					'queueID' : 'fileQueue',
+					'queueSizeLimit' : 5, //限制在一次队列中的次数（可选定几个文件）。默认值= 999
+					'simUploadLimit' : 1,//多文件上传时，同时上传文件数目限制(一次可传几个文件)。默认值1
+					'auto' : true,//是否选取文件后自动上传
+					'multi' : false,//是否支持多文件上传       
+					'sizeLimit' : 10485760,//限制上传文件的大小
+					'buttonText' : 'SELECT FILE',//按钮上的文字
+					'displayData' : 'speed',//有speed和percentage两种，一个显示速度，一个显示完成百分比 
+					'fileDesc' : '支持格式:jpg/gif/jpeg/png/bmp.', //如果配置了以下的'fileExt'属性，那么这个属性是必须配置的 
+					'fileExt' : '*.jpg;*.gif;*.jpeg;*.png;*.bmp',//允许的格式	
+					'onComplete' : function(event,queueId,fileObj,response,data){ // 返回成功的信息
+					           $("#imgshow").attr("src","../../order-index/img/"+response)
+					        }
+				});
+				
+			});
+			
+
+</script>
+</head>
+
+<body><div class="" style="display: none; position: absolute;"><div class="aui_outer"><table class="aui_border"><tbody><tr><td class="aui_nw"></td><td class="aui_n"></td><td class="aui_ne"></td></tr><tr><td class="aui_w"></td><td class="aui_c"><div class="aui_inner"><table class="aui_dialog"><tbody><tr><td colspan="2" class="aui_header"><div class="aui_titleBar"><div class="aui_title" style="cursor: move; display: block;"></div><a class="aui_close" href="javascript:/*artDialog*/;" style="display: block;">×</a></div></td></tr><tr><td class="aui_icon" style="display: none;"><div class="aui_iconBg" style="background: none;"></div></td><td class="aui_main" style="width: auto; height: auto;"><div class="aui_content" style="padding: 20px 25px;"></div></td></tr><tr><td colspan="2" class="aui_footer"><div class="aui_buttons" style="display: none;"></div></td></tr></tbody></table></div></td><td class="aui_e"></td></tr><tr><td class="aui_sw"></td><td class="aui_s"></td><td class="aui_se" style="cursor: se-resize;"></td></tr></tbody></table></div></div>
+
+<div style="position: fixed;top: 0;left: 0;right: 0;bottom: 0;z-index: -1;background:url(images/backgrounds/background.png);"></div>
+       		   
+             <div class="cl"></div>  
+                <form id="loginForm" method="post">
+                 <div class="jutiSet" style="width: 100%; height: 100%">
+        		     	<div class="serxuanze">
+                    		<div class="xuanze_left">
+                        	<span>店铺名字：</span>
+                        </div>
+                        <div class="dianpu_right" style="width:387px;">
+                        	<input type="text" style="width:387px;height: 42px;;" id="shopname" name="shopname" />
+                            
+                        </div>
+                        <div class="cl"></div>
+                    </div>
+                    <div class="serxuanze">
+                    	<div class="xuanze_left">
+                        	<span>接单电话：</span>
+                        </div>
+                        <div class="dianpu_right" style="width:387px;">
+                        	<input type="text" style="width:387px;height: 42px;;" id="phone" name="phone" />
+                            
+                        </div>
+                        <div class="cl"></div>
+                    </div>
+                    
+                    <div class="upimg" style="padding-left: 0px; border-left-width: 10px;left: 850px;">
+                    	<div class="file_img">
+                        	 <img src="" width="136" height="130" id="imgshow" />  
+                        </div>
+                        <div class="file_xxiang">
+                        	
+                     <div id="div-headpicUpload" style="display:block;"> 
+		                      
+		                <div class="col-md-10" style="padding-left: 8px;border-left-width: 10px; padding-right: 10px;"> 
+		               		 <input type="file" name="myfile" id="uploadify"/>
+		               	</div>  
+		                
+		             </div>
+		                         <div class="cl"></div>
+                        </div>
+                    </div>
+                    
+                  
+                    <div class="serxuanze">
+                    	<div class="xuanze_left">
+                        	<span>店铺地址：</span>
+                        </div>
+                        <div class="dianpu_right" style="width:387px;">
+                        	<input type="text" style="width:387px;height: 42px;; " id="address" name="address" />
+                            
+                        </div>
+					</div>
+                    <div class="serxuanze">
+                    	<div class="xuanze_left">
+                        	<span>邮箱地址：</span>
+                        </div>
+                        <div class="dianpu_right" style="height: 40px;">
+                        	<input type="text" style="width:569px;height: 40px;" id="email" name="email"  />
+                            
+                        </div>
+                        <div class="cl"></div>
+                    </div>
+                    
+                                                                                                                                                                                                                                                                                                                                                                                                               <div class="serxuanze">
+                         <div class="xuanze_left">
+                             <span>营业时间：</span>
+                         </div>
+                         <div class="dianpu_right">
+                        	<input type="text" style="width:569px;height: 42px;" id="time" name="time"  />
+                            
+                        </div>
+                         <div class="cl"></div>
+                     </div>
+
+					     <div class="serxuanze">
+                    	<div class="xuanze_left">
+                        	<span>默认商品单位：</span>
+                        </div>
+                        <div class="dianpu_right" style="width:auto; background:none; ">
+                        	<input type="text" style="width:150px ; float:left;height: 40px;" id="goodattrdefault" name="goodattrdefault"  /><span style="float:left; margin-left:20px;">比如：份 / 斤 / 个 / 盒</span>
+                            
+                        </div>
+                        <div class="cl"></div>
+                    </div>
+					<div class="cl"></div>
+                     <div class="serxuanze">
+                    	<div class="xuanze_left">
+                        	<span>是否开启在线支付：</span>
+                        </div>
+                        <div class="xuanze_right">
+                        	<input type="radio" name="is_onlinepay" value="1" id="is_onlinepay"/>是 <input type="radio" name="is_onlinepay" value="0" id="is_onlinepay1"/>否
+                        </div>
+                  </div>
+                        <div class="cl"></div>
+                  <div class="serxuanze">
+                    	<div class="xuanze_left">
+                        	<span>是否开启到付：</span>
+                        </div>
+                        <div class="xuanze_right">
+                        	<input type="radio" name="is_daopay" value="1" id="is_daopay"/>是 <input type="radio" name="is_daopay" value="0" id="is_daopay1"/>否
+                        </div>
+                        <div class="cl"></div>
+                    </div>
+					  <div class="cl"></div>
+				  <div class="serxuanze">
+                    	<div class="xuanze_left">
+                        	<span>是否营业：</span>
+                        </div>
+                        <div class="xuanze_right">
+                        	<input type="radio" name="state" value="1" id="is_open"/>是 <input type="radio" name="state" value="0" id="is_open1"/>否
+                        </div>
+                        <div class="cl"></div>
+                    </div>
+                    
+                    <div class="settijiao">
+
+                         <div class="xuanze_right hc_login_btn_div"></div>
+                         <div class="cl"></div>
+                     </div>
+       			 </div></form>
+
+<div style="display: none; position: fixed; left: 0px; top: 0px; width: 100%; height: 100%; cursor: move; opacity: 0; background: rgb(255, 255, 255);"></div></body></html>

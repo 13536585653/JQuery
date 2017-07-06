@@ -1,0 +1,19 @@
+package org.demo.dao;
+
+import java.util.Scanner;
+
+public class Test{
+	static int i;
+	public static void main(String[]  args)
+	{	 int sw=1;
+    switch(sw){
+    case 0:
+       System.out.print("你成功了！！");
+       break;
+    case 1:
+       System.out.print("你失败了！！");
+ }
+
+	}
+
+	}

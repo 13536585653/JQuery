@@ -1,0 +1,205 @@
+﻿<meta charset="UTF-8">
+<link rel="stylesheet" type="text/css" href="css/common.css" />
+<link rel="stylesheet" type="text/css" href="css/main.css" />
+<link rel="stylesheet" href="css/bootstrap.min.css">
+<link rel="stylesheet" href="css/pagination.css">
+<script src="js/libs/jquery-1.9.1.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/myjs.js"></script>
+<script type="text/javascript" src="js/scxz/swfobject.js"></script>
+<script type="text/javascript" src="js/scxz/jquery.uploadify.v2.1.4.js"></script>
+<script type="text/javascript" src="js/myyz.js"></script>
+<script src="js/libs/jquery.pagination.js"></script>
+<script src="js/selectsy.js"></script>
+<script type="text/javascript">
+
+		$(function(){
+			table("selectuser");
+			deleteurl("Userdelete","selectuser");
+		});
+		
+		
+		//分页查询
+		function findPageList(pageNum){
+			$.get("selectuser",{"pageNum":++pageNum},function(result){
+				//alert(result);
+				addTable(result);
+			});
+		}
+		
+		function addTable(result){
+			var i=0;
+			$(".result-tab tr:not(:first)").empty();
+			$.each(result.list,function(index,obj){
+				i++;
+				var vip= obj.rid == 2 ? "是" : "否";
+				$(".result-tab").append("<tr><td><input type='checkbox' name='d_id'  value='"+obj.u_id+"' ></td>"
+						+"<td>"+i+"</td>"+"<td>"+obj.u_name+"</td>"
+						+"<td>"+obj.u_addr+"</td>"+"<td>"+obj.u_tel+"</td>"+"<td>"+vip+"</td>"
+						+"<td>"+obj.u_money+"</td>"+
+						"<td><a href='javascript:void(0)' class='mydeltet' name='"+obj.u_id+"'>删除</a>"+
+						"	<a href='javascript:void(0)' name='"+obj.u_id+"' class='editor'>编辑</a>"+
+						"	</td>"+"</tr>");
+		
+		});
+		
+		//单个删除
+		deleteurl2("Userdelete","selectuser");
+		
+		//编辑
+		$(".editor").on("click",function(){
+			var id=$(this).attr("name")
+			$.get("selectmemberByID",{"ID":id},function(result){
+			 	$("#ID").val(result.u_id);
+				$("#Name").val(result.u_name);
+				if(result.u_sex=="女"){
+					$("#sex2").attr("checked",true);			
+					$("#sex2").val(result.u_sex)
+				}else{
+					$("#sex1").attr("checked",true);
+					$("#sex1").val(result.u_sex)
+				}				
+				$("#addr").val(result.u_addr);
+				$("#tel").val(result.u_tel);
+				$("#email").val(result.u_email);				
+				/* 分类 */
+				$("#d_id").empty();
+				$.each(result.list,function(index,obj){
+               	 if(result.type==obj.rtype){
+               		$("#d_id").append("<option selected='selected' value='"+obj.rid+"'>"+obj.rtype+"</option>");
+               	}else{
+                   	$("#d_id").append("<option value='"+obj.rid+"'>"+obj.rtype+"</option>");
+               		} 
+               	}); 
+			});
+			 $(".fade").modal("show");  
+		});
+		
+		$("#save").on("click",function(){
+			//序列化整个表单
+			var d=user();
+			if(d!=false){
+	    	var params=$("#ffAdd").serialize();
+	    	$.post("update1", params, function(result){
+	    		$(".fade").modal("hide"); 
+				table("selectuser");
+	    	});
+		}
+		});
+		
+	}
+
+</script>
+
+<div class="crumb-wrap">
+	<div class="crumb-list">
+		<i class="icon-font"></i><a href="index.html">首页</a><span
+			class="crumb-step">&gt;</span><span>用户列表</span>
+	</div>
+</div>
+<div class="result-wrap">
+	<form name="myform" id="myform" method="post">
+		<div class="result-title">
+			<div class="result-list">
+				<a id="batchDel" href="javascript:void(0)"><i class="icon-font"></i>批量删除</a>
+			</div>
+		</div>
+		<div class="result-content">
+			<table class="result-tab" width="100%">
+				<tr>
+					<th class="tc" width="5%"><input name="Byname" value="0" style="DISPLAY:none" class="s"></th>
+					<th>编号</th>
+					<th>用户名</th>
+					<th style="width: 200px">地址</th>
+					<th style="width: 180px">电话号码</th>
+					<th>VIP</th>
+					<th>消费金额</th>
+					<th>操作</th>
+				</tr>
+			</table>
+							<!-- 分页控件 -->
+		<div id="page" align="center"></div>
+		</div>
+	</form>
+</div>
+
+
+
+<!-- 弹框修改信息 -->
+<div id="add" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header bg-primary">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+                <h4 class="modal-title">
+                    <i class="icon-pencil"></i>
+                    <span id="lblAddTitle" style="font-weight:bold">修改信息</span>
+                </h4>
+            </div>
+            <form class="form-horizontal form-bordered form-row-strippe" id="ffAdd"  data-toggle="validator" enctype="multipart/form-data">
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label class="control-label col-md-2">用户名</label>
+                                <div class="col-md-10">
+                                    <input id="Name" name="Name" type="text" class="form-control" placeholder="用户名..." />
+                                </div>
+                            </div>
+                        </div>
+                         <div class="col-md-12">
+                            <div class="form-group">
+                                <label class="control-label col-md-2">性别</label>
+                                <div class="col-md-10">
+                                    <input id="sex1" name="sex" type="radio" value="男"/>男
+                                    <input id="sex2" name="sex" type="radio"  value="女"/>女
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label class="control-label col-md-2">地址</label>
+                                <div class="col-md-10">
+                                    <input id="addr" name="addr" type="text" class="form-control" placeholder="地址..." />
+                                </div>
+                            </div>
+                        </div>
+                         <div class="col-md-12">
+                            <div class="form-group">
+                                <label class="control-label col-md-2">电话</label>
+                                <div class="col-md-10">
+                                    <input id="tel" name="tel" type="text" class="form-control" placeholder="电话..."/>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label class="control-label col-md-2">邮箱</label>
+                                <div class="col-md-10">
+                                    <input id="email" name="email" class="form-control" type="text" placeholder="邮箱..." />
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label class="control-label col-md-2">类型</label>
+                                <div class="col-md-10">
+                                    <select id="d_id" name="d_id"  >
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="modal-footer bg-info">
+                    <input type="hidden" id="ID" name="ID" />
+                    <button type="button" class="btn blue" id="save">确定</button>
+                    <button type="button" class="btn green" data-dismiss="modal">取消</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,13 @@
+create database LoveDB
+use LoveDB
+create table LoveInHeart(
+	lid int primary key not null identity(1,1),
+	lname varchar(20) not null,
+	lsex varchar(20) check(lsex='ÄÐ' or lsex='Å®')  not null,
+	ltime datetime not null,
+	lmoney money check(lmoney>0)
+)
+insert into LoveInHeart values('Îâ¿µ×Ú','Å®','1994-10-10','0.1')
+insert into LoveInHeart values('Îâ¿µ×Ú','ÄÐ','1994-10-10','0.1')
+insert into LoveInHeart values('Îâ¿µ×Ú','Å®','1994-10-10','0.1')
+select * from LoveInHeart

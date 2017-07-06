@@ -1,0 +1,17 @@
+package org.demo.dao;
+
+public class Test{
+	static int number;
+	   static String strname;
+	   Test(int num,String name){
+	       number=num;
+	       strname=name;
+	       
+	   }
+	   public static void main (String[]args){
+	       Test objTest1=new Test(2, "dlskjaf");
+	       Test bojTest2=new Test(1,"张三");
+	       System.out.println("学号:"+number+"姓名:"+strname);
+	   }
+
+}

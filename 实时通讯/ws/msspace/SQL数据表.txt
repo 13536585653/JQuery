@@ -1,0 +1,152 @@
+create database MS_space
+
+use MS_space
+
+--用户信息表
+create table users
+(
+	user_ID char(32) primary key not null ,				--用户ID
+	username varchar(50) not null ,					--用户名
+	[password] varchar(50) not null ,				--密码
+	sex char(2) default '男' ,					--性别
+	birth date,							--出生日期
+	signature varchar(50),						--个人签名
+	[address] varchar(200),						--地址
+	regTime date default getdate() 					--用户注册时间
+	email varchar(50) not null ,					--邮箱
+	state int default 1						--状态
+	grade int default '0'check(grade>=0  and grade<=60 ),		--等级	
+	micro_blog varchar(50),						--微博
+	label varchar(30),						--标签
+	follow int, 							--关注量,
+	fans long,							--粉丝量,
+	collection int, 						--收藏量,
+	letterID char(32),						--私信
+)
+
+--视频表
+create table video
+(
+	video_ID char(32) primary key not null ,			--视频ID
+	title varchar(30) not null,					--标题
+	Type varchar(20) not null,					--类型
+	Introduction varchar(200)not null,				--简介
+	Release date default getdate(),					--发布时间
+	praise int default 0,						--点赞数量
+	share int default 0 not null,					--分享量
+	concern int default 0 not null,					--关注量
+	audience int default 0 not null,				--观众人数
+	collection int default 0 not null,				--收藏量
+	play int default 0 not null,					--播放量
+	support int default 0 not null,					--支持量
+	status int default 0 not null,					--状态0:表示播放成功
+									--状态1:表示播放失败
+	danmaku int default 0 not null,					--弹幕量
+)
+
+
+--弹幕表
+create table barrage
+(
+	barrage_ID char(32) primary key not null ,			--弹幕ID				
+	content varchar(50) not null ,					--发表内容
+	[time] date default getdate(),					--发表时间
+	praise int default 0 not null ,					--点赞量
+	font_color varchar(10) ,					--字体颜色
+	font_size varchar(10) ,						--字体大小
+	special int default 0,						--特效(0:有特效1:无特效)
+	
+	--那个视频的弹幕-->(主外键关联)
+	video varchar(30) foreign key references video(video_ID),
+	
+	--是谁发的弹幕-->(主外键关联)
+	users varchar(30) foreign key references users(user_ID),
+		
+)
+	
+
+
+--视频评论表
+create table review
+(
+	review_ID char(32) primary key not null ,			--评论ID	
+	content varchar(500) not null ,					--发表内容
+	[time] date default getdate(),					--发表时间
+	praise int default 0 not null ,					--点赞量
+	
+	--是谁发的评论-->(主外键关联)
+	users varchar(30) foreign key references users(user_ID),
+)
+
+--视频回复表
+create table reply
+(
+	reply_ID char(32) primary key not null ,			--评论回复ID	
+	content varchar(500) not null ,					--发表内容
+	[time] date default getdate(),					--发表时间
+	praise int default 0 not null ,					--点赞量
+)
+	-->视频:评论 -> 1:N(一部视频可以发表多条评论)
+	-->评论:回复留言 --> 1:N  (一条评论可以有多条回复)
+	
+
+--留言表
+create table message
+(
+	message_ID char(32) primary key not null ,			--留言ID	
+	content varchar(500) not null ,					--发表内容
+	[time] date default getdate(),					--发表时间
+	
+	--是谁发的留言-->(主外键关联)
+	users varchar(30) foreign key references users(user_ID),
+	
+	
+)
+--回复留言表
+create table reply_message
+(
+	reply_message_ID char(32) primary key not null ,		--留言回复ID	
+	content varchar(500) not null ,					--发表内容
+	[time] date default getdate(),					--发表时间
+	
+	--是谁回复的留言-->(主外键关联)
+	users varchar(30) foreign key references users(user_ID),
+	
+)
+
+
+
+--私信表 
+create table letter
+(
+	letter_ID char(32) primary key not null ,			--私信ID	
+	content varchar(500) not null ,					--私信内容
+	[time] date default getdate(),					--发表时间
+	
+	--向谁发私信-->(主外键关联)
+	message varchar(30) foreign key references message(message_ID),
+)
+-->用户:私信 1:1
+	
+-->用户:视频 -> 1:N (查看用户观看记录)视频接口:[点赞量],[分享量],[关注量],[收藏量],[支持量],[弹幕量]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

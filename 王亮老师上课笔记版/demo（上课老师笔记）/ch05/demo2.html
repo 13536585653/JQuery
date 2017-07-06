@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../js/jquery-1.7.2.js"></script>
+    <script>
+        $(function(){
+            $("#hide").click(function(){
+                $("div").hide(2000,function(){
+                    alert("隐藏");
+                });
+            });
+            $("#show").click(function(){
+                $("div").show(2000,function(){
+                    alert("显示");
+                });
+            });
+        });
+    </script>
+</head>
+<body>
+<div style="border: 1px solid red; width: 120px; height: 120px;"></div>
+<input id="hide" type="button" value="hide"/>
+<input id="show" type="button" value="show"/>
+</body>
+</html>

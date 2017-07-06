@@ -1,0 +1,140 @@
+﻿<meta charset="UTF-8">
+	   <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css"/>
+     <link rel="stylesheet" type="text/css" href="css/common.css"/>
+    <link rel="stylesheet" type="text/css" href="css/main.css"/> 
+ 
+    <script src="js/libs/jquery-1.9.1.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script>
+   		
+    	$(function(){
+    		//添加
+    		$.get("dddd",function(result){
+    		//	alert(result);
+ 				addTable(result);
+ 				if(result=="成功"){
+ 					location.href("selecthelp1.html");
+ 				}
+    		});
+    		
+    		$("#mytable :button").click(function(){
+    		
+    		});
+    	});
+    	//删除
+    	 $(function(){
+ 			$("#dd").on("click",function(){
+ 					if($("#mytable :checkbox:checked").size()==0){
+ 						alert("请选择删除项");
+ 					}else{
+ 						//执行删除操作,序列化整个表单
+ 	    				var params=$("#myform").serialize();
+ 						//	alert(params);
+ 	    				//使用ajax提交到后台
+ 	    				 $.post("delHelp",params,function(result){ 
+ 	    					//alert(result);
+ 	    					//调用addTable方法重新渲染表格
+ 	    					addTable(result);
+ 	    				});    
+ 					}
+ 					});
+ 			}); 
+    	
+    
+    	
+    
+    	 function addTable(result){
+    		 var i=0;
+     		//防止字符数据追加到表格中，那么在循环遍历前优先，清楚表格的数据
+     		//清空个表格中的多有行，排除表头的行
+     		$("#mytable tr:not(:first)").empty();
+     		//result是一个集合，要先遍历
+     		$.each(result,function(index,obj){
+     			i++;
+     			//选中表格，在表格内部的末尾追加数据
+     			// var type=obj.typeName==undefined ? "": obj.typeName; 
+     			$("#mytable").append("<tr>"+
+							"<td><input type='checkbox' name='mmid' value='"+obj.h_id+"'/></td>"+
+							"<td>"+i+"</td>"+
+							"<td>"+obj.h_type+"</td>"+
+							"<td><input type='button' class='btn btn-primary' id='"+obj.h_id+"' value='编辑'/></td>"+
+						"</tr>"
+					);
+     		});
+     		
+     		//编辑
+        	$(function(){
+        		$("#mytable :button").on("click",function(){
+        			var id=$(this).attr("id");
+    				$.post("selectTypeByid",{"id":id},function(result){
+    				$("#ty").val(result.h_type);
+    				$("#id").val(result.h_id);
+    				});
+        			$("#addview").modal("show");
+    				$("#save").on("click",function(){
+    					var params=$("#qqq").serialize();
+    				//	alert(params);
+    					$.post("updateHelpWenti",params,function(result){
+    						alert(result);
+    						if(result=="修改成功"){
+    							location.reload();
+    						}
+    					})
+    				})
+        		})
+        	});
+    	 }
+     		
+    </script>
+ <div class="crumb-wrap">
+            <div class="crumb-list"><i class="icon-font"></i><a href="index.html">首页</a><span class="crumb-step">&gt;</span><span>帮助类型</span></div>
+        </div>           
+<div class="result-wrap">
+<form name="myform" id="myform" >
+                <div class="result-title">
+                    <div class="result-list">
+						<a href="addhelp.html" target="frame"><i class="icon-font"></i>添加类型</a>
+                        <a id="dd" href="#"><i class="icon-font"></i>批量删除</a> 
+                    </div>
+                </div>
+                <div class="result-content">
+                    <table class="result-tab" id="mytable" width="100%">
+                        <tr>
+                            <th class="tc" width="5%"></th>
+                            <th >编号</th>
+                            <th>帮助类型</th>
+			    			<th>操作</th>
+                        </tr>
+                    </table>
+                </div>
+            </form>
+      
+		<!--
+		<div id="mo" style="width:300px;height:300px;border:1px solid red;display:none">sgfdss</div>
+ -->
+</div>
+
+ <div class="modal fade" id="addview">
+		<!--模式对话框的主体，包括一些遮罩层样式-->
+		<div class="modal-dialog">
+			<!--  这个div将涵盖对话框的内容，内容分为头，内容主体，内容尾部-->
+			<div class="modal-content">
+				 <div class="modal-header">
+    				<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+					<h3 class="modal-title">问题类型修改</h3>
+				</div>
+					<form class="form-horizontal form-bordered form-row-strippe" id="qqq"  data-toggle="validator" enctype="multipart/form-data">
+					<div class="modal-body">
+					<input type="hidden" id="id" name="id"/>
+						问题类型：<input id="ty" type="text" name="type"> 
+					</div>
+					</form>
+				<div class="modal-footer">
+					<input type="button" class="btn btn-default" value="关闭" data-dismiss="modal"/>
+					<input type="button" id="save" class="btn btn-primary" value="保存" />
+				</div>
+			</div>
+		</div>
+	</div>
+
+

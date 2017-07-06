@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link href="/bootstrapTest/cs/bootstrap.css" rel="stylesheet"
+	type="text/css" />
+<script type="text/javascript"
+	src="/bootstrapTest/js/jquery-1.8.3.js"></script>
+<script type="text/javascript"
+	src="/bootstrapTest/js/bootstrap.js"></script>
+
+<!--这个标签的作用是修正大部分移动设备在网页上的显示-->
+<meta name="vievport" content="width=device-width,initial-scale=1.0">
+<style type="text/css">
+body {
+	background-color: #000;
+}
+/*是html5的特性 当页面窗口小于767px时窗口颜色会有默认页面的颜色变成设定的颜色*/
+/* @media(max-width:767px){
+	body{background-color: #f00;}
+} */
+/* 与上面相反*/
+/*是html5的特性 当页面窗口小于767px时窗口颜色会由#foo的颜色变成#000的颜色*/
+/* @media(min-width:767px){
+	body{background-color: #f00;}
+} */
+/*在这范围内会触发这事件*/
+ @media(min-width:767px) and (max-width:969px){
+	body{background-color: #f00;}
+}
+</style>
+<!-- [if lt IE 9]>
+	<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+<![endif]--> -->
+</head>
+<body>
+	
+</body>
+</html>

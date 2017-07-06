@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>login</title>
+    <link rel="stylesheet" href="../css/bootstrap.min.css">
+    <script src="../js/jquery-1.9.1.min.js"></script>
+    <script src="../js/bootstrap.min.js"></script>
+    <script>
+        $(function () {
+            $(":button").click(function () {
+                if(checkForm()){
+                    var params=$("#f1").serialize();
+                    $.post("../login",params,function (result) {
+                        if($.trim(result)=="success"){
+                            location.href="index.html";
+                        }else{
+                            //提示错误信息
+                            showMessage(result);
+                        }
+                    });
+                }
+            });
+        });
+      //先验证用户名和密码是否为空
+        function checkForm() {
+            if($("#name").val()=="" || $("#pwd").val()==""){
+                showMessage("请输入用户名或密码！");
+                return false;
+            }
+            return true;
+        }
+
+        //显示错误消息
+        function showMessage(message){
+            $("#msg").remove();
+            //在id为account的div之前加一个id为msg的div
+            $("#account").before("<div id='msg' class='form-group'><font color='red'>"+message+"</font></div>");
+
+
+
+        }
+    </script>
+</head>
+<body>
+	<div class="container" style="width: 25%;">
+        <form id="f1" class="form-horizontal">
+            <div class="form-group">
+                <h4 class="page-header">用户登录</h4>
+            </div>
+            <div><img src="../img/avatar.jpg" title="头像" class="img-circle" style="width: 120px;height: 120px;cursor: pointer;margin-left: 80px"></div>
+            <!--账号-->
+            <div class="form-group" id="account">
+                <label class="control-label">账&nbsp;&nbsp;&nbsp;号</label>
+                <input id="name" name="userName" type="text" class="form-control" placeholder="账号/手机号/邮箱">
+            </div>
+            <!--密码-->
+            <div class="form-group">
+                <label class="control-label">密&nbsp;&nbsp;&nbsp;码</label>
+                <input id="pwd" type="password" name="password" class="form-control">
+            </div>
+            <!--登录按钮-->
+            <div class="form-group">
+                <input type="button" class="btn btn-primary btn-lg btn-block" value="登录">
+            </div>
+        </form>
+    </div>
+</body>
+</html>

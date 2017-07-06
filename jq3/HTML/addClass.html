@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .myClass{
+            border: 1px solid red;
+            width:200px;
+            height: 200px;
+        }
+    </style>
+    <script src="../../JS/jquery-1.7.2.js"></script>
+    <script>
+        $(function () {
+            //给选中的元素添加一个样式表
+            $("div").addClass("myClass");
+            alert($("body").html());
+        });
+    </script>
+</head>
+<body>
+    <div>hello</div>
+</body>
+</html>

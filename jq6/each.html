@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="../JS/jquery-1.7.2.js"></script>
+    <script>
+        $(function () {
+            //创建数组
+            var arr=["1","2","3","5"];
+            //创建一个对象
+            var object={name:"yw",age:22,sex:"男"};
+            //遍历数组 方法括号里的值可自己定义
+            /*$.each(arr,function (yuan,wang) {
+                alert(yuan+" : "+wang);
+            });*/
+            $.each(arr,function (index,value) {
+                alert(index+" : "+value);
+            });
+            //遍历对象
+            $.each(object,function (key,value) {
+                alert(key+" : "+value);
+            })
+        })
+    </script>
+</head>
+<body>
+
+</body>
+</html>

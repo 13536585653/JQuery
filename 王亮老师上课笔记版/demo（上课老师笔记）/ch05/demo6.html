@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../js/jquery-1.7.2.js"></script>
+    <script>
+        $(function(){
+            $("#in").click(function(){
+                $("div").fadeIn("slow",function(){
+                    alert("in");
+                });
+            });
+            $("#out").click(function(){
+                $("div").fadeOut("slow",function(){
+                    alert("out");
+                });
+            });
+            $("#to").click(function(){
+                $("div").fadeTo("slow",0.2,function(){
+                    alert("stop");
+                });
+            });
+        });
+    </script>
+</head>
+<body>
+<div style="border: 1px solid red; width: 120px; height: 120px;"></div>
+<input id="out" type="button" value="out"/>
+<input id="in" type="button" value="in"/>
+<input id="to" type="button" value="to"/>
+</body>
+</html>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="js/jquery-1.7.2.js"></script>
+<script type="text/javascript">
+  $(function(){
+	  //给按钮绑定一个单击事件，用于提交表单
+	 $(":button").click(function(){
+		 //序列化整个表单
+		 var params = $("#f1").serialize();
+		 //发送ajax请求提交
+		 $.post("submit",params,function(result){
+			 alert(result);
+		 });
+	 }); 
+  });
+</script>
+</head>
+<body>
+  <form id="f1">
+  	 UserName:<input type="text" name="userName"/><br/>
+  	 Age:<input type="text" name="age"/><br/>
+  	 Sex:<input type="text" name="sex"/><br/>
+  	 <input type="button" value="submit"/>
+  </form>
+</body>
+</html>

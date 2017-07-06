@@ -1,0 +1,26 @@
+﻿<meta charset="UTF-8">
+	<link rel="stylesheet" type="text/css" href="css/common.css"/>
+    <link rel="stylesheet" type="text/css" href="css/main.css"/>
+    <script src="js/libs/jquery-1.7.2.js"></script>
+<script>
+	$(function(){
+		$(":submit").click(function(){
+			var reg=/^(?:[\u4e00-\u9fa5|a-zA-Z])+?$/;
+			if($("#type").val() =="" || !reg.test($("#type").val())){
+					alert("类型不能为空,只能是中文或者英文");
+					return false;
+				}
+			});
+		});
+</script>
+<div class="crumb-wrap">
+            <div class="crumb-list"><i class="icon-font"></i><a href="index.html">首页</a><span class="crumb-step">&gt;</span><span class="crumb-name">修改帮助类型</span></div>
+        </div>
+<div class="result-wrap"><br/>
+<form method="post">
+<p>帮助类型:<input type="text" name="" id="type"/></p><br/>
+<input type="submit" value="修改" style="width:100px;background-color:#ccc;border:1px;"/>
+<input type="button" value="返回" onclick="history.go(-1);" />
+</form>
+
+</div>

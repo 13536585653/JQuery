@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>buy</title>
+    <script src="js/jquery-1.9.1.min.js"></script>
+    <link rel="stylesheet" href="css/sinaFaceAndEffec.css">
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="css/buy.css">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/jquery.spinner.css">
+    <script src="js/sinaFaceAndEffec.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/jquery.spinner.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/index.js"></script>
+</head>
+<body>
+<div class="container-fluid" id="login" style="">
+    <p class="row">
+    <div class="pull-right right"  >
+        <a href="#" >登录</a>
+        &nbsp;&nbsp;
+        <a href="#" >注册</a>
+    </div>
+    <div class="pull-right right">
+        <a href="#">我的订单</a>&nbsp;&nbsp;&nbsp;
+        <a href="#">我的购物车</a>&nbsp;&nbsp;&nbsp;
+        <a href="#">常见的问题</a>
+    </div>
+    <div class="col-lg-3" id="colx">
+        <div class="input-group">
+            <input type="text" class="form-control" placeholder="输入搜索的商品">
+                     <span class="input-group-btn">
+                    <button  class="btn btn-default" type="button" style="color: #aaaaaa">搜索</button>
+                    </span>
+        </div><!-- /input-group -->
+    </div>
+    <div class="pull-right right">欢迎,******</div>
+    </p>
+</div>
+<div class="container-fluid" id="fluid" >
+    <div class="pull-left">
+        <img src="img/Logo1.png" >
+    </div>
+    <div class="" >
+        <a href="#">首页</a>
+    </div>
+</div>
+<div class="container-fluid" >
+<div class="w-bread-crumb" mon="area=breadCrumbs">
+    <ul class="crumb-list clearfix list-unstyled">
+        <li class="crumb ">
+            <a href="#" mon="element=&amp;position=1&amp;element_type=breadCrumbs">
+                肉类
+            </a>
+            <span class="ico-gt">&gt;</span>
+        </li>
+        <li class="crumb ">
+            <a href="#" mon="element=&amp;position=2&amp;element_type=breadCrumbs">
+                兔子头
+            </a>
+            <span class="ico-gt">&gt;</span>
+        </li>
+        <li class="crumb " id="color">
+                金相园韩国烤兔子头
+        </li>
+    </ul>
+</div>
+</div>
+<div class="w-item-info clearfix">
+    <h2>金相园兔子头(井岸店)</h2>
+    <div class="item-title">
+        <span class="text-main">仅售66元，价值94元井岸店双人餐！品质层层把关，营养健康，口感醇厚，味道鲜美，每道菜都精心制作，令你回味无穷，唇齿留香！</span>
+        <span class="hot hide">优惠内容</span>
+    </div>
+    <div class="ii-intro" >
+        <div class=" price-area" >
+            <div class="pic-price-area">
+                <span class="unit">¥</span><span class="unit">90</span>
+            </div>
+            <div class="market-price-area"><div class="price">¥100</div><div class="name">价值</div></div>
+        </div>
+        <div class="item-countdown-row"><span class="">菜品新出日期:   </span><span class="">2016-12-31</span></div>
+        <div class="container2">
+            <span>数量</span>:<input type="text" class="spinner"/>
+        </div>
+        <div class="container3">
+            <input type="button" class="btn btn-default" id="btn-color" value="立即抢购">
+        </div>
+    </div>
+    <div class="w-item-images">
+        <div class="images-board">
+            <img src="img/Log(4).jpg" class="img">
+        </div>
+    </div>
+    <div class="w-bread-crumb images-list" style="margin-left: 0px ;">
+
+        <img src="img/Log(4).jpg" width="150" data-img="img/Log(4).jnp">
+    </div>
+</div>
+<div class="container-fluid">
+    <!-- 最后的内容-->
+    <div class="container-fluid" id="zui">
+        <ul id="myTab" class="nav nav-tabs" role="tablist">
+            <li class="active"><a href="#bulletin" role="tab" data-toggle="tab">商品信息</a></li>
+            <li><a href="#rule" role="tab" data-toggle="tab">评价</a></li>
+        </ul>
+        <!-- 选项卡面板 -->
+        <div id="myTabContent" class="tab-content">
+            <div class="tab-pane active" id="bulletin">商品信息的内容</div>
+            <div class="tab-pane" id="rule">
+                <div id="content" style="width: 100%; height: auto;margin-top:40px;">
+                    <div class="content">
+                        <div class="cont-box">
+                            <textarea class="text" placeholder="请输入..."></textarea>
+                        </div>
+                        <div class="tools-box">
+                            <div class="operator-box-btn"><span class="img-icon">▧</span></div>
+                            <div class="submit-btn"><input type="button" onClick="out()"value="提交评论" /></div>
+                        </div>
+                    </div>
+                    <div id="info-show" >
+                        <ul></ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--最后内容 右边精选菜提示-->
+    <div class="container-fluid" id="hou" >
+        <div class="w-goods-item-b" >
+            <a href="#" >
+                <img class="goods-img" src="img/1.jpg" alt="">
+                <div class="goods-info">
+                    <p class="goods-title">金厨100元代金券</p>
+                    <p class="goods-price">
+                <span class="goods-price-groupon">
+                ¥85
+                </span>
+                <span class="goods-price-origin">
+                ¥100
+                </span>
+                    </p>
+                </div>
+            </a>
+        </div>
+
+    </div>
+</div>
+<div class="row" style="border: solid 1px #dfdfdf;width: 101.5%;margin-top: 10%;background-color: #fafafa">
+    <div class="footer2" >
+        <div class="footer-size">
+            <h4 class="footer-h4">用户帮助</h4>
+            <ul class="list-unstyled">
+                <li><a href="#">常见问题</a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="footer2"  >
+        <div class="footer-size">
+            <h4 class="footer-h4">我的</h4>
+            <ul class="list-unstyled">
+                <li><a href="#">互动评论</a></li>
+                <li><a href="#">会员积分</a></li>
+                <li><a href="#">我的信息</a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="footer2" >
+        <div class="footer-size">
+            <h4 class="footer-h4">游戏</h4>
+            <ul class="list-unstyled">
+                <li><a href="#">打地鼠</a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="footer2" >
+        <div class="footer-size">
+            <h4 class="footer-h4">客服电话:4006-888-887</h4>
+            <ul class="list-unstyled">
+                <li><a href="#">周一到周五&nbsp;9:00-22:00</a></li>
+                <li><a href="#">客服电话&nbsp;免费长途</a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+</div>
+<div class="site-info">
+    <span class="copyright">©</span>2016&nbsp;nuomi.com            &nbsp;<a href="#" class="link" target="_blank">京ICP证030173号</a>
+    &nbsp;京公网安备11010802014106号
+    &nbsp;<a href="#">营业执照信息</a>
+    <div style="width:300px;margin:0 auto; padding:20px 0;">
+        <a target="_blank" href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=11000002000001" style="display:inline-block;text-decoration:none;height:20px;line-height:20px;"><img src="//gss0.bdstatic.com/8r1VfDn9KggZnd_b8IqT0jB-xx1xbK/static/common/widget/footer/imgs/police_logo_2aa5dfa.png" style="float:left;">
+            <p style="float:left;height:20px;line-height:20px;margin: 0px 0px 0px 5px; color:#939393;">京公网安备 11000002000001号</p></a>
+    </div>
+</div>
+<div id="leftsead">
+    <ul class="list-unstyled">
+        <li><a><img src="img/ll01.png" width="131" height="49" class="hides"/><img src="img/l01.png" width="47" height="49" class="shows"/></a></li>
+        <li><a id="top_btn"><img src="img/ll06.png" width="131" height="49" class="hides"/><img src="img/l06.png" width="47" height="49" class="shows" /></a></li>
+    </ul>
+</div>
+<script>
+    $('.spinner').spinner();
+    // 测试本地解析
+    function out() {
+        var inputText = $('.text').val();
+        $('#info-show ul').append(reply(AnalyticEmotion(inputText)));
+    }
+
+    var html;
+    function reply(content){
+        html  = '<li>';
+        html += '<div class="head-face">';
+        html += '<img src="img/1.jpg" / >';
+        html += '</div>';
+        html += '<div class="reply-cont">';
+        html += '<p class="username">小小红色飞机</p>';
+        html += '<p class="comment-body">'+content+'</p>';
+        html += '<p class="comment-footer">2016年10月5日　回复　点赞54　转发12</p>';
+        html += '</div>';
+        html += '</li>';
+        return html;
+    }
+    </script>
+</body>
+</html>

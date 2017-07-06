@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>List</title>
+<script src="js/jquery-1.7.2.js"></script>
+<script src="js/ReqUtil.js"></script>
+<script type="text/javascript">
+	$(function(){				
+		var req = createRequest();
+		req.open("get","findlist");
+		req.send();
+		req.onreadystatechange = function(){
+        	if (req.readyState == 4 && req.status == 200){
+        			//通过异步请求对象的responseText属性中获取响应内容    	
+        			var result = req.responseText;
+        			//将json字符串转换成json对象
+        			var jsonObj = $.parseJSON(result);
+        			alert(jsonObj);
+        			//由于相应回来的是一个json字符串，那么无法直接解析里面的属性
+        			//所以我们需要将字符串转换成json对象
+        			//var jsonObj = $.parseJSON(result);
+   	 				$.each(jsonObj,function(key, obj){
+   	 					$("table").append("<tr><td>"+obj.id+"</td><td>"+obj.userName+"</td><td>"+obj.age+"</td><td>"+obj.addr+"</td></tr>");
+   	 				});     			
+        	}
+        }
+	});
+</script>
+</head>
+<body>
+  <table border="1px">
+  	<tr>
+  		<th>ID</th>
+  		<th>name</th>
+  		<th>age</th>
+  		<th>address</th>
+  	</tr> 	
+  </table>
+</body>
+</html>

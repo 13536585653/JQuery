@@ -1,0 +1,18 @@
+package org.demo.dao;
+
+public class Test{
+	 static int i=1;
+ 	public static void main(String args[ ])
+ 	{
+    		int n;
+    		n=TEST(i);
+	    	   n=TEST(i);
+    		System.out.print(n);
+ 	}
+ 
+	    static int TEST(int i)
+	    {
+ 		   return i;
+	     }
+
+}

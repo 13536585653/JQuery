@@ -1,0 +1,23 @@
+package org.demo.dao;
+
+import java.util.Scanner;
+
+public class Test{
+	static int i;
+	public static void main(String[]  args)
+	{	 
+	int[] numbers = {1,2,3,5,8,13};
+    int i=0;
+    do{
+        if(numbers[i]%2!=0){
+            i++;
+            continue;
+        }else{
+	            System.out.print(numbers[i]);
+            	i++;
+        }
+    }while(i<numbers.length); 
+
+	}
+
+	}

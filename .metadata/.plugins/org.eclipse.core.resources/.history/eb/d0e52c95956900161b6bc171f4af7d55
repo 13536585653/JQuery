@@ -1,0 +1,60 @@
+package org.demo.dao;
+import  java . util . *; 
+public  class  Test
+{
+	  public static void main(String[]  args)
+	  {
+		      int  count = 0;
+		      String words = "";
+		      Scanner  sc  = new Scanner(System.in);                  	//第3行
+		      System . out . print("请输入你要喊的口号:"); 
+		      words = sc.next();							//第4行
+		      System . out . print("请输入你要喊的口号的次数:"); 
+      		count = sc.nextInt();							//第5行
+		      Olympic  oly = new  Olympic();					//第6行
+		      oly.shouting(count, words);                         		//第7行
+  	}
+}
+
+class  Olympic
+{
+  public  void  shouting( int  times, String  catchword)
+	  {
+		     for(int  i=0 ; i < times ;i++ )                            //第1行
+		     {                             
+			        System . out . println (catchword);                   //第2行
+     		}
+     		System . out . print("拍掌 5 分钟");
+	  }
+}
+
+public class Test {
+	
+	{
+		  public static void main(String[]  args)
+		  {
+			      int  count = 0;
+			      String words = "";
+			      Scanner  sc  = new Scanner(System.in);                  	//第3行
+			      System . out . print("请输入你要喊的口号:"); 
+			      words = sc.next();							//第4行
+			      System . out . print("请输入你要喊的口号的次数:"); 
+	      		count = sc.next();							//第5行
+			      Olympic  oly = new  Olympic();					//第6行
+			      oly.shouting(words,count);                         		//第7行
+	  	}
+	}
+
+	class  Olympic
+	{
+	  public  void  shouting( int  times, String  catchword)
+		  {
+			     for(int  i=0 ; i < times ;i++ )                            //第1行
+			     {                             
+				        System . out . println (catchword);                   //第2行
+	     		}
+	     		System . out . print("拍掌 5 分钟");
+		  }
+	}
+
+}

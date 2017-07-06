@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<link href="cs/bootstrap.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="js/bootstrap.js"></script>
+<script type="text/javascript" src="js/jquery-1.7.2.min.js"></script>
+<script type="text/javascript" src="js/bootstrap-dropdown.js"></script>
+<title>导航</title>
+</head>
+<body>
+		<div class="container">
+			<h1 class="page-header">导航</h1>
+			<!--样式：.navbar-fixed-top 是将导航永远显示在最顶端
+					.navbar-fixed-bottom 在下端
+					.navbar-inner 会为导航栏添加背景和应有的效果
+					.active  当前激活的状态（将菜单按钮激活）
+					.divider-vertical 显示一个分割线
+					.pull-right  靠右显示
+					pull-left 靠左显示
+			 -->
+			<div class="navbar">
+				<div class="navbar-inner">
+					<div class="container">
+							<!-- 我们可以在导航菜单添加一个标志，标志可以是图片可以是文字、
+							     为a标签添加一个 brand样式，这个样式可以为标志文字添加合适的样式，比如说文字大小，颜色等-->
+						  <a class="brand" href="#">Bootstrap</a>
+						  <ul class="nav">
+						  	   <li class="active"><a href="#">首页</a></li>
+						  	   <li><a href="#">菜单1</a></li>
+						  	   <li><a href="#">菜单2</a></li>
+						  </ul>
+						  <!-- 在导航中间添加一个搜索框使用<form>标签定义一个表单，样式navbar-search调整表单在导航里的布局，样式search-query可以为导航栏里的文本框添加合适的样式 -->
+						  <form class="navbar-search">
+						  		<input type="text" class="search-query">
+						  </form>
+						  <ul class="nav pull-right">
+						  	   <li><a href="#">登陆</a></li>
+						  	   <li class="divider-vertical"></li>
+						  	   <li><a href="#">注册</a></li>
+						  </ul>
+					</div>
+				</div>
+			</div>
+		</div>
+</body>
+</html>

@@ -1,0 +1,17 @@
+package org.demo.dao;
+
+public class Test{
+	  static int I;
+	    public int aMethod()
+	    {
+	       	++I;
+		       return I;
+	    }
+	    public static void main(String args[])
+	    {
+	       	Test test = new Test();
+	       test.aMethod();
+	       System.out.println(test.aMethod());
+	    }
+
+}

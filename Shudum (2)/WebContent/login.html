@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript" src="js/jquery.js"></script>
+		<script type="text/javascript" src="jquery-ui-1.12.0/jquery-ui.min.js"></script>
+		<link rel="stylesheet" type="text/css" href="jquery-ui-1.12.0/jquery-ui.min.css" />
+		<style type="text/css">
+			*{
+				margin: 0;
+				padding: 0;
+			}
+			body {
+				background-image: url(img/4.jpg);
+			}
+			h1{
+				margin-top: 100px;
+			}
+			#expire {
+				padding: 40px;
+				width: 400px;
+				height: 200px;
+				margin-left: auto;
+				margin-right: auto;
+				margin-top: 100px;
+				background-color: beige;
+				-moz-border-radius: 15px; 
+	            -webkit-border-radius: 15px; 
+	           	box-shadow: 0 3px 3px rgba(0, 0, 0, 2);
+				box-shadow: 0 0 5px black;
+			}
+			
+			input {
+				line-height: 38px;
+				input {vertical-align:middle;}
+			}
+			#two{
+				margin-right: 23px;
+			}
+			#date{
+				margin-right:22px ;
+			}
+			input[type='submit'] {
+				height: 40px;
+				padding: 0 30px;
+				font-size: 18px;
+				margin: -webkit-calc(5px);
+			}
+			
+			input[type='text'],
+			[type='password'] {
+				width: 200px;
+				height: 30px;
+				margin: -webkit-calc(5px);
+				position: relative;
+				z-index: 10;
+				color: #666;
+				font-size: 12px;
+			}
+			input[type="date"]{
+				width: 250px;
+				height: 30px;
+				margin: -webkit-calc(5px);
+				position: relative;
+				z-index: 10;
+				color: #666;
+				font-size: 12px;
+			}
+			input[type='checkbox'] {
+				width: 13px;
+				height: 13px;
+				margin: 0 5px 0 2px;
+				cursor: pointer;
+				vertical-align: middle;
+				padding: 2px;
+				margin: -webkit-calc(5px);
+			}
+			
+			#tabs {
+				padding: 40px;
+				width: 600px;
+				height: 450px;
+				margin-left: auto;
+				margin-right: auto;
+				background-color: beige;
+				box-shadow: 0 3px 3px rgba(0, 0, 0, 0.5);
+			}
+			a:link{
+				font-size: 5px;
+			}
+			
+		</style>
+	</head>
+	<body>
+		<h1 align="center">数独游戏</h1>
+		<div id="expire">
+			<h3 style="margin-left: 80px">登录</h3>
+			<form action="/Shudum/LoginServlet" method="post" name="frm">
+				邮箱:<input type="text" name="mail" id="email" class="required" placeholder="请输入邮箱" />
+				<br>密码:<input type="password" name="password" id="upwd" class="required" placeholder="输入6~13位密码" />
+				<br><input type="submit" name="login" id="login" value="登录" /><a href="Register.jsp"style=" text-decoration none;">没有账号，立即祖册</a>
+			</form>
+		</div>
+	</body>
+	<script>
+		$(function(){
+			$("#mail").blur(function(){
+				if($(this).is("#mail")){
+					if(this.value==""||this.value.length<3 && this.value.length<12){
+						var errmsg = "<span style='color:red'></span>";
+					}else{
+						var msg = "<span style='color:blue'></span>";
+					}
+				}
+			});
+		});
+	</script>
+</html>

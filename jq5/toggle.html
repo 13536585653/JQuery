@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../JS/jquery-1.7.2.js"></script>
+    <script>
+        $(function () {
+            //可以使用toggle来进行时间切换效果，toggle默认行为是hide和show
+            $("input").on("click",function () {
+                $("div").toggle(2000,function () {
+                    alert("this is toggle!");
+                });
+            });
+        });
+    </script>
+</head>
+<body>
+<div style="border: 1px solid red; width: 120px; height: 120px;"></div>
+<input type="button" value="click"/>
+</body>
+</html>

@@ -1,0 +1,185 @@
+
+/*头部css Start*/
+a{
+	text-decoration: none;
+	color:white
+}
+div{display: block;
+}
+.sd_header{
+	height: 42px;
+    background: #fff;
+    box-shadow: rgba(0,0,0,0.1) 0 1px 2px;
+    top: 0;
+    left: 0;
+    width: 100%;
+    position:fixed;
+    z-index: 10000;
+    background-color: rgba(0,0,0,0.4);
+}
+
+.z_sd_header{
+	display: block;
+    margin: 0 auto;
+    position: relative;
+    text-align: left;
+    z-index: 10000;
+    width: 980px;
+    zoom: 1;
+}
+
+.sd_header_first{
+	float: left;
+    height: 42px;
+    font-size: 12px;
+}
+
+ul{
+	margin: 0;
+	padding: 0;
+	list-style-type: none;
+	zoom: 1;
+}
+
+ul>li:hover{
+	background-color: #B2B2B2; 
+}
+
+.sd_header_first ul li {
+    float: left;
+    text-align: center;
+    line-height: 42px;
+    position: relative;
+}
+
+.sd_header_first ul li.home{
+    margin-left: -10px;
+    background-image: url(/Shudum/img/main.png);
+    background-repeat: no-repeat;
+    background-position-y: center;   
+}
+
+/*主站 Start*/
+.sd_header_first ul li.home .all_position{
+	width: 50px;
+    height: 42px;
+    padding: 0 0 0 20px;
+    height: 100%;
+    padding: 15px;
+}
+.sd_header_first ul li.home .all_position span {
+    margin: 0;
+    padding: 0;
+    font-size: 12px;
+    margin-left: 8px;
+}
+/*主站 End*/
+
+/*游戏中心 Start*/
+.sd_header_first ul li.game{
+	position: relative;
+	width:80px;
+}
+.sd_header_first ul li.game .game_all{
+	z-index: 9870;
+    width: 680px;
+    height: 260px;
+    font-size: 14px;
+    position: absolute;
+    top: 42px;
+    left: 0;
+    border-radius: 0 0 4px 4px;
+    text-align: left;
+    background-color: transparent;    
+}
+/*游戏中心 End*/
+
+/*聊天室 Start*/
+.sd_header_first ul li.chat{
+	position: relative;
+	width:60px;
+}
+/*聊天室 End*/
+
+/*头部右边 Start*/
+.sd_header_second ul li {
+    float: left;
+    text-align: center;
+    line-height: 42px;
+    position: relative;
+}
+.sd_header_second{
+	font-size: 12px;
+    float: right;
+}
+.login{
+	position: relative;
+	width:60px;
+}
+.tc{
+	position: relative;
+	width:60px;
+	display:none;
+}
+.zh{
+	position: relative;
+	width:60px;
+}
+.nc{
+	cursor:hand;
+}
+
+
+/*头部右边 End*/
+				 	
+/*背景图片 Start*/
+.bgImg{
+	background: transparent no-repeat center -10px;
+    position: relative;
+    margin: -42px auto 0;
+	height:180px;
+}
+/*背景图片 End*/
+
+/*头部css End*/
+
+/*直播 Start*/
+.radio{
+	float:right;
+	width:180px;
+	height:100%;
+	margin-top:60px;
+	margin-right:180px;
+	
+}
+
+.blue {
+	color: #d9eef7;
+	border: solid 1px #0076a3;
+	background: -webkit-gradient(linear, left top, left bottom, from(#00adee), to(#0078a5));
+}
+.blue:hover {
+	background: #0078a5;
+}
+.button {
+	width:120px;
+	height:50px;
+	display: inline-block;
+	zoom: 1;
+	vertical-align: baseline;
+
+	outline: none;
+	cursor: pointer;
+	text-align: center;
+	text-decoration: none;
+	padding: .5em 2em .55em;
+	text-shadow: 0 1px 1px rgba(0, 0, 0, .3);
+	border-radius: .5em;
+	box-shadow: 0 1px 2px rgba(0, 0, 0, .2);
+	font-size:30px;
+}
+
+.rom{
+	margin-top:200px;
+}
+/*直播 End*/

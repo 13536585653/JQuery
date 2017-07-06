@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../JS/jquery-1.7.2.js"></script>
+    <script>
+        $(function () {
+            $("#bto").on("click",function () {
+                //以 10 像素的幅度增加 p 元素的宽度
+                $("p").height(function (index,c) {
+                    return c+10;
+                });
+            });
+        });
+    </script>
+</head>
+<body>
+<p>hello World!</p>
+<p>hi</p>
+<p>mei</p>
+<p><input type="button" id="bto" value="按钮"></p>
+</body>
+</html>

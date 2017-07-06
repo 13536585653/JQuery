@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../js/jquery-1.7.2.js"></script>
+    <script>
+        $(function(){
+            //将选中的元素移到指定元素内部的末尾
+            //$("p").appendTo("#d1");
+            //将选中的元素移到指定元素内部之前
+            $("p").prependTo("#d1");
+            alert($("body").html());
+        });
+    </script>
+</head>
+<body>
+<p>I would like to say: </p>
+<div id="d1">
+    <div>hello jquery</div>
+</div>
+</body>
+</html>

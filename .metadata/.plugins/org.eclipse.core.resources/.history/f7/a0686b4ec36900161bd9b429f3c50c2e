@@ -1,0 +1,29 @@
+package org.demo.dao;
+
+public class Test{
+	 static int i=1;
+	 public  Test(){
+	 }
+	 public void eat(int i){
+		 System.out.println("3");
+	 }
+	 public void Test(String i){
+		 System.out.println(2);
+		 eat(2);
+	 }
+	 public void run(boolean t){
+		 Test("3");
+	 }
+ 	public static void main(String args[ ])
+ 	{
+    		int n;
+    		n=TEST(i);
+    		System.out.print(n);
+ 	}
+ 
+	    static int TEST(int i)
+	    {
+ 		   return ++i;
+	     }
+
+}

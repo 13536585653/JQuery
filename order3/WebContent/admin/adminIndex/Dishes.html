@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" type="text/css" href="css/common.css" />
+<link rel="stylesheet" type="text/css" href="css/main.css" />
+<link rel="stylesheet" href="css/bootstrap.min.css">
+<link rel="stylesheet" href="css/pagination.css">
+<script src="js/libs/jquery-1.9.1.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/myjs.js"></script>
+<script type="text/javascript" src="js/myyz.js"></script>
+<script src="js/libs/jquery.pagination.js"></script>
+<script type="text/javascript">
+
+function findPageList(pageNum){
+	$.get("selectdishes",{"pageNum":++pageNum},function(result){
+		addTable(result);
+	});
+}
+
+//页面加载的时候查询所有类型
+$(function() {
+	table("selectdishes");
+	//添加类型
+	$("#addcai").on("click", function() {
+		/* 清楚输入框的值 */
+		$("#c1").val("");
+		/*移除错误消息 */
+		$(".mydiv").remove();
+		$("#aaa").modal("show");
+	});
+	
+	$("#save").on("click",function(){
+		var d=yzinput();
+		if(d!=false){
+		var date = $("#addDishes").serialize();
+		$.post("addDishes", date, function(result) {	
+			if($.trim(result) == 0){
+				var msg="添加失败"
+				showMessage(msg);
+			}
+			else{
+				$("#aaa").modal("hide");
+				table("selectdishes");
+				
+			}
+		});
+		}
+	});
+	deleteurl("deleteDises","selectdishes")
+	
+});
+
+//追加的方法
+function addTable(result){
+	var i=0;
+	$(".result-tab tr:not(:first)").empty();
+	
+	$.each(result.list,function(index, obj) {
+		i++;
+						$(".result-tab").append(
+										"<tr><td><input type='checkbox'  name='d_id' value='"+obj.d_id+"'></td>"
+												+ "<td>"
+												+ i
+												+ "</td>"
+												+ "<td>"
+												+ obj.d_type
+												+ "</td>"
+												+ "<td><a href='javascript:void(0)' class='mydeltet' name='"
+												+ obj.d_id
+												+ "'>删除</a>	</td>" + "</tr>");
+
+					});
+	
+	
+	
+	//删除
+	deleteurl2("deleteDises", "selectdishes")
+
+}
+
+//显示错误消息
+function showMessage(result){
+    //将错误消息放在账号前面,选择器的before方法可以在当前选中的元素之前放置一些内容
+    //添加之前，先将之前的移除掉
+    $("#msg").remove();
+    $(".form-group").before("<div id='msg' class='form-group mydiv'><font color='red'>"+result+"</font></div>");
+}
+</script>
+</head>
+<div class="crumb-wrap">
+	<div class="crumb-list">
+		<i class="icon-font"></i><a href="index.html">首页</a><span
+			class="crumb-step">&gt;</span><span class="crumb-name">菜谱管理</span>
+	</div>
+</div>
+<div class="result-wrap">
+	<form name="myform" id="myform" method="post">
+		<div class="result-title">
+			<div class="result-list">
+				<a id="addcai" href="javascript:void(0)"><i class="icon-font"></i>添加菜谱</a>
+				<a id="batchDel" href="javascript:void(0)"><i class="icon-font"></i>批量删除</a>
+			</div>
+		</div>
+		<div class="result-content">
+			<table class="result-tab" width="100%">
+				<tr>
+					<th class="tc" width="5%"></th>
+					<th>编号</th>
+					<th>菜谱类型</th>
+					<th>操作</th>
+				</tr>
+			</table>
+			<!-- 分页控件 -->
+		<div id="page" align="center"></div>
+		</div>
+	</form>
+</div>
+
+
+<!-- 弹框修改信息 ，编辑菜谱-->
+<div id="aaa" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header bg-primary">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+                <h4 class="modal-title">
+                    <i class="icon-pencil"></i>
+                    <span id="lblAddTitle" style="font-weight:bold">添加菜谱类型</span>
+                </h4>
+            </div>
+            <form class="form-horizontal form-bordered form-row-strippe" id="addDishes"  data-toggle="validator" enctype="multipart/form-data">
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label class="control-label col-md-2">类型</label>
+                                <div class="col-md-10">
+                                    <input id="c1" name="type" type="text" class="form-control" placeholder="类型..." />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer bg-info">
+                    <button type="button" class="btn blue" id="save">确定</button>
+                    <button type="button" class="btn green" data-dismiss="modal">取消</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+</html>

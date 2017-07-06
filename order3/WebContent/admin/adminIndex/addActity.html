@@ -1,0 +1,73 @@
+﻿<meta charset="UTF-8">
+     <link rel="stylesheet" type="text/css" href="css/common.css"/>
+    <link rel="stylesheet" type="text/css" href="css/main.css"/>
+         <script src="js/libs/jquery-1.7.2.js"></script>
+<script>
+	$(function(){
+		$(":submit").click(function(){
+			var reg = /^(?:[\u4e00-\u9fa5|a-zA-Z])+?$/;
+			var img = /^\S+\.(?:png|jpg|bmp|gif)$/;
+			if($("#title").val() =="" || !reg.test($("#title").val())){
+				alert("标题不能为空、只能是中文和英文");
+				return false;
+				}
+			if($("#img").val()!=""){
+				if(!img.test($("#img").val())){
+						alert("图片格式为:.png/.jph/.bmp/.gif");
+						return false;
+					}
+				}
+			if($("#content").val()==""){
+				alert("活动内容不能为空");
+				return false;
+				}
+			});
+		});
+</script>        
+ <div class="crumb-wrap">
+            <div class="crumb-list"><i class="icon-font"></i><a href="index.html">首页</a><span class="crumb-step">&gt;</span><a class="crumb-name" href="/jscss/admin/design/">活动公告</a><span class="crumb-step">&gt;</span><span>发布/管理</span></div>
+        </div> 
+<div class="result-content">
+                <form action="" method="post" name="" enctype="multipart/form-data">
+                    <table class="insert-tab" width="100%">
+                        <tbody>
+                            <tr>
+                                <th><i class="require-red">*</i>标题：</th>
+                                <td>
+                                    <input class="common-text required" id="title" name="title" size="50" value="" type="text">
+                                </td>
+                            </tr>
+                            <tr>
+                                <th><i class="require-red">*</i>图片：</th>
+                                <td><input id="img" name="smallimg" id="" type="file"><!--<input type="submit" onclick="submitForm('/jscss/admin/design/upload')" value="上传图片"/>--></td>
+                            </tr>
+			 <tr>
+				<th><i class="require-red">*</i>折扣：</th>
+				<td> <select name="">
+                                    <option value="">请选择</option>
+                                    <option value="0.9">九折</option>
+				   					<option value="0.8">八折</option>
+				     				<option value="0.7">六折</option>
+				     				<option value="0.6">五折</option>
+				     				<option value="0.5">四折</option>
+				     				<option value="0.4">三折</option>
+				     				<option value="0.3">二折</option>
+				     				<option value="0.2">一折</option>
+                                </select>
+				</td>
+                         
+			</tr>
+                            <tr>
+                                <th>活动介绍：</th>
+                                <td><textarea name="content" class="common-textarea" id="content" cols="30" style="width: 98%;" rows="10"></textarea></td>
+                            </tr>
+                            <tr>
+                                <th></th>
+                                <td>
+                                    <input class="btn btn-primary btn6 mr10" value="发布" type="submit">
+                                    <input class="btn btn6" onclick="history.go(-1)" value="返回" type="button">
+                                </td>
+                            </tr>
+                        </tbody></table>
+                </form>
+            </div>

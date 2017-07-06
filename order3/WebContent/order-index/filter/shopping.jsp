@@ -1,0 +1,154 @@
+<%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Shopping</title>
+<link rel="stylesheet" href="../css/shopping.css"/>
+<link rel="stylesheet" href="../css/bootstrap.min.css">
+ <link rel="stylesheet" href="../css/index.css">
+<script type="text/javascript" src="../js/jquery-1.9.1.min.js"></script>
+<script type="text/javascript" src="../js/shopping.js"></script>
+<script type="text/javascript" src="../js/index.js"></script>
+
+</head>
+<div class="container-fluid" id="login" style="position: relative;margin-top: 0px;" >
+  <p class="row">
+  <div class="pull-right right"  >
+    <a href="#" >登录</a>
+    &nbsp;&nbsp;
+    <a href="#" >注册</a>
+  </div>
+  <div class="pull-right right">
+    <a href="myform.jsp">我的订单</a>&nbsp;&nbsp;&nbsp;
+    <a href="shopping.jsp">我的购物车</a>&nbsp;&nbsp;&nbsp;
+    <a href="../bangz.html">常见的问题</a>
+  </div>
+  <div class="col-lg-3" id="colx">
+    <div class="input-group">
+      <input type="text" class="form-control" placeholder="输入搜索的商品">
+                     <span class="input-group-btn">
+                    <button  class="btn btn-default" type="button" style="color: #aaaaaa">搜索</button>
+                    </span>
+    </div><!-- /input-group -->
+  </div>
+  <div class="pull-right right">欢迎,${User}</div>
+  </p>
+</div>
+<div class="container-fluid"style="width: 80%;">
+  <div class="cart-filter-bar">
+    <div>
+      <a href="../index.jsp"><img src="../img/login.gif" ></a>
+      <div class="pull-right" style="margin-top: 5%;">
+          <a style="color:#666 ;" href="../index.jsp">首页</a>
+        </div>
+      </div>
+    <div class="pull-left" style="margin-top: 2%;">
+     <strong> <span>全部商品</span></strong>
+    </div>
+      <div class="pull-right" style="margin-top: 2%">
+       <div class="fr total" >已选商品：￥<span id="priceTota2">0.00</span></div>
+        </div>
+
+  </div>
+  </div>
+<div class="container-fluid" style="width: 70%; margin-top: 2%">
+<div class="catbox1">
+  <table id="cartTable">
+    <thead>
+      <tr >
+        <th class="center"><label>
+            <input class="check-all check " type="checkbox"/>&nbsp;&nbsp;全选</label></th>
+        <th class="center">商品</th>
+        <th class="center">单价</th>
+        <th class="center">数量</th>
+        <th class="center">金额</th>
+        <th class="center">操作</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr class="shopping-num">
+        <td class="checkbox" style="text-align: right"><input class="check-one check" type="checkbox"/></td>
+        <td class="goods"><img src="../img/111.jpg" alt=""/>
+          <span>Casio/卡西欧 EX-TR350Casio/卡西欧 EX-TR350Casioi</span>
+        </td>
+        <td class="price1">5999.88</td>
+        <td class="count"><span class="reduce"></span>
+          <input class="count-input" type="text" value="1" style="width: 50%;height: 23px;"/>
+          <span class="add">+</span></td>
+        <td class="subtotal" style="color: #ff6600">5999.88</td>
+        <td class="operation"><span class="delete">删除</span></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="foot" id="foot" >
+    <label class="fl select-all"><input type="checkbox" class="check-all check"/>&nbsp;&nbsp;全选</label>
+    <a class="fl delete" id="deleteAll" href="javascript:;">删除</a>
+    <div class="fr closing" onclick="getTotal();">结 算</div><!--这个结算跳到确认订单-->
+    <input type="hidden" id="cartTotalPrice"/>
+    <div class="fr total">合计：￥<span id="priceTotal">0.00</span></div>
+    <div class="fr selected" id="selected">已选商品<span id="selectedTotal">0</span>件<span class="arrow up">▲</span><span class="arrow down"> ▼</span></div>
+    <div class="selected-view">
+      <div id="selectedViewList" class="clearfix1">
+        <div><img src="../img/111.jpg"><span>取消选择</span></div>
+      </div>
+      <span class="arrow">◆<span>◆</span></span> </div>
+  </div>
+</div>
+</div>
+<div class="row" style="border: solid 1px #dfdfdf;width: 101.5%;margin-top: 10%;background-color: #fafafa">
+  <div class="footer2" >
+    <div class="footer-size">
+      <h4 class="footer-h4">用户帮助</h4>
+      <ul class="list-unstyled">
+        <li><a href="bangz.jsp">常见问题</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer2"  >
+    <div class="footer-size">
+      <h4 class="footer-h4">我的</h4>
+      <ul class="list-unstyled">
+        <li><a href="#">互动评论</a></li>
+        <li><a href="#">会员积分</a></li>
+        <li><a href="myuser.jsp">我的信息</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer2" >
+    <div class="footer-size">
+      <h4 class="footer-h4">游戏</h4>
+      <ul class="list-unstyled">
+        <li><a href="#">打地鼠</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer2" >
+    <div class="footer-size">
+      <h4 class="footer-h4">客服电话:4006-888-887</h4>
+      <ul class="list-unstyled">
+        <li><a href="#">周一到周五&nbsp;9:00-22:00</a></li>
+        <li><a href="#">客服电话&nbsp;免费长途</a></li>
+      </ul>
+    </div>
+  </div>
+</div>
+<div class="site-info">
+  <span class="copyright">©</span>2016&nbsp;nuomi.com            &nbsp;<a href="#" class="link" target="_blank">京ICP证030173号</a>
+  &nbsp;京公网安备11010802014106号
+  &nbsp;<a href="#">营业执照信息</a>
+  <div style="width:300px;margin:0 auto; padding:20px 0;">
+    <a target="_blank" href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=11000002000001" style="display:inline-block;text-decoration:none;height:20px;line-height:20px;"><img src="../img/a.png" style="float:left;">
+      <p style="float:left;height:20px;line-height:20px;margin: 0px 0px 0px 5px; color:#939393;">京公网安备 11000002000001号</p></a>
+  </div>
+</div>
+<div id="leftsead">
+  <ul class="list-unstyled">
+    <li><a><img src="../img/ll01.png" width="131" height="49" class="hides"/><img src="../img/l01.png" width="47" height="49" class="shows"/></a></li>
+    <li><a id="top_btn"><img src="../img/ll06.png" width="131" height="49" class="hides"/><img src="../img/l06.png" width="47" height="49" class="shows" /></a></li>
+  </ul>
+</div>
+
+</body>
+</html>

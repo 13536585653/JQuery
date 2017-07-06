@@ -1,0 +1,19 @@
+package org.demo.dao;
+
+import java.util.Scanner;
+
+public class Test{
+	static int i;
+	public static void main(String[]  args)
+	{	
+		int i = 0, j = -1;
+		switch (i) 
+		{
+			    case 1: j = 1;
+			    case 2: j = 2;
+		}
+		System.out.print("j="+j);
+
+	}
+
+	}

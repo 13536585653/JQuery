@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../JS/jquery-1.7.2.js"></script>
+    <script>
+        function del() {
+            if($(":checkbox:checked").size()!=0){
+                alert("确认删除？");
+            }else{
+                alert("你没有选择！");
+            }
+        }
+    </script>
+</head>
+<body>
+    <input type="button" value="删除" onclick="del()"><br>
+    <input type="checkbox" name="ck" value="1">1<br>
+    <input type="checkbox" name="ck" value="2">2<br>
+    <input type="checkbox" name="ck" value="3">3
+</body>
+</html>

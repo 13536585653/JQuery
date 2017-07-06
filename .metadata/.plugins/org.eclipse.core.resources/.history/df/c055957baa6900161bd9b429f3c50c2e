@@ -1,0 +1,14 @@
+package org.demo.dao;
+
+import java.util.Scanner;
+
+public class Test{
+	public static void main(String[]  args)
+	{	
+    		for( int i; i < 10 ; i++)
+		    {
+			        System.out.println("етЪЧ"+i);
+    		}
+	}
+
+	}

@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../JS/jquery-1.7.2.js"></script>
+    <script>
+        $(function () {
+            $("input").on("click",function () {
+                $("div").slideToggle(500,function () {
+                    alert("finish")
+                });
+            });
+        });
+    </script>
+</head>
+<body>
+<div style="border: 1px solid red; width: 120px; height: 120px;"></div>
+<input type="button" value="slideToggle"/>
+</body>
+</html>

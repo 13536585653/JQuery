@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../../JS/jquery-1.7.2.js"></script>
+    <script>
+        $(function () {
+            //给选中的元素添加name属性
+            //$(":text").attr("name","name");
+
+            //给选中的元素添加多个属性
+            $(":text").attr({name:"name",value:"wang",id:"text"});
+            alert($("body").html());
+        });
+    </script>
+</head>
+<body>
+    <input type="text"/>
+</body>
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../../JS/jquery-1.7.2.js"></script>
+    <script src="ajax.js"></script>
+    <script>
+        var xmlHttpReq;
+        $(document).ready(function () {
+            $("button").click(function () {
+                //创建XMLHttpRequest对象
+                xmlHttpReq=createXMLHttpReq();
+                if(xmlHttpReq){
+                    try{
+                    //设置请求方法、目标URL和异步操作
+                    xmlHttpReq.open("GET","text.html"+"?d"+new Date(),true);
+                    //设置请求状态变化执行的回调函数
+                    xmlHttpReq.onreadystatechange=callback;
+                    //发送异步请求并接收响应
+                    xmlHttpReq.send();
+                    }catch(oErr) {
+                            alert("无法连接服务器："+oErr.toString());
+                    }
+                }
+            });
+        });
+
+        function callback() {
+            //当请求状态变化是执行该函数
+            var status=["正在初始化....","正在初始化请求....","正在发送请求...","正在接收数据...","正在解析数据..."];
+            $("ol").append("<li>"+status[xmlHttpReq.readyState]+"</li>");
+            $("li:last").append("完成！");
+            if(xmlHttpReq.readyState==4&&xmlHttpReq.status==200){
+                var sHeaders=xmlHttpReq.getAllResponseHeaders();
+                var sResponse=xmlHttpReq.responseText;
+                $("p:first").prepend("<b>服务器响应标头：</b><br>"+sHeaders);
+                $("p:last").html("<b>服务器响应文本：</b>"+sResponse);
+                $("span").hide().fadeIn(2000).animate({left:"+=168"},2000).animate({top:"-=16",fontSize:"22px"},1000);
+            }
+        }
+    </script>
+</head>
+<body>
+<button>test</button>
+<ol></ol>
+<p></p>
+<p></p>
+</body>
+</html>

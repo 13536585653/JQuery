@@ -1,0 +1,52 @@
+﻿<meta charset="UTF-8">
+<link rel="stylesheet" type="text/css" href="css/common.css"/>
+    <link rel="stylesheet" type="text/css" href="css/main.css"/>    <script src="js/libs/jquery-1.7.2.js"></script>
+<script>
+	$(function(){
+		$(":submit").click(function(){
+			var c = document.getElementById("c").value;
+			var reg = /^[0-9]/;
+			if(c=="" || !reg.test(c)){
+				alert("销售数不能为空、只能是数字");
+				return false;
+				}
+			});
+		});
+</script>
+    
+<div class="crumb-wrap">
+            <div class="crumb-list"><i class="icon-font"></i><a href="index.html">首页</a><span class="crumb-step">&gt;</span><span class="crumb-name">添加销售</span></div>
+        </div>
+<div class="result-content">
+                <form   mothend="">
+                    <table class="insert-tab" width="100%">
+                        <tbody><tr>
+                            <th width="120"><i class="require-red">*</i>菜名:</th>
+                            <td>
+                                <select name="" class="required">
+                                    <option value="">请选择</option>
+                                </select>
+                            </td>
+                          
+                           </tr>
+                            <tr>
+                                <th><i class="require-red">*</i>图片:</th>
+                                <td><img src="">这是图片</td>
+                            </tr>
+			<tr>
+				<th><i class="require-red">*</i>已销售的数量:</th>
+				<td>
+                                <input id="c" class="common-text required" name="" size="5"  type="text">
+				</td>
+                          </tr>
+			
+                            <tr>
+                                <th></th>
+                                <td>
+                                    <input class="btn btn-primary btn6 mr10" value="添加" type="submit">
+                                    <input class="btn btn6" onclick="history.go(-1)" value="返回" type="button">
+                                </td>
+                            </tr>
+                        </tbody></table>
+                </form>
+  </div>

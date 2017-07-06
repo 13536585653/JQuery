@@ -1,0 +1,81 @@
+#body{
+    margin-top: 30px;
+    border:solid 1px red;
+    width: 990px;
+    display: none;
+}
+#top{
+    border:solid 1px yellow;
+    height: 65px;
+    width: 988px;
+}
+#logo{
+    background: #0e90d2;
+    width: 250px;
+    height: 65px;
+    float: left;
+    font-size: 25px;
+}
+#close{
+    height: 54px;
+    width: 80px;
+    float: right;
+    font-size: 30px;
+    padding-top: 12px;
+    cursor: pointer;
+}
+#left{
+    border:solid 1px green;
+    float: left;
+    height: 522px;
+    width: 790px;
+}
+#message{
+    border:solid 1px green;
+    height: 400px;
+    width: 790px;
+}
+#center{
+    background: grey;
+    height: 39px;
+    width: 790px;
+}
+#below{
+    border:solid 1px green;
+    height: 78px;
+    width: 790px;
+}
+#right{
+    border:solid 1px gray;
+    float: right;
+    height: 522px;
+    width: 180px;
+}
+#msg{
+    border:0px;
+    float: left;
+    height: 75px;
+    width: 600px;
+    font-size: 22px;
+    color: gray;
+}
+#x{
+    float: left;
+    height: 44px;
+    width: 50px;
+    display: none;
+    padding-top: 13px;
+    margin-top: 20px;
+    font-size: 22px;
+    cursor: pointer;
+}
+#bto{
+    margin-top:20px;
+    font-size: 25px;
+    float: right;
+    height: 55px;
+    width: 136px;
+    background: grey;
+    cursor: pointer;
+}
+

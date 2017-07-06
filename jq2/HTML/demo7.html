@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../JS/jquery-1.7.2.js"></script>
+    <script>
+        $(function () {
+            //依据属性选择
+            //1.选择包含id属性的元素
+            alert($("div[id]").size());
+            //2.依据属性的表达式来选择
+            alert($("input[type*=e]").size());
+        });
+    </script>
+</head>
+<body>
+<div>
+    <p>Hello!</p>
+</div>
+<div id="test2"></div>
+<!-- 华丽的分隔符 -->
+<input type="checkbox" name="newsletter" value="Hot Fuzz" /><br/>
+<input type="checkbox" name="newsletter" value="Cold Fusion" /><br/>
+<input type="checkbox" name="accept" value="Evil Plans" /><br/>
+<input type="text" name="uname" value="aaa"/><br/>
+</body>
+</html>

@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../JS/jquery-1.7.2.js"></script>
+    <script>
+        $(function () {
+            $("input").on("click",function () {
+                //在使用自定义动画的时候必须在选择的元素加上position属性并设置相对定位
+                //$("div").animate({width:"90%",height:"100%",borderWidth:10});
+                $("div").animate({top:"+=200px"},2000).animate({left:"+=200px"},2000);
+            })
+        });
+    </script>
+</head>
+<body>
+<input type="button" value="run"/>
+<div style="border: 1px solid red;background-color: red; width: 120px; height: 120px; position: relative"></div>
+</body>
+</html>

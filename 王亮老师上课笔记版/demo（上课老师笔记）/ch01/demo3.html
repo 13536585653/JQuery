@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../js/jquery-1.7.2.js"></script>
+    <script>
+        $(function(){
+            //使用js脚本来操作document对象获取元素的值
+            //var uname = document.getElementById("uname").value;
+            //使用jquery选择器
+
+            var uname = $("#uname").val();
+            //alert(uname);
+            //也可以通过val()方法进行赋值
+            //$("#uname").val("zing");
+            //var $p = $("p");
+            //alert($p.size());
+            //选择id为d1的div，然后找到子元素为p标记的元素
+            //var $p = $("#d1 > p");
+            //alert($p.size());
+
+            //显示id为d2的div中html内容
+            alert($("#d2").html());
+        });
+    </script>
+</head>
+<body>
+  <input id="uname" type="text" name="userName" value="wangl"/><br/>
+  <div id="d1">
+      <p>aaa</p>
+      <p>bbb</p>
+      <p>ccc</p>
+  </div>
+  <div id="d2">
+      <p>ddd</p>
+      <p>eee</p>
+      <p>fff</p>
+      <span></span>
+  </div>
+</body>
+</html>

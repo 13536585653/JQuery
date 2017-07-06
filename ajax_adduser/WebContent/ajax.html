@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="js/jquery-1.7.2.js"></script>
+<script src="js/ajax.js"></script>
+<script>
+	$(function(){
+		$(":button").click(function(){
+			//序列化整个表单
+			var params=$("#f").serialize();
+			//发送ajax请求提交
+			$.post("submit",params,function(result){
+				alert(result);
+			});
+		});
+	});
+</script>
+</head>
+<body>
+	<center>
+		<h2>这是一个用ajax技术添加用户的页面</h2><br>
+		<form id="f">
+		<p>userName:<input type="text" name="user" id="user"><br>
+		<p>password:<input type="text" name="pwd" id="pwd"><br>
+		<p>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp age:<input type="text" name="age"><br>
+		<p>&nbsp&nbsp&nbsp address:<input type="text" name="addr"><br>
+		<p><input type="button" value="button">
+		</form>
+	</center>
+</body>
+</html>

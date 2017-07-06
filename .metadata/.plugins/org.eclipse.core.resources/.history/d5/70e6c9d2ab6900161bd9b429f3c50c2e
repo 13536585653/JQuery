@@ -1,0 +1,15 @@
+package org.demo.dao;
+
+import java.util.Scanner;
+
+public class Test{
+	static int counter=10;
+	public static void main(String [] args)
+    {
+	        System.out.println(++counter);
+    		//System.out.println(counter++);
+	        System.out.println(++counter);
+	        //System.out.println(counter);
+    }
+
+	}

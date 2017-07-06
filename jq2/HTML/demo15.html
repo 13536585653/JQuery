@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../JS/jquery-1.7.2.js"></script>
+    <script>
+        $(function () {
+            $("div").css({background:"red",width:"100px",height:"100px"});
+            //div逐渐变大的代码
+            $("div").click(function() {
+                $(this).css({
+                    width: function(index, value) {
+                        return parseFloat(value) * 1.2;
+                    },
+                    height: function(index, value) {
+                        return parseFloat(value) * 1.2;
+                    }
+                });
+            });
+        });
+    </script>
+</head>
+<body>
+    <div></div><br><br>
+    <div></div>
+</body>
+</html>

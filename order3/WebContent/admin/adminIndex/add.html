@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+
+<link href="css/uploadify.css" rel="stylesheet" type="text/css" />
+<link rel="stylesheet" type="text/css" href="css/common.css"/>
+    <link rel="stylesheet" type="text/css" href="css/main.css"/>
+<script type="text/javascript" src="js/libs/jquery-1.7.2.js"></script>
+<script type="text/javascript" src="js/scxz/swfobject.js"></script>
+<script type="text/javascript" src="js/scxz/jquery.uploadify.v2.1.4.js"></script>
+<script type="text/javascript">
+	//js验证
+	$(function(){
+	$(":submit").click(function(){
+		var pattern =/^(?:[\u4e00-\u9fa5|a-zA-Z])+?$/; 
+		var reg=/^[0-9]{1}([0-9]|[.])*$/;
+		var img = /^\S+\.(?:png|jpg|bmp|gif)$/;
+		if($("#c1").val()=="" || !pattern.test($("#c1").val())){
+			alert("菜名不能空、只能是中文是英文");
+			return false;
+			$("#add").off("click")
+			}
+		/* if($("#c2").val()=="" || !img.test($("#c2").val())){
+			alert("价图片不能为空,图片格式为:.png/.jph/.bmp/.gif");
+			return false;
+			} */
+		if($("#c3").val()=="" || !reg.test($("#c3").val())){
+			alert("价格不能为空、只能是数字/小数点也不能在第一位我");
+			return false;
+			}
+		if($("#c4").val()==""){
+			alert("描述不能为空");
+			
+			}
+		});
+	$("#add").on("click",function(){
+		var params=$("#myform").serialize();
+		//alert(params);
+		$.post("add",params,function(result){
+			//alert(result);
+			if(result==1){
+				alert("添加成功");
+				location.href="select_jingxuan2.html";
+			}else{
+				location.href="add.html";
+			}
+		});
+	});  
+	});
+	
+	//上传
+	$(function() {
+		$("#uploadify").uploadify({
+			'uploader' : 'js/scxz/uploadify.swf', //是组件自带的flash，用于打开选取本地文件的按钮 
+			'script' : 'uploadfile',//处理上传请求的url，对应servlet的url-pattern 
+			'cancelImg' : 'images/cancel.png',//取消上传文件的按钮图片
+			'fileDataName' : 'myfile',//和input的name属性值保持一致
+			'queueID' : 'fileQueue',
+			'queueSizeLimit' : 5, //限制在一次队列中的次数（可选定几个文件）。默认值= 999
+			'simUploadLimit' : 1,//多文件上传时，同时上传文件数目限制(一次可传几个文件)。默认值1
+			'auto' : true,//是否选取文件后自动上传
+			'multi' : false,//是否支持多文件上传       
+			'sizeLimit' : 10485760,//限制上传文件的大小
+			'buttonText' : 'SELECT FILE',//按钮上的文字
+			'displayData' : 'speed',//有speed和percentage两种，一个显示速度，一个显示完成百分比 
+			'fileDesc' : '支持格式:jpg/gif/jpeg/png/bmp.', //如果配置了以下的'fileExt'属性，那么这个属性是必须配置的 
+			'fileExt' : '*.jpg;*.gif;*.jpeg;*.png;*.bmp'//允许的格式	
+		});
+		$.get("findDishes",function(result){
+			//alert(result);
+			addSelect(result);
+		});
+	});
+	function addSelect(result){
+	//	$("#select).empty();
+		$.each(result,function(index,obj){
+			$("#select").append("<option name='m_type' value='"+obj.d_id+"'>"+obj.d_type+"</option>");
+		});
+	}
+
+</script>
+</head>
+<body>
+    <!-- 定义一个div用于显示上传的队列 -->
+	<!-- <div id="fileQueue"></div> -->
+	<!-- <input type="file" name="myfile" id="uploadify"/>	 -->
+	
+	<!-- 如果使用uploadify上传控件，表单不需要设置enctype -->
+	<div class="crumb-wrap">
+            <div class="crumb-list"><i class="icon-font"></i><a href="index.html">首页</a><span class="crumb-step">&gt;</span><span class="crumb-name">添加精选菜</span></div>
+</div>
+<div class="container-fluid">
+	<!-- <form action="" method="post" >
+		name:<input type="text" name="userName" /><br/> 
+		password:<input type="password" name="passwd" /><br/> 
+	</form> -->
+	
+	
+	 <form  mothend="post" id="myform" >
+                    <table class="insert-tab" width="100%">
+                        <tbody>
+                        <tr>
+                            <th width="120"><i class="require-red">*</i>类型:</th>
+                            <td>
+                                <select name="m_type" id="select" class="required">
+                                    <!-- <option value="小炒类">小炒类</option>
+                                    <option value="油炸类">油炸类</option>
+                                    <option value="汤面类">汤面类</option>
+                                    <option value="哒哒哒">哒哒哒</option>
+                                    <option value="啊啊啊">啊啊啊</option> -->
+                                </select>
+                            </td>
+                        </tr>
+                        
+                            <tr>
+                                <th><i class="require-red">*</i>菜名:</th>
+                                <td>
+                                    <input id="c1" class="common-text required" name="m_name" size="20"  type="text">
+                                </td>
+                            </tr>
+                            
+                            <tr>
+                                <th><i class="require-red">*</i>图片:</th>
+                                <td> <input type="file" name="myfile" id="uploadify"/></td>
+                               	<td><div id="fileQueue"></div></td>
+                            </tr>
+                            
+                            <tr>
+								<th><i class="require-red">*</i>价格:</th>
+								<td>
+                                <input id="c3" class="common-text required" name="price" size="5"  type="text">
+								</td>
+                          	
+							</tr>
+							
+                            <tr>
+                                <th><i class="require-red">*</i>描述:</th>
+                                <td><textarea id="c4" name="tecont" class="common-textarea"  cols="20" style="width: 98%;" rows="10"></textarea></td>
+                            </tr>
+			
+                            <tr>
+                                <th></th>
+                                <td>
+                                    <input class="btn btn-primary btn6 mr10" id="add" value="添加" type="submit">
+                                    <input class="btn btn6" onclick="history.go(-1)" value="返回" type="button">
+                                </td>
+                            </tr>
+                       </table>
+                </form>
+	</div>
+</body>
+</html>

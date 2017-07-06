@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../JS/jquery-1.7.2.js"></script>
+    <script>
+        $(function () {
+            var arr=[0,1,2];
+            //参数一是要过滤的数组
+            //参数二是回调函数，用于过滤数组
+            //参数三是反向过滤
+            var newArr=$.grep(arr,function (n,i) {
+                //参数n代表数组元素
+                //参数i代表数组元素的下标
+                return i>1;
+            },true);//true是取反
+            alert(newArr);
+        });
+    </script>
+</head>
+<body>
+
+</body>
+</html>

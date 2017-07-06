@@ -1,0 +1,20 @@
+package org.demo.dao;
+
+import java.util.Scanner;
+
+public class Test {
+	public int count(char c, int i, double d)
+	{
+		
+		return  (c*(int)d);
+	}
+
+	public static void main(String args [])
+	   {
+		Scanner input = new Scanner(System.in);
+	    int score = input.nextInt();
+	    System.out.println(score);
+
+	}
+
+}

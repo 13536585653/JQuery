@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../js/jquery-1.7.2.js"></script>
+    <script>
+        $(function(){
+            //将p标记移至div元素的后面
+            //$("p").insertAfter("#foo");
+            //将p标记移至div元素的前面
+            $("p").insertBefore("#d1");
+            alert($("body").html());
+        });
+    </script>
+</head>
+<body>
+<div id="d1">world</div>
+<p>I would like to say: </p>
+<div id="foo">Hello</div>
+</body>
+</html>

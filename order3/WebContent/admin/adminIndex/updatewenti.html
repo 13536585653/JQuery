@@ -1,0 +1,28 @@
+﻿<meta charset="UTF-8">
+<link rel="stylesheet" type="text/css" href="css/common.css"/>
+<link rel="stylesheet" type="text/css" href="css/main.css"/>
+<script src="js/libs/jquery-1.7.2.js"></script>
+<script>
+	$(function(){
+		$(":submit").click(function(){
+			if($("#content").val()==""){
+				alert("答案内容不能为空");
+				return false;
+				}
+			});
+		});
+</script>
+<div class="crumb-wrap">
+            <div class="crumb-list"><i class="icon-font"></i><a href="index.html">首页</a><span class="crumb-step">&gt;</span><span class="crumb-name">修改答案</span></div>
+        </div>
+<div class="result-wrap"><br/>
+<form method="post">
+<p><h3>答案类型:</h3><select name="">
+	<option>全部</option>
+</select></p><br/>
+<p><h3>答案内容:</h3><textarea name="content" class="common-textarea" id="content" cols="30" style="width: 98%;" rows="10"></textarea></p><br/>
+<input type="submit" value="修改" style="width:100px;background-color:#ccc;border:1px;"/>
+<input type="button" value="返回" onclick="history.go(-1);" />
+</form>
+
+</div>

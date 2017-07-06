@@ -1,0 +1,10 @@
+<component name="libraryTable">
+  <library name="lib7">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/王亮老师上课笔记版/demo（上课老师笔记）/ajax_demo/WebContent/WEB-INF/lib/mysql-connector-java-5.1.5-bin.jar!/" />
+      <root url="jar://$PROJECT_DIR$/王亮老师上课笔记版/demo（上课老师笔记）/ajax_demo/WebContent/WEB-INF/lib/gson-2.3.1.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

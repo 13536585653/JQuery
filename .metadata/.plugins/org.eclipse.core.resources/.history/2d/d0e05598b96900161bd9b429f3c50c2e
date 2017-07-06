@@ -1,0 +1,14 @@
+package org.demo.dao;
+
+import java.util.Scanner;
+
+public class Test{
+	static String t;
+	static int a=5;
+	public static void main(String[]  args)
+	{		
+     		a=--a;
+		     System.out.print(a);
+
+	}
+	}

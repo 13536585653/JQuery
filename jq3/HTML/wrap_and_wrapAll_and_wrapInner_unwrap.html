@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        p{
+            border:1px solid blue;
+            margin: 5px;
+        }
+        div{
+            border:1px solid red;
+            margin: 5px;
+        }
+    </style>
+    <script src="../../JS/jquery-1.7.2.js"></script>
+    <script>
+        $(function () {
+            //每一个p标记都使用一个div进行包裹
+            //$("p").wrap("<div></div>");
+
+            //使用一个div包裹所有的p标记
+            //$("p").wrapAll("<div></div>");
+
+            //将div包裹在p标记的内部
+            //$("p").wrapInner("<div></div>");
+
+            //取消span的div包裹
+            $("span").unwrap();
+            alert($("body").html());
+        });
+    </script>
+</head>
+<body>
+    <p>hello</p>
+    <p>hello</p>
+
+    <div>
+        <span>aaa</span>
+    </div>
+</body>
+</html>

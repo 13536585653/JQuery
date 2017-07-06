@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>动态添加表单数据</title>
+    <script src="../JS/jquery-1.7.2.js"></script>
+    <script src="../JS/myJs.js"></script>
+    <script>
+        $(function () {
+            //给添加按钮绑定事件，执行添加操作
+            $("#bto").click(function () {
+                //先验证表单是否填写相关信息
+                if(check()){
+                    //获取表单数据
+                    var bean=getBean();
+                    //将数据添加到表格
+                    appendtr(bean);
+                    //清空文本框
+                    cleanText();
+                    //表格隔行变色
+                    changeColor();
+                }
+            });
+
+            //给删除按钮绑定事件
+            $("#del").click(function () {
+                //删除选中的行
+                removeDate();
+            });
+        });
+    </script>
+</head>
+<body>
+    <center>
+        <h2>添加表单数据</h2>
+        姓名：<input type="text" id="name"><br><br>
+        年龄：<input type="text" id="age"><br><br>
+        地址：<input type="text" id="address"><br><br>
+        <input id="bto" type="button" value="添加"><br><br><br><br>
+
+        <table border="1px">
+            <tr>
+                <td><input type="button" value="删除" id="del"></td>
+                <td>姓名</td>
+                <td>年龄</td>
+                <td>地址</td>
+            </tr>
+        </table>
+    </center>
+</body>
+</html>

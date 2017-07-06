@@ -1,0 +1,16 @@
+eclipse.preferences.version=1
+encoding//WebContent/magashop/demo.jsp=UTF-8
+encoding//WebContent/order-index/demo.jsp=UTF-8
+encoding//src/org/front/servlet/SelectMenu.java=UTF-8
+encoding//src/org/order/bean/PageBean.java=UTF-8
+encoding//src/org/order/bean/PageBean2.java=UTF-8
+encoding//src/org/order/dao/DishesDao.java=UTF-8
+encoding//src/org/order/dao/JingxuanMenuDao.java=UTF-8
+encoding//src/org/order/dao/MenuDao.java=UTF-8
+encoding//src/org/order/service/FindMenuByNameService.java=UTF-8
+encoding//src/org/order/service/MenuService.java=UTF-8
+encoding//src/org/order/servlet/Addmenu.java=UTF-8
+encoding//src/org/order/servlet/SelectMenu.java=UTF-8
+encoding//src/org/order/servlet/Selectdishes.java=UTF-8
+encoding//src/org/order/servlet/UploadServlet.java=UTF-8
+encoding/<project>=UTF-8

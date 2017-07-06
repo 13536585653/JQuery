@@ -1,0 +1,196 @@
+﻿
+<meta charset="UTF-8">
+<link rel="stylesheet" type="text/css" href="css/common.css" />
+<link rel="stylesheet" type="text/css" href="css/main.css" />
+<link rel="stylesheet" href="css/bootstrap.min.css"/>
+<script src="js/libs/jquery-1.9.1.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/myjs.js"></script>
+<style>
+#div{
+		width:40%;height:200px;background-color:red;
+
+		z-index:1;
+	}
+	.table {
+			width:"95%";
+			font-size: 12px;
+			margin-top: 5px; 
+			text-align: left; 
+			margin-left: 20px ; 
+			
+	}
+	.tr{
+		border-bottom:#FF0000 solid 1px;
+	}
+</style>
+<script type="text/javascript">
+
+	$(function(){
+		table("selectorder");
+		//批量删除
+		deleteurl("deleteOrder");
+	});
+
+	
+	function addTable(result){
+		$(".result-tab tr:not(:first)").empty();
+	//alert(result);
+		$.each(result.list, function(key, obj) {
+			var state=obj.o_state ==0 ? "已发货" : "发货";
+			$(".result-content").append('<table class="table" id="order_area_23176"  >'+
+            '<tbody><tr>'+
+         	'<td colspan="2" style="text-align:left;">单号：'+obj.o_number+'<font color="red">外卖</font></td>'+
+         	'<td colspan="2" style="text-align:left;">创建时间：'+obj.o_time+'</td>'+
+         	'<td colspan="2" style="text-align:left;">订单状态: <font color="blue">'+state+'</font></td>'+
+        '</tr>'+
+        '<tr style="height:20px;line-height:20px;">'+
+         	'<td colspan="2" style="text-align:left;">支付方式：<font color="red">货到支付</font></td>'+
+         	'<td colspan="2" style="text-align:left;">支付状态：未付<font color="red"></font></td>'+
+         	'<td colspan="2" style="text-align:left;">下单来源: 网站</td>'+
+    '<tr style="height:20px;line-height:20px;">'+
+         	'<td colspan="2" style="text-align:left;">联系人：'+obj.u_name+'</td>'+
+         	'<td colspan="2" style="text-align:left;">消费地址：'+obj.u_addr+'</td> '+  
+         	'<td colspan="2" style="text-align:left;">联系电话：'+obj.u_tel+'</td> '+
+       ' </tr>'+
+	           ' <tr> '+
+        '</tr>'+
+        		          '  <tr style="height:20px;line-height:20px;">'+
+        	'<td colspan="3" width="50%" valign="top">'+
+        		'<table style="margin:0px;padding:0px;font-size:12px;" width="100%">'+
+        			'<tbody><tr style="height:20px;line-height:20px; ">'+
+        				'<td style="border:none;padding:0px;color:gray;text-align:left;" width="60%">名称</td>'+
+        				'<td style="border:none;padding:0px;color:gray;" width="15%">价格</td>'+
+        				'<td style="border:none;padding:0px;color:gray;">数量</td> '+
+        			'</tr>'+
+        			  
+        			'<tr style="height:20px;line-height:20px;"><td style="border:none;padding:0px;color:gray;text-align:left;">'+obj.m_name+'</td>'+
+        				  '<td style="border:none;padding:0px;color:gray;">￥'+obj.o_sum+'元</td>'+
+        				  '<td style="border:none;padding:0px;color:gray;">'+obj.o_num+'份</td>'+
+        				  '</tr> '+'</tbody></table>'+
+        	'</td>'+
+        	'<td colspan="3" style="text-align:left;color:gray;" valign="top">'+
+        		 '<table style="margin:0px;padding:0px;font-size:12px;text-align:left;" width="100%">'+
+        		    		            		   	'<tbody><tr style="height:20px;line-height:20px; ">'+
+        		 		  '<td style="border:none;padding:0px;color:gray;" width="100px;">总价</td>'+
+        		 		  '<td style="border:none;padding:0px;color:gray;"><font color="red">￥'+obj.o_sum+'</font>元</td>'+
+        		 		   '</tr>'+
+        		 				            		 		 		            		 	 
+        		 				            		 				            		 				            		 				            		 		'<tr style="height:20px;line-height:20px;">'+
+        		 		  '<td style="border:none;padding:0px;color:gray; " width="100px;" >应收</td>'+
+        		 		  '<td style="border:none;padding:0px;color:gray; "><font color="red">￥'+obj.o_sum+'</font>元 </td>'+
+        		 	  ' </tr>'+' </tbody></table>'+ 
+        		 
+        		'</td>'+
+   			 '</tr>'+
+         	' <tr>'+
+          '<td colspan="6" style="text-align:left;" class="order_control"> '+
+          		 
+				'<a class="dddd" value="'+obj.o_number+'" style="font-size:20px">小票打印订单</a>	'+
+          			              	             
+				
+
+		  '</td>'+
+        '</tr>   '+  
+        '</tbody></table>');
+		});
+		
+		$("table").hover(
+				  function () {
+				    $(this).css("background-color","#eee");
+				  },
+				  function () {
+				    $(this).css("background-color","");
+				  }
+				);
+		
+		$(".delivery").on("click",function(){
+			var date=$(this).attr("value");
+			var val=$(this).html();
+			if(val=='已发货'){
+				alert("已发货，无需重复！")
+			}else{
+				alert("发货成功！");
+				$.post("updateOrder",{"id":date}, function(result){
+		    		addTable(result); 
+		    	});
+			}
+		});
+		
+		$(".dddd").on("click",function(){
+			var val=$(".dddd").attr("value");
+			$.post("selectByNumber",{"val":val},function(eee){
+				/* $("#tel").val(eee.u_tel) */
+				$("#motai").empty();
+				$.each(eee,function(key,obj){
+					var state=obj.o_state==0?"未支付":"已支付";
+					 $("#motai").append("<table  style='align:center;border-collapse:   separate;   border-spacing:   10px;'>"+
+						"<tr><td>单号： "+obj.o_number+"外卖   </td></tr>"+
+						"<tr><td> 创建时间："+obj.o_time+"</td></tr>"+
+						"<tr><td>支付状态："+state+"</td></tr>"+
+						"<tr><td>下单来源: 网站 </td></tr>"+
+						"<tr><td>订单状态: 已发货 </td></tr>"+
+						"<tr><td>支付方式：货到支付	</td></tr>"+
+						"<tr><td>联系人："+obj.u_name+"</td></tr>"+
+						"<tr><td>消费地址："+obj.u_addr+" </td></tr>"+
+						"<tr><td>菜品名称："+obj.m_name+"</td></tr>"+
+						"<tr><td>价格：￥"+obj.o_sum+"</td></tr>"+
+						"<tr><td>数量："+obj.o_num+"份</td></tr>"+
+						"<tr><td>总价：￥"+obj.o_sum+"</td></tr>"+
+						"</table>"); 
+				}) 
+			})
+			$("#addview").modal("show");
+			$("#save").on("click",function(){
+				 location.href="text.html";
+				 /*location.href="index2.htm?name="+result; */
+			});
+		});
+	};
+	
+</script>
+
+
+
+<div class="crumb-wrap">
+	<div class="crumb-list">
+		<i class="icon-font"></i><a href="index.html" color="#white">首页</a><span
+			class="crumb-step">&gt;</span><span class="crumb-name">订单查询</span>
+	</div>
+</div>
+<div class="result-wrap">
+	<form name="myform" id="myform" method="post">
+		<div class="result-title">
+			<!-- <div class="result-list">
+				<a id="batchDel" href="javascript:void(0)"><i class="icon-font"></i>批量删除</a>
+			</div> -->
+		</div>
+		
+	<div class="result-content">
+		</div>
+		
+	</form>
+
+</div>
+
+ <div class="modal fade" id="addview">
+		<!--模式对话框的主体，包括一些遮罩层样式-->
+		<div class="modal-dialog"  style="width:300px">
+			<!--  这个div将涵盖对话框的内容，内容分为头，内容主体，内容尾部-->
+			<div class="modal-content">
+				 <div class="modal-header">
+    				<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+					<h3 class="modal-title">打印订单</h3>
+				</div>
+					<form class="form-horizontal form-bordered form-row-strippe" id="qqq"  data-toggle="validator" enctype="multipart/form-data">
+					<div class="modal-body" id="motai">
+						
+					</div>
+					</form>
+				<div class="modal-footer">
+					<!--  <input type="button" id="save" class="btn btn-primary" value="确认" /> --> 
+					 <a id="save">打印</a>
+				</div>
+			</div>
+		</div>
+	</div>

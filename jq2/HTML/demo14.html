@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../JS/jquery-1.7.2.js"></script>
+    <script>
+        $(function(){
+            //要匹配元素的序号，index从1开始
+            //$("ul li:nth-child(2)").css("background-color","red");
+
+            //选择第一个子元素
+            //$("ul li:first-child").css("background-color","red");
+
+            //选择最后一个子元素
+            //$("ul li:last-child").css("background-color","red");
+
+            //如果某个父元素中只包含一个子元素，那么将会匹配
+            //$("ul li:only-child").css("background-color","red");
+
+            //设置多个css属性
+           $("ul li:only-child").css({color:"1px",background:"red",height:"50px",marginTop:"50px",padding:"50px"});
+        });
+    </script>
+</head>
+<body>
+    <ul>
+        <li>John</li>
+        <li>Karl</li>
+        <li>Brandon</li>
+    </ul>
+    <ul>
+        <li>Glen</li>
+        <li>Tane</li>
+        <li>Ralph</li>
+    </ul>
+    <ul>
+        <li>Glen</li>
+    </ul>
+</body>
+</html>

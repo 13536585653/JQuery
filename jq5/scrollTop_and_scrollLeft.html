@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../JS/jquery-1.7.2.js"></script>
+    <script>
+        $(function () {
+            //获取选中元素的宽高
+            /*var w=$("div").width();
+            var h=$("div").height();
+            alert(w+" : "+h);*/
+
+            //获取div元素的滚动条的位置，默认初始值为0
+            /*var st=$("div").scrollTop();
+            var sl=$("div").scrollLeft();
+            alert(st+" : "+sl);*/
+
+            //设置滚动条的位置大小
+            $("div").scrollTop(20);
+            $("div").scrollLeft(20);
+            var top=$("div").scrollTop();
+            var left=$("div").scrollLeft();
+            alert(top+" : "+left);
+        });
+    </script>
+</head>
+<body>
+<div style="border: 1px solid red; width: 120px; height: 120px; overflow:auto">
+    xxxxxxxxxxxxxxxxx<br/>
+    xxxxxxxxxxxxxxxxx<br/>
+    xxxxxxxxxxxxxxxxx<br/>
+    xxxxxxxxxxxxxxxxx<br/>
+    xxxxxxxxxxxxxxxxx<br/>
+    xxxxxxxxxxxxxxxxx<br/>
+    xxxxxxxxxxxxxxxxx<br/>
+    xxxxxxxxxxxxxxxxx<br/>
+</div>
+</body>
+</html>

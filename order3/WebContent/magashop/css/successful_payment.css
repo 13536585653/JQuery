@@ -1,0 +1,82 @@
+.footer {
+    width: 918px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 100px 0 30px;
+    line-height: 20px;
+    color: #616161;
+    text-align: center;
+    font: 12px/1.5 Arial,Tahoma,songti,Verdana,STHeiTi,sans-serif;
+}
+.yang{
+    display:inline;padding-right:6px;border-right: 1px #666 solid;position: relative;
+}
+body{
+    margin: 0;padding:0;
+}
+li{
+    list-style: none;
+}
+#main {
+    border: 1px solid #D4D4D4;
+    margin-top: 20px;
+    padding-bottom: 20px;
+}
+#J_AmountList h2 {
+    font-size: 16px;
+    height: 60px;
+    line-height: 60px;
+    padding: 0 0 0 76px;
+    margin-top: 0;
+    background: url(../images/TB10aO.KFXXXXcTXpXXXXXXXXXX-31-32.png) no-repeat scroll 30px 15px #ecffdc;
+}
+.take-delivery .summary-status, #success-pay {
+    font-size: 13px;
+    padding: 0 0 0 76px;
+    margin: 10px 0;
+    color: #333;
+}
+#J_ButtonList {
+    font-size: 13px;
+    margin: 13px 0 25px 76px;
+}
+.take-delivery ul {
+    padding: 5px 0 0;
+}
+.take-delivery li {
+    line-height: 28px;
+    padding-left: 10px;
+    background: url(../images/T1rDIvXcpfXXaaD1Dr-3-3.png) no-repeat 0 13px;
+}
+#main a, .take-delivery a {
+    color: #2d8cba;
+    margin: 0 5px;
+}
+a {
+    text-decoration: none;
+}
+a:-webkit-any-link {
+    cursor: auto;
+}
+#J_RemindList li.alert {
+    background: url(../images/TB1LF0CKFXXXXcAXFXXXXXXXXXX-21-20.png) no-repeat scroll transparent;
+    position: relative;
+    font-size: 13px;
+    padding-left: 28px;
+}
+#J_RemindList li {
+    line-height: 21px;
+}
+
+p {
+    display: block;
+    -webkit-margin-before: 1em;
+    -webkit-margin-after: 1em;
+    -webkit-margin-start: 0px;
+    -webkit-margin-end: 0px;
+}
+#J_Qrcode {
+    border-top: 1px dotted #D4D4D4;
+    padding-top: 21px;
+    margin: 0 30px;
+}

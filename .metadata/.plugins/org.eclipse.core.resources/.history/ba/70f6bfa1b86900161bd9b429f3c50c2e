@@ -1,0 +1,17 @@
+package org.demo.dao;
+
+import java.util.Scanner;
+
+public class Test{
+		    public static void main(String[]  args)			//第3行
+		    {
+		    	int i=1, j=10;
+		    	do{
+		        if(i++ > --j){
+		           continue;
+		        }
+		    }while(i<5);
+		    System.out.println("i="+i+"j="+j);
+				//第4行
+			}
+	}

@@ -1,0 +1,88 @@
+﻿<meta charset="UTF-8">
+<link rel="stylesheet" type="text/css" href="css/common.css"/>
+    <link rel="stylesheet" type="text/css" href="css/main.css"/>
+         <script src="js/libs/jquery-1.7.2.js"></script>
+<script>
+	$(function(){
+		$(":submit").click(function(){
+			var pwd = /^[a-z0-9_-]{6,18}$/;
+			var adress = /(?=[\u4e00-\u9fa5])^(?:[\u4e00-\u9fa5|\d])+?$/; //以中文开头之后可以为纯中文、数字或由二者所结合
+			var email = /^[a-z\d]+(\.[a-z\d]+)*@([\da-z](-[\da-z])?)+(\.{1,2}[a-z]+)+$/;
+			var tel = /^1[3|4|5|7|8]\d{9}$/;
+			if($("#pwd").val() =="" || !pwd.test($("#pwd").val())){
+				alert("密码不能为空,密码最少六位最多为18位,符号不能乱用");
+				return false;
+				}
+			if( $("#adree").val()=="" || !adress.test($("#adree").val()) ){
+				alert("地址不能为空、只能输中文和数字以中文开头");
+				return false;
+				}
+			if( $("#email").val()=="" || !email.test($("#email").val()) ){
+				alert("邮箱不能为空、请输入正确的邮箱号码");
+				return false;
+				}
+			if( $("#tel").val()=="" || !tel.test($("#tel").val()) ){
+				alert("手机号码不能为空、请输入正确的手机号码");
+				return false;
+				}
+			});
+		});
+</script>  
+<div class="crumb-wrap">
+            <div class="crumb-list"><i class="icon-font"></i><a href="index.html">首页</a><span class="crumb-step">&gt;</span><span class="crumb-name">修改用户</span></div>
+        </div>
+<div class="result-content">
+                <form action="" method="post"  name=""  enctype="multipart/form-data">
+                    <table class="insert-tab" width="100%">
+                        <tbody><tr>
+                            <th width="120"><i class="require-red">*</i>用户名：</th>
+                            <td>
+                               <span>这里是用户名</span>
+                            </td>
+                        </tr>
+                            <tr>
+                                <th><i class="require-red">*</i>密码：</th>
+                                <td>
+                                    <input class="common-text required" id="pwd" name="pwd" size="50" value="" type="text">
+                                </td>
+                            </tr>
+                            <tr>
+                                <th><i class="require-red">*</i>性别:</th>
+                                <td><select name="">
+    								<option>男</option>
+       								 <option>女<option>
+    							</select></td>
+                            </tr>
+			<tr>
+				<th><i class="require-red">*</i>地址：</th>
+				<td> 
+                     <input class="common-text required" id="adree" name="adree" size="50" value="" type="text">      
+                    
+				</td>
+                          </tr>
+			
+                            <tr>
+                                <th>邮箱:</th>
+                                <td><input class="common-text required" id="email" name="email" size="30" value="" type="text"></td>
+                            </tr>
+                            <tr>
+                                <th>手机号码:</th>
+                                <td><input class="common-text required" id="tel" name="tel" size="30" value="" type="text"></td>
+                            </tr>
+                            <tr>
+                                <th>VIP:</th>
+                                <td><select>
+    					<option>普通会员</option>
+        				<option>高级会员</option>
+   						 </select></td>
+                            </tr>
+                            <tr>
+                                <th></th>
+                                <td>
+                                    <input class="btn btn-primary btn6 mr10" value="修改" type="submit">
+                                    <input class="btn btn6" onclick="history.go(-1)" value="返回" type="button">
+                                </td>
+                            </tr>
+                        </tbody></table>
+                </form>
+  </div>

@@ -1,0 +1,15 @@
+package org.demo.dao;
+
+public class Test{
+	static String t;
+	static int a=5;
+	public Class<Void> eat(){
+		return ;
+	}
+	public static void main(String[]  args)
+	{		
+     		a=--a;
+		     System.out.print(a);
+
+	}
+	}

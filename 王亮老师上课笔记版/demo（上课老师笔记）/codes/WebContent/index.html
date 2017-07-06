@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Codes</title>
+<script src="js/jquery-1.7.2.js"></script>
+<script type="text/javascript">
+  $(function(){
+	  $("#codes").attr("src","getcodes?flag="+Math.random());
+	  $("#a").click(function(){
+		  $("#codes").attr("src","getcodes?flag="+Math.random());
+	  });
+  });
+</script>
+</head>
+<body>
+  <img id="codes"/>
+  <a id="a" href="#">看不清，换一张</a>
+</body>
+</html>

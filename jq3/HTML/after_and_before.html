@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../../JS/jquery-1.7.2.js"></script>
+    <script>
+        $(function () {
+            //在选中的元素后面插入<b>标记
+            //$("p").after("<b>hello</b>");
+
+            //在选中的元素的之前插入<b>标记
+            $("p").before("<b>hello</b>");
+            alert($("body").html());
+        });
+    </script>
+</head>
+<body>
+    <p>I would like to say: </p>
+</body>
+</html>

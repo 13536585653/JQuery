@@ -1,0 +1,99 @@
+#outer {
+	height: 600px;
+	width: 1200px;
+	border: 1px dotted #F00;
+}
+
+#changjian {
+	sheight: 40px;
+	width: 200px;
+	font-size: 24px;
+	padding-top: 8px;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+	border-bottom-color: #CCC;
+	height: 40px;
+}
+
+#wenti {
+	float: left;
+	height: 600px;
+	width: 200px;
+	border: 1px solid #EEE;
+	background-color: #FAFAFA;
+	margin-left: 100px;
+}
+
+#dingdan {
+	height: 40px;
+	width: 200px;
+	font-size: 18px;
+	padding-top: 10px;
+}
+
+#zhifu {
+	font-size: 18px;
+	height: 40px;
+	width: 200px;
+	padding-top: 10px;
+}
+
+#xiaofei {
+	font-size: 18px;
+	height: 40px;
+	width: 200px;
+	padding-top: 10px;
+}
+
+#pingjia {
+	font-size: 18px;
+	height: 40px;
+	width: 200px;
+	padding-top: 10px;
+}
+
+#zhanghao {
+	height: 40px;
+	width: 200px;
+	font-size: 18px;
+	padding-top: 10px;
+}
+.hover{
+	background-color:#CCC;
+}
+#daan1 {
+	height: 600px;
+	width: 800px;
+	float: right;
+	border: 1px solid #F00;
+	
+}
+#daan2 {
+	height: 600px;
+	width: 800px;
+	float: right;
+	border: 1px solid #00F;
+	display: none;
+}
+
+#daan3 {
+	float: right;
+	height: 600px;
+	width: 800px;
+	border: 1px solid #0FF;
+	display: none;
+}
+#daan4 {
+	float: right;
+	height: 600px;
+	width: 800px;
+	border: 1px solid #CCC;
+	display: none;
+}
+#daan5 {
+	height: 600px;
+	width: 800px;
+	border: 1px solid #00FF00;
+	display: none;
+	float: right;
+}

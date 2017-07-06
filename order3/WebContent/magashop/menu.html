@@ -1,0 +1,419 @@
+﻿<!doctype html>
+
+<html lang="en">
+
+<head>
+<meta charset="utf-8">
+<title>Megashop</title>
+<script src="js/jquery-1.9.1.min.js"></script>
+<script src="js/common.js"></script>
+<script src="js/jquery.easing.1.3.js"></script>
+<script src="js/ddsmoothmenu.js"></script>
+<script src="js/jquery.flexslider.js"></script>
+<script src="js/jquery.elastislide.js"></script>
+<script src="js/jquery.jcarousel.min.js"></script>
+<script src="js/jquery.accordion.js"></script>
+<script src="js/jquery.pagination.js"></script>
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+<!-- CSS ================================================== -->
+<link rel="stylesheet" href="css/bootstrap.min.css"/>
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/orange.css">
+<link rel="stylesheet" href="css/skeleton.css">
+<link rel="stylesheet" href="css/layout.css">
+<link rel="stylesheet" href="css/ddsmoothmenu.css"/>
+<link rel="stylesheet" href="css/elastislide.css"/>
+<link rel="stylesheet" href="css/home_flexslider.css"/>
+<link rel="stylesheet" href="css/dd.css">
+<link rel="stylesheet" href="css/light_box.css"/>
+
+
+<link rel="stylesheet" href="css/pagination.css">
+<script src="js/bootstrap.min.js"></script>
+<script src="js/dd.js"></script>
+<script src="js/html5.js"></script>
+<!-- <script src="js/my.js"></script> -->
+<script type="text/javascript">
+$(function () {
+
+    //方法二：
+    (function ($) {
+        $.getUrlParam = function (name) {
+            var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
+            var r = window.location.search.substr(1).match(reg);
+            if (r != null) return unescape(r[2]); return null;
+        }
+    })(jQuery);
+
+    //方法二：
+    var xx = $.getUrlParam('id');
+    if(xx==null){
+    	table2("selectallmenu");
+    	
+    }else{
+    		table("findJingxuan");
+    		
+    
+    } 
+    
+    $.get("findDishes",function(result){
+    	dishes(result);
+    });
+
+});
+
+ function findPageList(pageNum){
+	$.get("findJingxuan",{"pageNum":++pageNum},function(result){
+		addTable(result);
+	});
+} 
+
+function findPageList2(pageNum){
+	$.get("selectallmenu",{"pageNum":++pageNum},function(result){
+		addTable(result);
+	});
+}
+function table(url){
+	//注意：这里返回的result是一个pageBean对象，里面的
+	$.get(url,{"pageNum":1},function(result){
+		//填充数据
+		addTable(result);
+		//分页
+		$("#page").pagination(result.rowCount,{
+			callback:findPageList,//点击页码发起的分页查询请求
+			items_per_page:result.maxResult,//每页显示多少条记录
+			next_text:"下一页",//下一页图标
+			prev_text:"上一页",//上一页图标
+			num_display_entries:2,//中间的主体显示页数
+			num_edge_entries:1,//边缘显示页数
+		});
+		
+	});
+} 
+
+function table2(url){
+	//注意：这里返回的result是一个pageBean对象，里面的
+	$.get(url,{"pageNum":1},function(result){
+		//填充数据
+		addTable(result);
+		//分页
+		$("#page").pagination(result.rowCount,{
+			callback:findPageList2,//点击页码发起的分页查询请求
+			items_per_page:result.maxResult,//每页显示多少条记录
+			next_text:"下一页",//下一页图标
+			prev_text:"上一页",//上一页图标
+			num_display_entries:2,//中间的主体显示页数
+			num_edge_entries:1,//边缘显示页数
+		});
+		
+	});
+}
+
+function addTable(result){
+		$(".new-product-block").empty();
+		$.each(result.list, function(key, obj) {
+			$(".new-product-block").append('<div class=" mupe" ><a href="javascript:void(0)" class="lck2" id="'+obj.id+'"><div class="borderbox">'+
+			'<img alt="" src="cai/'+ obj.m_image + '" width="96%" style="display: inline;margin-left:2%;margin-top: 2.5%">'+
+			'</div></a><div class="contentbox"><div class="header clearfix"><a href="javascript:void(0)" class="lck">'+
+			'<h4 class="title">【'+obj.m_name+'】</h4></a><div class="collected">精选</div></div><br/><p>'+obj.tecont+'</p>'+
+			'</div>'+
+			'<div class="pinfo clearfix" ><span class="price"><span class="moneyico">¥</span>'+obj.price+'</span>'+
+			'<span class="ori-price">价值<span class="price-line">¥<span>100</span></span></span></div>'+
+			'<div class="footer clearfix"><span class="comment">4.5分</span><span class="sold">已售4478</span>'+
+			'<div class="bottom-border"></div></div></div>');
+			
+			
+			
+		});
+		
+		$(".lck2").on("click",function(){
+			 var id=$(this).attr("id");
+			 $.post("findJxByid",{"id":id},function(obj){
+				 $("#qty").val("1");
+				 addTable3(obj);
+	             $("#myModal").modal("toggle");
+	            $("html,body").animate({scrollTop:$(".lck2").offset().top});
+			 });
+		});
+	
+}
+
+
+
+function dishes(result){
+	$.each(result,function(index, obj) {
+				$("#dishes").append("<option value='"+obj.d_id+"'>" + obj.d_type);
+			});
+}
+
+function addTable3(obj){
+	$("#myModal").empty();
+	$("#myModal").append('<form id="form" action="selectById" method="post"> <div class="modal-dialog"><div class="modal-content"><div class="modal-header" style="border: none;">'+
+	'<button type="button" class="close" data-dismiss="modal" aria-hidden="true"> &times;</button><h4>'+obj.m_name+'</h4></div>'+
+	'<div class="modal-body" style="margin-top: -20px;"><div class="quick-view-container">'+
+	'<a href="#" title="Image"><img src="cai/'+ obj.m_image + '" width="230px" title="'+obj.m_name+'" /></a><div class="quick-view-right tabs" style="">'+
+	'<img src="images/sale_icon_img.png" style="float: right" class="sale-img" /><div id="tabDetail" class="tabDetail">'+
+	'<div class="first-review" style="width: 80%;margin-top: -50px">描述：'+obj.tecont+'</div><div class="price-box" style="margin-top: -10px">'+
+	'<span class="price">￥'+obj.price+'</span></div><div class="availability">原价(￥100)</div><div class="color-size-block">'+
+	'</div><div class="add-to-cart-box"><span class="qty-box"><label for="qty">数量:</label>'+
+	'<input type="number" min="1" name="num" class="input-text qty" id="qty" maxlength="12" value="1"><input type="hidden"  name="id" value="'+obj.id+'"><br/></span>'+
+	' </div></div></div><div class="clearfix"></div>'+
+	'</div></div><div class="modal-footer" style="border: none;"><input value="购买" class="form-button add" style="width: 100px;margin-left: 35%" type="submit"><span></span></button>'+
+	'<input type="button" value="加入购物车" class="form-button guw" style="width: 100px;"><span></span></button></div>'+
+	'</div></div></form>');
+	
+/* 	$(".add").on("click",function(){
+		var date=$("#form").serialize();
+		alert(date)
+	}); */
+	
+	$(".guw").on("click",function(){
+		var date=$("#form").serialize();
+		alert(date)
+		$.post("addcar",date,function(result){
+			if(result==0){
+				location.href="log/index.html";
+			}
+			$("#myModal").modal("hide");
+		})
+	});
+
+}
+
+$(function() {
+	$.get("getName", function(result) {
+		//alert(result);
+		if (result != null) {
+			$("#huanying").html("欢迎你，" + result);
+			$(".log-in").hide();
+			$(".contact-us").hide();
+		} else {
+			$(".log-in").show();
+			$("#tuichu").hide();
+		}
+		$("#tuichu").on("click", function() {
+			$.get("xiaohui", function(result) {
+				alert(result);
+				location.reload();
+			});
+		});
+	});	
+});
+</script>
+</head>
+<body>
+<div class="mainContainer sixteen container">
+<!--Header Block-->
+<div class="header-wrapper">
+	<header class="container">
+		<div class="head-right">
+			<ul class="top-nav">
+			<li id="huanying" style="margin-right:20px;margin-top:2px;border-left-width: 0px;border-right-width: 0px;">欢迎你，</li>         
+				<li class=""><a href="my_order2.html" title="我的订单">我的订单</a></li>
+				<li class="my-wishlist"><a href="shopping_cart2.jsp" title="我的购物车">我的购物车</a></li>
+				<li class="checkout"><a href="common_problem.html" title="常见问题">常见问题</a></li>
+				<li class="log-in"><a href="log/index.html" title="登录">登录</a></li>
+				<li class="contact-us"><a href="register/index.html" title="注册">注册</a></li>
+				<li id="tuichu"><a>退出</a></li>
+			</ul>
+			<section class="header-bottom">
+				<div class="cart-block" style="height: 46px;">
+					<ul>
+						<li>(1)</li>
+						<li><a href="cart.html" title="Cart"><img title="购物车" alt="购物车" src="images/item_icon.png" /></a></li>
+						<li>购物车</li>
+					</ul>
+					<div id="minicart" class="remain_cart" style="display: none;">
+						<p class="empty">你的购物车有1个菜品</p>
+						<ol>
+
+							<li>
+								<div class="img-block"><img src="images/small_img.png" title="" alt="" /></div>
+								<div class="detail-block">
+									<h4><a href="#" title="Htc Mobile 1120">辣子鸡</a></h4>
+									<p>
+										<sanp>￥ 99</sanp>
+									</p>
+									<a href="#" title="Details">丰富美味</a>
+								</div>
+								<div class="edit-delete-block">
+									<a href="#" title="Edit"><img src="images/edit_icon.png" alt="Edit" title="Edit" /></a>
+									<a href="#" title="Remove"><img src="images/delete_item_btn.png" alt="Remove" title="Remove" /></a>
+								</div>
+							</li>
+							<li>
+								<div class="total-block">总价:<span>￥ 99</span></div>
+								<a href="cart.html" title="Checkout" class="orange-btn">结算购买</a>
+								<div class="clear"></div>
+							</li>
+						</ol>
+					</div>
+				</div>
+				<!-- <div class="search-block" style="margin-left: -130px;width: 420px;">
+					<input type="text" placeholder="输入你要搜索的商品" style="width:350px;"/>
+					<input type="submit" value="搜索" title="输入你要搜索的商品" />
+				</div> -->
+			</section>
+		</div>
+		<h1 class="logo" style="margin-top: 0px;"><a href="index.jsp" title="Logo">
+			<img title="Logo" alt="Logo" src="images/MyLogin.gif" />
+		</a></h1>
+		<nav id="smoothmenu1" class="ddsmoothmenu mainMenu">
+			<ul id="nav">
+				<li class="active"><a href="index.html" title="首页">首页</a></li>
+				<li class=""><a href="menu.html" title="Shop by">菜谱</a></li>
+				
+			</ul>
+		</nav>
+	</header>
+            </div>	
+<!--Content Block-->
+<section class="content-wrapper">
+	<div class="content-container container">
+
+		<div class="col-left">
+			<div class="block man-block">
+				<div class="block-title">客服</div>
+				<ul>
+					<li>客服电话:4006-888-887</li>
+					<li>周一到周五&nbsp;9:00-22:00</li>
+					<li>客服电话&nbsp;免费长途</li>
+				</ul>
+			</div>
+			<div class="block shop-by-block">
+				<div class="block-title">会员积分</div>
+				<ul style="font-size: 13px;">
+					<li>消费$1000普通会员：免费送货</li>
+					<li>消费$2000黄金会员：打八折优惠</li>
+					<li>消费$3000至尊会员：打七折优惠</li>
+				</ul>
+			</div>
+			<div class="paypal-block">
+				<a href="#" title="Paypal"><img src="images/paypal_img.png" title="Paypal" alt="Paypal" /></a>
+			</div>
+		</div>
+		<div class="col-main">
+			<div class="category-banner"><img src="images/sunglass.jpg" title="Banner" alt="Banner" /></div>
+			<div class="pager-container">
+				<div class="view-by-block">
+					<ul class="view-by">
+						<li>菜品排板:</li>
+						<li><a  class="grid"></a></li>
+					</ul>
+					<div class="short-by">
+						<label>菜品类型</label>
+						<select id="dishes" name="name">
+							<option >--请选择--</option>
+						</select>
+					</div>
+				</div>
+			</div>
+			<div class="new-product-block" >
+		
+				
+				
+			</div>
+		</div>
+		<div class="clearfix"></div>
+			<!-- 分页控件 -->
+		
+		<div class="news-letter-container">
+		<div id="page" align="center" style="float:right"></div>
+			<div class="free-shipping-block">
+				<h1>享受免费送货</h1>
+				<p>消费到一千金额既可成为会员</p>
+			</div>
+
+		</div>
+	</div>
+</section>
+</div>
+
+
+<section class="footer-wrapper">
+	<footer class="container">
+		<div class="link-block">
+			<ul>
+				<li class="link-title"><a href="about_us.html" title="关于我们">关于我们</a></li>
+				<li><a href="about_us.html" title="关于我们">关于我们</a></li>
+			</ul>
+			<ul>
+				<li class="link-title"><a href="#" title="用户">用户</a></li>
+				<li><a href="myuser.html" title="用户信息">用户信息</a></li>
+			</ul>
+			<ul>
+				<li class="link-title"><a href="faq.html" title="常见问题">常见问题</a></li>
+				<li><a href="common_problem.html" title="常见问题">常见问题</a></li>
+			</ul>
+			<ul>
+				<li class="link-title">客服电话:4006-888-887</li>
+				<li>周一到周五&nbsp;9:00-22:00</li>
+				<li>客服电话&nbsp;免费长途</li>
+			</ul>
+			<ul class="stay-connected-blcok">
+				<li>
+
+					<div class="payment-block"><img src="images/payment.png" alt="payment"></div>
+				</li>
+			</ul>
+		</div>
+		<div class="footer-bottom-block">
+			<p class="copyright-block"> 菜府点餐网成立已2016年9月份的项目小组作品</p>
+		</div>
+	</footer>
+</section>
+<div id="leftsead">
+	<ul class="list-unstyled">
+		<li><a><img src="images/ll04.png" width="131" height="49" class="hides"/><img src="images/l04.png" width="47" height="49" class="shows"/></a></li>
+		<li><a id="top_btn"><img src="images/ll06.png" width="131" height="49" class="hides"/><img src="images/l06.png" width="47" height="49" class="shows" /></a></li>
+	</ul>
+</div>
+
+
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header" style="border: none;">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                        &times;
+                    </button>
+                    <h4>三明治</h4>
+                </div>
+                <div class="modal-body" style="margin-top: -20px;">
+                    <div class="quick-view-container">
+                        <a href="#" title="Image"><img src="images/0.jpg" width="230px" title="三明治" /></a>
+                        <div class="quick-view-right tabs" style="">
+                            <img src="images/sale_icon_img.png" style="float: right" class="sale-img" />
+                            <div id="tabDetail" class="tabDetail">
+                                <div class="first-review" style="width: 80%;margin-top: -50px">描述</div>
+                                <div class="price-box" style="margin-top: -10px">
+                                    <span class="price">￥99</span>			</div>
+                                <div class="availability">原价(￥100)</div>
+                                <div class="color-size-block">
+
+                                </div>
+                                <div class="add-to-cart-box">
+				<span class="qty-box">
+					<label for="qty">数量:</label>
+					<input type="number" min="1" name="qty" class="input-text qty" id="qty" maxlength="12" value="1"><br/>
+                </span>
+                                </div>
+                            </div>
+                            <div id="tabDes" class="tabDes">
+                                <p>描述信息：</p>
+                            </div>
+                        </div>
+                        <div class="clearfix"></div>
+                    </div>
+                </div>
+                <div class="modal-footer" style="border: none;">
+                    <button title="购买" class="form-button" style="width: 100px;margin-left: 35%"><span>立即购买</span></button>
+                    <button title="加入购物车" class="form-button" style="width: 100px;"><span>加入购物车</span></button>
+                </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal -->
+    </div>
+</body>
+</html>

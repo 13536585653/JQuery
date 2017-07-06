@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="CSS/bootstrap.min.css">
+<link rel="stylesheet" href="CSS/pagination.css">
+<script src="JS/jquery-1.9.1.min.js"></script>
+<script src="JS/bootstrap.min.js"></script>
+<script src="JS/jquery.pagination.js"></script>
+<script>
+	$(function(){
+		//注意：这里返回的result是一个pageBean对象，里面的
+		$.get("findBooks",{"pageNum":1},function(result){
+			//填充数据
+			addTable(result);
+			//分页
+			$("#page").pagination(result.rowCount,{
+				callback:findPageList,//点击页码发起的分页查询请求
+				items_per_page:result.maxResult,//每页显示多少条记录
+				next_text:">",//下一页图标
+				prev_text:"<",//上一页图标
+				num_display_entries:2,//中间的主体显示页数
+				num_edge_entries:1//边缘显示页数
+			});
+		})
+	});
+	//分页查询方法，分页控件在调用这个方法时会传入一个当前页的下标进来
+	//但是这个下标是从0开始的
+	function findPageList(pageNum){
+		$.get("findBooks",{"pageNum":++pageNum},function(result){
+			addTable(result);
+		});
+	}
+	//将数据渲染表格
+	function addTable(result){
+        //防止重复数据追加到表格中，那么在循环遍历之前,清除表格数据
+        //清空表格中的所有的 	行，排除标头的行
+        $("#tab tr:not(:first)").empty();
+		$.each(result.list,function(index,obj){
+			
+			//选中表格，在表格内部的末尾追加数据
+			var type=obj.typeName==undefined?"":obj.typeName;
+			$("#tab").append("<tr>"+
+			       "<td><input type='checkbox' name='bid' value='"+obj.bid+"'></td>"+
+			        "<td>"+obj.bookName+"</td>"+
+			        "<td>"+obj.createTime+"</td>"+
+			        "<td>"+type+"</td>"+
+			        "<td><input type='button' alt='"+obj.bid+"' class='btn btn-danger btn-sm' value='编辑'></td>"+
+			    "</tr>");
+		});
+	}
+</script>
+</head>
+<body>
+	<div class="container">
+		<h2 class="page-header">书籍列表</h2>
+		<table id="tab" class="table table-bordered table-hover">
+			<tr id="header">
+            <th>选择</th>
+            <th>书籍名称</th>
+            <th>出版日期</th>
+            <th>类型</th>
+            <th>操作</th>
+        </tr>
+		</table>
+		<!-- 分页控件 -->
+		<div id="page" align="right">
+			
+		</div>
+	</div>
+</body>
+</html>

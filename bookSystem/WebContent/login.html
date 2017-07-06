@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>login</title>
+<link rel="stylesheet" href="CSS/bootstrap.min.css">
+<script src="JS/jquery-1.9.1.min.js"></script>
+<script src="JS/bootstrap.min.js"></script>
+<script>
+	$(function(){
+		//给按钮绑定一个单击事件
+		$(":button").click(function(){
+			//先验证表单的信息填写
+			if(checkForm()){
+				//序列化表单数据，然后使用ajax提交到servlet处理
+				//serialize()方法将整个form表单的元素都进行序列化
+				var params = $("#f1").serialize();
+				//使用ajax提交(参数1：请求的url，参数2：要提交的参数，参数3：回调方法，接收服务端响应的数据)
+				$.post("login",params,function(result){
+					if($.trim(result) == "success"){
+						location.href = 'index.html';
+					}else{
+						//提示错误消息
+						showMessage(result);
+					}
+				});
+			}
+		});
+
+	});
+	 //先验证用户是否输入了账号密码
+    function checkForm(){
+        if($("#name").val() == "" || $("#pwd").val() == ""){
+            showMessage("请输入账号或密码");
+            return false;
+        }
+        return true;
+    }
+
+    //显示错误消息
+    function showMessage(message){
+        //将错误消息放在账号前面,选择器的before方法可以在当前选中的元素之前放置一些内容
+        //添加之前，先将之前的移除掉
+        $("#msg").remove();
+        $("#account").before("<div id='msg' class='form-group'><font color='red'>"+message+"</font></div>");
+    }
+</script>
+</head>
+<body>
+	<!-- 定义一个div容器，bootstrap会针对合格容器内部元素进行布局 -->
+	<div class="container" style="width:30%;">
+		<!-- form-horizontal表示表单的元素是垂直布局 -->
+		<form id="f1" class="form-horizontal">
+			<!-- 表单使用分组的方式进行排列 -->
+			<div class="form-group">
+				<h4 class="page-header">用户登录</h4>
+			</div>
+			<!-- 账号 -->
+			<div class="form-group" id="account">
+				<label class="control-label">账&nbsp;&nbsp;&nbsp;号</label>
+				<input id="name" name="userName" type="text" class="form-control" placeholder="账号/手机号/邮箱">
+			</div>
+			<!-- 密码 -->
+			<div class="form-group">
+				<label class="control-label">密&nbsp;&nbsp;&nbsp;码</label>
+				<input id="pwd" name="password" type="password" class="form-control">
+			</div>
+			<!-- 登陆按钮 -->
+			<div class="form-group">
+				<input type="button" class="btn btn-primary btn-lg btn-block" value="登陆">
+			</div>
+		</form>
+	</div>
+</body>
+</html>
